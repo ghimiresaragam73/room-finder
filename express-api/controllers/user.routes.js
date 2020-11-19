@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const userModel = require('./../models/user.model');
-var userHelp = require('./../helper/userHelp');
+var userHelp = require('./../helper/user.help');
 const multer = require('multer');
 const fs = require('fs');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './files/images/user');
+        cb(null, './files/images/user/');
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '_' + file.originalname);
@@ -83,10 +83,12 @@ router.route('/:id')
                 }
                 if (user) {
                     var oldImage = user.image;
+                    console.log('old image>>>'.oldImage);
                     var updatedUser = userHelp(req.body, user);
-                    if (req.file)
+                    if (req.file) {
                         updatedUser.image = req.file.filename;
-                    imageDelete(oldImage);
+                        imageDelete(oldImage);
+                    }
                     updatedUser.save((err, saved) => {
                         if (err) {
                             return next(err);

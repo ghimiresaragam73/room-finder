@@ -14,12 +14,12 @@ var userSchema = new Schema({
         type: String
     },
     email: {
-        required: true,
         type: String,
         sparse: true,
-        lowercase: true
+        lowercase: true,
+        unique:true
     },
-    phonenumber: {
+    phone: {
         type: Number,
         required: true,
         unique: true

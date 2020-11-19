@@ -5,6 +5,6 @@ mongoose.connect(dbUrl, (err, done) => {
     if (err) {
         console.log('Database Connection Failed');
     } else {
-        console.log('Database Connection Successful');
+        console.log('Database Connection Success');
     }
 })

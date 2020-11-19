@@ -3,8 +3,8 @@ const multer = require('multer');
 const fs = require('fs');
 
 const roomModel = require('./../models/room.model');
-const roomHelp = require('./../helper/roomHelp');
-const { exit } = require('process');
+const roomHelp = require('./../helper/room.help');
+const authenticate = require('./../middleware/authenticate');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -12,32 +12,38 @@ var storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '_' + file.originalname);
-        console.log('req.log>>>',file);
     }
 })
-
 
 var upload = multer({
     storage: storage
 });
 
-function imageFilter(req) {
-    console.log('req', req);
+function imagefilter(req) {
+    var state = false;
     for (i = 0; i < 3; i++) {
-        if (req[i].mimetype.split('/')[0] !== 'image')
-            return true;
+        if (req[i]) {
+            if (req[i].mimetype.split('/')[0] !== 'image') {
+                state = true;
+            }
+        }
     }
+    return state;
 }
 
 function imageDelete(req) {
-    fs.unlink('./files/images/room/' + req, (err, done) => {
-        if (err) {
-            console.log('Image removing failed', err);
-        } else {
-            console.log('Image Remving Success');
+    console.log('req on imageDelete>>', req);
+    for (i = 0; i < 3; i++) {
+        if (req[i]) {
+            if (req[i].filename) {
+                fs.unlink('./files/images/room/' + req[i].filename, (err, done) => { })
+            } else {
+                fs.unlink('./files/images/room/' + req[i], (err, done) => { })
+            }
         }
-    })
+    }
 }
+
 router.route('/')
     .get((req, res, next) => {
         roomModel.find({})
@@ -48,19 +54,15 @@ router.route('/')
                 res.json(rooms);
             })
     })
-    .post(upload.array('img', 3), (req, res, next) => {
+    .post(authenticate, (req, res, next) => {
         var newRoom = new roomModel({});
         newRoom = roomHelp(req.body, newRoom);
         newRoom.user = req.loggedInUser._id;
-        for (i = 0; i < 3; i++) {
-            if (req.files[i])
-                newRoom.image[i] = req.files[i].filename;
-        }
-        newRoom.save((err, room) => {
+        newRoom.save((err, done) => {
             if (err) {
                 return next(err);
             }
-            res.json(room);
+            res.json(done);
         })
     })
 
@@ -98,7 +100,7 @@ router.route('/:id')
                 res.json(room);
             })
     })
-    .delete((req, res, next) => {
+    .delete(authenticate, (req, res, next) => {
         roomModel.findByIdAndDelete(req.params.id)
             .exec((err, removed) => {
                 if (err) {
@@ -107,54 +109,48 @@ router.route('/:id')
                 res.json(removed);
             })
     })
-    .put(upload.array('img', 3), (req, res, next) => {
-        console.log('Hahhahaha');
-       var fileError = imageFilter(req.files)
-        if (fileError) {
-            for (i = 0; i < 3; i++) {
-                if (req.files[i])
-                    imageDelete(req.files[i].filename);
-            }
-            return next({
-                message: "Invalid File Format"
-            })
-        }
+    .put(authenticate, upload.array('img', 3), (req, res, next) => {
         roomModel.findById(req.params.id)
             .exec((err, room) => {
                 if (err) {
                     return next(err);
                 }
                 if (room) {
-                    console.log('req.files>>>>', req.files);
-                    var image = [];
                     var oldImage = [];
-                    for (i = 0; i < 3; i++) {
-                        if (req.files) {
-                            if (req.files[i]) {
-                                if (room.image[i]) {
+                    var image = [];
+                    // console.log(req.files);
+                    if (req.files) {
+                        var fileError = imagefilter(req.files)
+                        if (fileError) {
+                            imageDelete(req.files);
+                            return next({
+                                message: 'Invalid File Format'
+                            })
+                        }
+                        for (i = 0; i < 3; i++) {
+                            if (req.files) {
+                                if (room.image[i])
                                     oldImage[i] = room.image[i];
-                                }
-                                image[i] = req.files[i].filename;
                             }
+                            if (req.files[i])
+                                image[i] = req.files[i].filename;
                         }
                     }
                     req.body.image = image;
-                    room = roomHelp(req.body, room)
+                    room = roomHelp(req.body, room);
                     room.user = req.loggedInUser._id;
-                    console.log('room.image>>>', room.image);
                     room.save((err, updated) => {
                         if (err) {
                             return next(err);
                         }
-                        console.log('aayooo');
-                        for (i = 0; i < 3; i++) {
-                            if (oldImage[i])
-                                imageDelete(oldImage[i]);
-                        }
+                        imageDelete(oldImage)
                         res.json(updated);
+
                     })
                 }
             })
     })
+
+
 
 module.exports = router;
