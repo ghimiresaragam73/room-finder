@@ -1,5 +1,5 @@
 module.exports = {
-    port: 8080,
+    port: 4000,
     saltRounds: 7,
     jwtSecretKey: 'adsgsdsdk'
 }

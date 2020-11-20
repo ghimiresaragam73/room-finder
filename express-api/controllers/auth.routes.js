@@ -29,10 +29,8 @@ router.post('/login', (req, res, next) => {
             }
         ]
     }).exec((err, user) => {
-        if (err) {
-            return next(err);
-        }
         if (user) {
+            console.log('user>>', user);
             var isMatched = bcrypt.compareSync(req.body.password, user.password);
             if (isMatched) {
                 var token = jwt.sign({ id: user._id }, config.jwtSecretKey);
@@ -41,12 +39,12 @@ router.post('/login', (req, res, next) => {
                     user: user
                 });
             } else {
-                next({
+                return next({
                     message: 'Password did not match'
                 })
             }
         } else {
-            next({
+            return next({
                 message: 'Username did not matched'
             })
         }

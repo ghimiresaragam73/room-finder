@@ -17,10 +17,10 @@ var userSchema = new Schema({
         type: String,
         sparse: true,
         lowercase: true,
-        unique:true
+        unique: true
     },
     phone: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
