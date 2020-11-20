@@ -1,0 +1,35 @@
+<p>Pleaser Register to start your session</p>
+<form #registerForm="ngForm" class="form-group" novalidate>
+    <label for="name">Name</label>
+    <input class="form-control" type="text" placeholder="Name" [(ngModel)]="user.name" name="name" #name="ngModel"
+        required>
+
+    <label for="username">Username</label>
+    <input class="form-control" type="text" placeholder="Username" [(ngModel)]="user.username" name="username"
+        #username="ngModel" required>
+
+    <label for="password">Password</label>
+    <input class="form-control" type="password" placeholder="Password" [(ngModel)]="user.password" name="password"
+        #password="ngModel" required>
+
+    <label for="email">Email Address</label>
+    <input class="form-control" type="text" placeholder="Email Address" [(ngModel)]="user.email" name="email"
+        #email="ngModel">
+
+    <label for="phone">Mobile Number</label>
+    <input class="form-control" type="number" placeholder="Mobile Number" [(ngModel)]="user.phone" name="phone"
+        #phone="ngModel">
+
+    <label for="gender">Gender</label>
+    <input class="form-control" type="text" placeholder="Gender" [(ngModel)]="user.gender" name="gender"
+        #gender="ngModel">
+
+    <label for="dob">Date of Birth</label>
+    <input class="form-control" type="date" [(ngModel)]="user.dob" name="dob" #dob="ngModel">
+
+    <button [disabled]="registerForm.invalid" *ngIf="!submitting" class="btn btn-primary"
+        (click)="register()">Submit</button>
+    <button disabled *ngIf="submitting" class="btn btn-info">Registering</button>
+</form>
+<p>Already have an account?</p>
+<p><a routerLink="/auth/login">Login Here.</a></p>

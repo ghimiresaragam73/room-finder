@@ -1,0 +1,17 @@
+<p>Please login to start your session</p>
+<form #loginForm="ngForm" class="form-group" novalidate>
+    <label for="username">Username</label>
+    <input class="form-control" type="text" placeholder="Username" name="username" [(ngModel)]="user.username" required>
+
+    <label for="password">Password</label>
+    <input class="form-control" type="password" placeholder="Password" name="password" [(ngModel)]="user.password"
+        required>
+
+    <input type="checkbox" [checked]="rememberMe" (change)="rememberMeChanged()">RememberMe <br>
+
+    <button [disabled]="loginForm.invalid" *ngIf="!submitting" class="btn btn-primary" (click)="login()">Login</button>
+    <button disabled *ngIf="submitting" class="btn btn-info">Loggin In</button>
+
+</form>
+<p>Don't have an account?</p>
+<p><a routerLink="/auth/register">Register Here</a></p>
