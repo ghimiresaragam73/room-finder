@@ -27,12 +27,13 @@ var userSchema = new Schema({
     dob: Date,
     gender: {
         type: String,
-        enum: ['male', 'female', 'others']
+        enum: ['Male', 'Female', 'Others']
     },
     image: String,
     role: {
         type: String,
-        enum: ['admin', 'landlord', 'renter']
+        enum: ['Admin', 'Landlord', 'Renter'],
+        default: 'Renter'
     }
 }, {
     timestamps: true

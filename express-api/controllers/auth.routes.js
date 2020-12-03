@@ -4,11 +4,29 @@ const jwt = require('jsonwebtoken');
 const config = require('./../config/index');
 
 const userModel = require('./../models/user.model');
+const userExtraModel = require('./../models/user.extra.model');
+
 const userHelp = require('./../helper/user.help');
+const sender = require('./../config/nodemailer.config');
+
+function prepareEmail(details) {
+    return {
+        from: 'Room Finder<noreply@abcd.com>',
+        to: details.email,
+        subject: 'Forgot Password✔',
+        text: 'Forgot Password✔',
+        html: `<p>Hi <strong>${details.name}</strong><p>
+        <p>We noticed that you are having trouble logging into our system, please use the link below to reset the password</p>
+        <p><a href="${details.link}" target="_blank">Reset Password</a></p>
+        <p>If you have not requested to reset your password, kindly ignore this message</p>`
+    }
+}
 
 router.post('/register', (req, res, next) => {
     var user = new userModel;
     user = userHelp(req.body, user);
+
+    /* https://medium.com/@tariqul.islam.rony/sending-email-through-express-js-using-node-and-nodemailer-with-custom-functionality-a999bb7cd13c */
     user.save((err, user) => {
         if (err) {
             return next(err)
@@ -16,6 +34,35 @@ router.post('/register', (req, res, next) => {
         res.json(user);
     })
 })
+
+/* router .post(verify) */
+
+/* router.post('/verify/email',(req,res,next)=>{
+    if('email' in req.body){
+        let {email} = req.body
+        if(email.test()){
+
+            var val = Math.floor(1000 + Math.random() * 9000);
+            console.log(val);
+            //email valid
+
+            let message = "Your validation toke is "+ val;
+            let subject = "Email Valdiation from ...";
+
+
+
+
+        }else{
+            res.status(400).json({message:"Please porvide valid mail",success:false})
+        }
+    }else{
+        res.status(400).json({message:"Email is not provide",success:false})
+    }
+})
+
+//emailed code verfiy
+router.post('/') */
+
 
 router.post('/login', (req, res, next) => {
     userModel.findOne({
@@ -34,6 +81,8 @@ router.post('/login', (req, res, next) => {
             var isMatched = bcrypt.compareSync(req.body.password, user.password);
             if (isMatched) {
                 var token = jwt.sign({ id: user._id }, config.jwtSecretKey);
+                /* var val = Math.floor(1000 + Math.random() * 9000);
+console.log(val); */
                 res.json({
                     token: token,
                     user: user
@@ -49,6 +98,94 @@ router.post('/login', (req, res, next) => {
             })
         }
     })
+})
+
+router.post('/forgot-password', (req, res, next) => {
+    userModel.findOne({
+        email: req.body.email
+    }).exec((err, user) => {
+        if (err) {
+            return next(err);
+        }
+        if (user) {
+            var resetLink = req.headers.origin + '/auth/reset-password/' + user._id;
+            var mailBody = prepareEmail({
+                name: user.name,
+                email: user.email,
+                link: resetLink
+            });
+            userExtraModel.findById(user._id)
+                .exec((err, extra) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    if (extra) {
+                        extra.passwordResetExpiry = new Date().getTime() + 1000 * 60 * 60;
+                    }
+                    extra.save((err, saved) => {
+                        if (err) {
+                            return next(err);
+                        }
+                    })
+                })
+
+            user.save((err, saved) => {
+                if (err) {
+                    return next(err);
+                }
+                sender.sendMail(mailBody, (err, done) => {
+                    if (err) {
+                        return next(err);
+                    } else {
+                        res.json(done);
+                    }
+                })
+            })
+        }
+        else {
+            return next({
+                message: 'User not registered with provided email'
+            })
+        }
+    })
+})
+
+router.post('/reset-password/:id', (req, res, next) => {
+    userModel.findById(req.params.id)
+        .exec((err, done) => {
+            if (err) {
+                return next(err);
+            }
+            userExtraModel.findById(req.params.id)
+                .exec((err, extra) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    if (user) {
+                        var resetTime = new Date(extra.passwordResetExpiry).getTime();
+                        var now = Date.now();
+                        if (resetTime > now) {
+                            user.password = bcrypt.hashSync(req.body.password, config.saltRounds);
+                            user.passwordResetExpiry = null;
+                            user.save((err, done) => {
+                                if (err) {
+                                    return next(err);
+                                }
+                                res.json(done);
+                            })
+                        } else {
+                            return next({
+                                message: 'Password reset link expired.'
+                            })
+                        }
+                    } else {
+                        return next({
+                            message: 'User not found'
+                        })
+                    }
+                })
+
+        })
 })
 
 module.exports = router;
