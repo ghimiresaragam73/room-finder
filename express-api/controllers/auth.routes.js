@@ -16,7 +16,7 @@ function prepareEmail(details) {
         subject: 'Forgot Password✔',
         text: 'Forgot Password✔',
         html: `<p>Hi <strong>${details.name}</strong><p>
-        <p>We noticed that you are having trouble logging into our system, please use the link below to reset the password</p>
+        <p>We noticed that you are having trouble logging into our system, please use the link below to reset the password.</p>
         <p><a href="${details.link}" target="_blank">Reset Password</a></p>
         <p>If you have not requested to reset your password, kindly ignore this message</p>`
     }
@@ -25,12 +25,20 @@ function prepareEmail(details) {
 router.post('/register', (req, res, next) => {
     var user = new userModel;
     user = userHelp(req.body, user);
-
     /* https://medium.com/@tariqul.islam.rony/sending-email-through-express-js-using-node-and-nodemailer-with-custom-functionality-a999bb7cd13c */
     user.save((err, user) => {
         if (err) {
-            return next(err)
+            return next(err);
         }
+        var userExtra = new userExtraModel;
+        userExtra._id = user._id;
+        userExtra.save((err, done) => {
+            if (err) {
+                return next(err);
+            } else {
+                console.log('user extra in register>>>', done);
+            }
+        })
         res.json(user);
     })
 })
@@ -100,7 +108,7 @@ console.log(val); */
     })
 })
 
-router.post('/forgot-password', (req, res, next) => {
+router.post('/forgotPassword', (req, res, next) => {
     userModel.findOne({
         email: req.body.email
     }).exec((err, user) => {
@@ -109,6 +117,7 @@ router.post('/forgot-password', (req, res, next) => {
         }
         if (user) {
             var resetLink = req.headers.origin + '/auth/reset-password/' + user._id;
+            var id = user._id;
             var mailBody = prepareEmail({
                 name: user.name,
                 email: user.email,
@@ -118,29 +127,24 @@ router.post('/forgot-password', (req, res, next) => {
                 .exec((err, extra) => {
                     if (err) {
                         return next(err);
-                    }
-                    if (extra) {
-                        extra.passwordResetExpiry = new Date().getTime() + 1000 * 60 * 60;
+                    } if (extra) {
+                        extra.passwordResetExpiry = new Date().getTime() + 1000 * 60*60*24*1;
                     }
                     extra.save((err, saved) => {
                         if (err) {
                             return next(err);
                         }
+                        console.log('saved', saved);
+                    })
+                    sender.sendMail(mailBody, (err, done) => {
+                        if (err) {
+                            return next(err);
+                        } else {
+
+                            res.json(done);
+                        }
                     })
                 })
-
-            user.save((err, saved) => {
-                if (err) {
-                    return next(err);
-                }
-                sender.sendMail(mailBody, (err, done) => {
-                    if (err) {
-                        return next(err);
-                    } else {
-                        res.json(done);
-                    }
-                })
-            })
         }
         else {
             return next({
@@ -150,9 +154,9 @@ router.post('/forgot-password', (req, res, next) => {
     })
 })
 
-router.post('/reset-password/:id', (req, res, next) => {
+router.post('/resetPassword/:id', (req, res, next) => {
     userModel.findById(req.params.id)
-        .exec((err, done) => {
+        .exec((err, user) => {
             if (err) {
                 return next(err);
             }

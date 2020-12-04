@@ -6,7 +6,10 @@ var userExtraSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
-    passwordResetExpiry: Date,
+    passwordResetExpiry: {
+        type: Date,
+        default: null
+    },
     emailVerify: {
         type: Boolean,
         default: false
