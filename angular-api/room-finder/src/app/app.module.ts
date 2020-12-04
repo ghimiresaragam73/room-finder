@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app.routing';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AppRoutingModule } from './app.routing';
     BrowserAnimationsModule,
     FormsModule,
     AuthModule,
+    UserModule,
     SharedModule,
     AppRoutingModule,
     ToastrModule.forRoot()
