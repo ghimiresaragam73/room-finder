@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
+import { ResetPasswordComponent } from '../reset-password/reset-password.component';
+
 
 @Injectable()
 export class AuthService {
@@ -23,7 +25,18 @@ export class AuthService {
     login(data: User) {
         return this.http.post(this.url + '/login', data, this.getOptions());
     }
+
     register(data: User) {
         return this.http.post(this.url + '/register', data, this.getOptions());
     }
+
+    forgotPassword(email: string) {
+        return this.http.post(this.url + '/forgotPassword', { email: email }, this.getOptions());
+    }
+
+    resetPassword(data: any) {
+        return this.http.post(this.url + '/resetPassword/' + data.id, data, this.getOptions())
+    }
+
+
 }
