@@ -1,6 +1,8 @@
-<h3>{{user.name}} Welcome to Room Finder</h3>
-<p>This page is in progress.</p>
-<p>Use Navigation bar for more feature</p>
-<a routerLink="/user/profile">
-    <h4>View Profile</h4>
-</a>
+<div *ngIf="isLoggedIn()">
+    <h3>{{user.name}} Welcome to Room Finder</h3>
+    <p>This page is in progress.</p>
+    <p>Use Navigation bar for more feature</p>
+    <a routerLink="/user/profile">
+        <h4>View Profile</h4>
+    </a>
+</div>

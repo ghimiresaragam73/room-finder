@@ -10,6 +10,7 @@
     <p>Date of Birth:{{user.dob}}</p>
     <button class="btn btn-primary" (click)="viewChanged()">Edit Profile</button>
 </div>
+
 <div *ngIf='!view'>
     <h4>Edit Profile</h4>
     <br>
@@ -23,9 +24,9 @@
             #username="ngModel">
 
         <label for="password">Password</label>
-        <input class="form-control" type="password" placeholder="Password" [(ngModel)]="user.password" name="password"
-            #password="ngModel" required>
+        <a routerLink="/user/change-password"> Click to Change Password</a>
 
+        <br>
         <label for="email">Email Address</label>
         <input class="form-control" type="text" placeholder="Email Address" [(ngModel)]="user.email" name="email"
             #email="ngModel">

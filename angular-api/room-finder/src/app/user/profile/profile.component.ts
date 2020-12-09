@@ -12,6 +12,8 @@ export class ProfileComponent implements OnInit {
   user;
   view: boolean = true;
   submitting: boolean = false;
+  password: string;
+  passwordChanged:boolean = false;
   constructor(
     public msgService: MsgService,
     public router: Router,
@@ -29,6 +31,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.msgService.showSuccess("Edit Successful");
+          console.log('....>>>>>>>', data)
           this.router.navigate(['/user/profile']);
         },
         err => {

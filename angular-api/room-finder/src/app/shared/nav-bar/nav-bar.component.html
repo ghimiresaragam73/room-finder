@@ -1,0 +1,18 @@
+<ul>
+    <li>
+        <a *ngIf="isLoggedIn()" routerLink="/user/profile">Profile</a>
+    </li>
+    <li>
+        <a *ngIf="isLoggedIn()" routerLink="/room/add">Add Room</a>
+    </li>
+    <li>
+        <a routerLink="/room/list">View Room</a>
+    </li>
+    <li>
+        <a routerLink="/room/search">Search Room</a>
+    </li>
+    <li>
+        <a *ngIf="isLoggedIn()" (click)="logOut()" routerLink="/auth/login">Logout</a>
+        <a *ngIf="!isLoggedIn()" routerLink="/auth/login">Login</a>
+    </li>
+</ul>

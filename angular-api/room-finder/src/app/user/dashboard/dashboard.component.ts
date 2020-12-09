@@ -1,4 +1,6 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   user;
-  constructor() {
+  constructor(
+    public router: Router
+  ) {
     this.user = JSON.parse(localStorage.getItem('user'));
+
+  }
+  isLoggedIn() {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      this.router.navigate(['/room/list']);
+    }
   }
 
   ngOnInit(): void {

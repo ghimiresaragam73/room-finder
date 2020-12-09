@@ -14,6 +14,9 @@ const appRoutes: Routes = [
         path: 'user',
         loadChildren: './user/user.module#UserModule'
     }, {
+        path: 'room',
+        loadChildren: './room/room.module#RoomModule'
+    }, {
         path: '**',
         component: PageNotFoundComponent
     }

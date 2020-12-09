@@ -36,6 +36,8 @@ export class UserService {
     remove(id: string) {
         return this.http.delete(`${this.url}/${id}`, this.getOptions());
     }
+    passwordChange(id: string, data: any) {
+        return this.http.put(`${this.url}/${id}`, data, this.getOptions());
+    }
 
-    
 }
