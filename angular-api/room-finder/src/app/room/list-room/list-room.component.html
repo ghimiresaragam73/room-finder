@@ -1,1 +1,35 @@
-<p>list-room works!</p>
+<h3>View Room</h3>
+<section *ngIf="loading">
+    <app-loader></app-loader>
+</section>
+
+<table *ngIf="!loading" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>S.N.</th>
+            <th>Number of room</th>
+            <th>Price</th>
+            <th>Address</th>
+            <th>Car Parking</th>
+            <th>Bike Parking</th>
+            <th>Images</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let room of rooms;let i =index">
+            <td>{{i+1}}</td>
+            <td>{{room.numberOfRoom}}</td>
+            <td>{{room.price}}</td>
+            <td>{{room.address}}</td>
+            <td>{{room.carParking}}</td>
+            <td>{{room.bikeParking}}</td>
+            <td>{{room.image}}</td>
+            <td>
+                <button routerLink="/room/edit/{{room._id}}" class="btn btn-primary">Edit</button>
+                <button (click)="removeRoom(room._id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

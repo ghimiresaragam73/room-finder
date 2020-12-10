@@ -1,31 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddRoomComponent } from './add-room/add-room.component';
-import { EditRoomComponent } from './edit-room/edit-room.component';
 import { ListRoomComponent } from './list-room/list-room.component';
-import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
 import { SearchRoomComponent } from './search-room/search-room.component';
+import { UpdateRoomComponent } from './update-room/update-room.component';
 import { RoomRoutingModule } from './room.routing';
-import { RoomService } from './service/room.service';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RoomService } from './services/room.service';
 
 
 
 @NgModule({
   declarations: [
     AddRoomComponent,
-    EditRoomComponent,
     ListRoomComponent,
-    SearchRoomComponent
+    SearchRoomComponent,
+    UpdateRoomComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
+    RoomRoutingModule,
     SharedModule,
-    HttpClientModule,
-    RoomRoutingModule
+    FormsModule,
+    HttpClientModule
   ],
   providers:[RoomService]
 })
-export class RoomModule { }
+export class RoomModule {
+
+}

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from "@angular/core";
+import { observable, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Room } from '../model/room.model';
 
@@ -37,7 +38,30 @@ export class RoomService {
     remove(id: string) {
         return this.http.delete(`${this.url}/${id}`, this.getOptions())
     }
-    search(condition: Room) {
-        return this.http.post(`${this.url}/search`, condition, this.getOptions())
+
+    search(condition:Room){
+        return this.http.post(`${this.url}/search`,condition,this.getOptions())
+    }
+
+    upload(data: Room, files: Array<any>, httpVerb) {
+        return new Observable((observer) => {
+            const xhr = new XMLHttpRequest();
+            const formData = new FormData();
+            if (files.length) {
+                formData.append('img', files[0], files[0].name);
+            }
+            for (let key in data) {
+                formData.append(key, data[key]);
+            }
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState ==4){
+                    if(xhr.status ==200){
+                        observer.next (xhr.response);
+                    }else{
+                        observer.error(xhr.response);
+                    }
+                }
+            }
+        })
     }
 }

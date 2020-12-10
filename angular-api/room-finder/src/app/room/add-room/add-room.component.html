@@ -1,1 +1,21 @@
-<p>add-room works!</p>
+<h3>Add Room</h3>
+<form #roomForm="ngForm" class="form-group" novalidate>
+    <label for="numberOfRoom">Number of Room</label>
+    <input class="form-control" type="number" name="numberOfRoom" placeholder="Number of Room"
+        [(ngModel)]="room.numberOfRoom">
+
+    <label for="price">Price</label>
+    <input type="number" class="form-control" name="price" placeholder="Price" [(ngModel)]="room.price">
+
+    <label for="address">Address</label>
+    <input class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="room.address">
+
+    <br>Car Parking <input type="checkbox" (change)="carParkingChanged()">
+    <br>Bike Parking <input type="checkbox" (change)="bikeParkingChanged()">
+    <br>
+    <label for="image">Choose Image</label>
+    <input class="form-control" type="file" name="image" (change)=fileChanged($event)>
+
+    <button class="btn btn-primary" [disabled]="roomForm.invalid" *ngIf="!submitting" (click)="submit()">Add</button>
+    <button class="btn btn-info" disabled *ngIf="submitting">Adding</button>
+</form>
