@@ -1,10 +1,14 @@
 module.exports = (req, room) => {
-    if (req.discription)
-        room.discription = req.discription;
     if (req.price)
         room.price = req.price;
-    if (req.image)
-        room.image = req.image;
+    if (req.numberOfRoom)
+        room.numberOfRoom = req.numberOfRoom;
+    if (req.carParking)
+        room.carParking = req.carParking;
+    if (req.bikeParking)
+        room.bikeParking = req.bikeParking;
+    if (req.address)
+        room.address = req.address;
 
     return room;
 }

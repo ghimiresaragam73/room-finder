@@ -19,26 +19,27 @@ var upload = multer({
     storage: storage
 });
 
-function imagefilter(req) {
+function imageFilter(req) {
+    console.log('imagefiler');
     var state = false;
     for (i = 0; i < 3; i++) {
         if (req[i]) {
-            if (req[i].mimetype.split('/')[0] !== 'image') {
+            if (req[i].mimetype.split('/')[0] !== 'image')
                 state = true;
-            }
         }
     }
     return state;
 }
 
 function imageDelete(req) {
-    console.log('req on imageDelete>>', req);
+    console.log('req.files in imagedelete>> ', req.files);
     for (i = 0; i < 3; i++) {
         if (req[i]) {
             if (req[i].filename) {
                 fs.unlink('./files/images/room/' + req[i].filename, (err, done) => { })
-            } else {
-                fs.unlink('./files/images/room/' + req[i], (err, done) => { })
+                /* } else {
+                    fs.unlink('./files/images/room/' + req[i], (err, done) => { })
+                } */
             }
         }
     }
@@ -54,10 +55,24 @@ router.route('/')
                 res.json(rooms);
             })
     })
-    .post(authenticate, (req, res, next) => {
+    .post(authenticate, upload.array('img', 3), (req, res, next) => {
         var newRoom = new roomModel({});
         newRoom = roomHelp(req.body, newRoom);
         newRoom.user = req.loggedInUser._id;
+        if (req.files) {
+            console.log('req.files>>>>', req.files);
+            var fileError = imageFilter(req.files);
+            if (fileError) {
+                imageDelete(req.files);
+                return next({
+                    message: 'Invalid File Format'
+                })
+            }
+            for (i = 0; i < 3; i++) {
+                if (req.files[i])
+                    newRoom.image[i] = req.files[i].filename;
+            }
+        }
         newRoom.save((err, done) => {
             if (err) {
                 return next(err);
@@ -106,6 +121,16 @@ router.route('/:id')
                 if (err) {
                     return next(err);
                 }
+                for (i = 0; i < 3; i++) {
+                    if (removed.image[i]) {
+                        fs.unlink('./files/images/room/' + removed.image[i], (err, done) => {
+                            if (err) {
+                                console.log('err', err);
+                            }
+                        })
+                    }
+
+                }
                 res.json(removed);
             })
     })
@@ -120,7 +145,7 @@ router.route('/:id')
                     var image = [];
                     // console.log(req.files);
                     if (req.files) {
-                        var fileError = imagefilter(req.files)
+                        var fileError = imageFilter(req.files)
                         if (fileError) {
                             imageDelete(req.files);
                             return next({
