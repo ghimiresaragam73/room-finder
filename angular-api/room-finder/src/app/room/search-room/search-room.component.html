@@ -1,1 +1,16 @@
-<p>search-room works!</p>
+<h3>Search Room</h3>
+<form *ngIf="!result" #searchForm="ngForm" class="form-group">
+    <label for="address">Address</label>
+    <select class="form-control" [(ngModel)]="room.address" name="address">
+        <option disabled>(Select Address)</option>
+        <option *ngFor="let loc of locations" [value]='loc'>{{loc}}</option>
+    </select>
+
+    <button class="btn btn-primary" [disabled]="searchForm.invalid" *ngIf="!submitting"
+        (click)="search()">Search</button>
+    <button class="btn btn-info" disabled *ngIf="submitting">Searching</button>
+</form>
+
+<div *ngIf="result">
+    <app-list-room [data]="searchResult"></app-list-room>
+</div>

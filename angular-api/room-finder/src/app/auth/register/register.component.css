@@ -1,0 +1,27 @@
+.container {
+    background-color: #f1f1f1; 
+    padding-top: 50px;
+    padding-right: 100px;
+    height: 680px;
+    
+    padding-bottom: 200px;
+    padding-left: 100px;
+    width: 450px
+  }
+  
+  * {
+    margin:0px;
+    padding:0px;
+  }
+  
+    .registerButton{
+      background-color: lightgreen
+    }
+  
+    .wide{
+      width:250px;
+      height:40px
+    }
+    .danger{
+      color:red;
+    }

@@ -1,35 +1,45 @@
-<p>Pleaser Register to start your session</p>
-<form #registerForm="ngForm" class="form-group" novalidate>
+<form #registerForm="ngForm" class="form-group && container ">
+    <h3>Join Room Finder</h3><br>
+
     <label for="name">Name</label>
-    <input class="form-control" type="text" placeholder="Name" [(ngModel)]="user.name" name="name" #name="ngModel"
-        required>
-
+    <input type="text" class="form-control && wide" [(ngModel)]="user.name" name="name" id="name" required
+        #name="ngModel">
+    <div class="danger" [hidden]="name.valid || name.pristine">
+        required field*
+    </div>
     <label for="username">Username</label>
-    <input class="form-control" type="text" placeholder="Username" [(ngModel)]="user.username" name="username"
-        #username="ngModel" required>
-
-    <label for="password">Password</label>
-    <input class="form-control" type="password" placeholder="Password" [(ngModel)]="user.password" name="password"
-        #password="ngModel" required>
-
+    <input type="text" class="form-control && wide" [(ngModel)]="user.username" name="username" required
+        #username="ngModel">
+    <div class="danger" [hidden]="username.valid || username.pristine">
+        required field*
+    </div>
     <label for="email">Email Address</label>
-    <input class="form-control" type="text" placeholder="Email Address" [(ngModel)]="user.email" name="email"
-        #email="ngModel">
+    <input type="email" class="form-control && wide" [(ngModel)]="user.email" name="email" required #email="ngModel">
+    <div class="danger" [hidden]="email.valid || email.pristine">
+        required field*
+    </div>
+    <label for="password">Password</label>
+    <input type="password" class="form-control && wide" [(ngModel)]="user.password" name="password" required
+        #password="ngModel">
+    <div class="danger" [hidden]="password.valid || password.pristine">
+        required field*
+    </div>
+    <label for="confpassword">Confirm Password</label>
+    <input type="password" class="form-control && wide" [(ngModel)]="user.confpassword" name="confpassword" required
+        #confpassword="ngModel">
+    <div class="danger" [hidden]="confpassword.valid || confpassword.pristine">
+        required field*
+    </div>
+    <label for="phone">Phone Numer</label>
+    <input type="number" class="form-control && wide" [(ngModel)]="user.phone" name="phone" required #phone="ngModel">
 
-    <label for="phone">Mobile Number</label>
-    <input class="form-control" type="number" placeholder="Mobile Number" [(ngModel)]="user.phone" name="phone"
-        #phone="ngModel">
+    <label for="gender">Gender</label><br>
+    <input type="radio" name="gender" value="male" [(ngModel)]="user.male" name="male"> Male<br>
+    <input type="radio" name="gender" value="female" [(ngModel)]="user.female" name="female"> Female<br>
+    <input type="radio" name="gender" value="other" [(ngModel)]="user.other" name="other"> Other<br><br>
 
-    <label for="gender">Gender</label>
-    <input class="form-control" type="text" placeholder="Gender" [(ngModel)]="user.gender" name="gender"
-        #gender="ngModel">
+    <button [disabled]="registerForm.invalid" class="btn btn-primary && registerButton && wide"
+        (click)="register()">Register</button><br><br>
 
-    <label for="dob">Date of Birth</label>
-    <input class="form-control" type="date" [(ngModel)]="user.dob" name="dob" #dob="ngModel">
-
-    <button [disabled]="registerForm.invalid" *ngIf="!submitting" class="btn btn-primary"
-        (click)="register()">Submit</button>
-    <button disabled *ngIf="submitting" class="btn btn-info">Registering</button>
+    <p>Already Registered? <a href="">Login</a></p>
 </form>
-<p>Already have an account?</p>
-<p><a routerLink="/auth/login">Login Here.</a></p>

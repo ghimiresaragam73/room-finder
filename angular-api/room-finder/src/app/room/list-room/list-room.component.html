@@ -21,7 +21,9 @@
             <td>{{i+1}}</td>
             <td>{{room.numberOfRoom}}</td>
             <td>{{room.price}}</td>
-            <td>{{room.address}}</td>
+            <td *ngIf="room.address">{{room.address}}</td>
+            <td *ngIf="!room.address">N/A</td>
+
             <td>{{room.carParking}}</td>
             <td>{{room.bikeParking}}</td>
             <td>{{room.image}}</td>

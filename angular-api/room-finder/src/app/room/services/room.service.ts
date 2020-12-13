@@ -8,17 +8,19 @@ import { Room } from '../model/room.model';
 @Injectable()
 export class RoomService {
     url: string;
+    token: string;
     constructor(
         public http: HttpClient
     ) {
         this.url = environment.baseUrl + '/room';
+        this.token = localStorage.getItem('token') || '';
     }
 
     getOptions() {
         return {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'x-access-token': localStorage.getItem('token')
+                'x-access-token': this.token
             })
         }
     }
@@ -39,8 +41,8 @@ export class RoomService {
         return this.http.delete(`${this.url}/${id}`, this.getOptions())
     }
 
-    search(condition:Room){
-        return this.http.post(`${this.url}/search`,condition,this.getOptions())
+    search(condition: Room) {
+        return this.http.post(`${this.url}/search`, condition, this.getOptions())
     }
 
     upload(data: Room, files: Array<any>, httpVerb) {
@@ -53,11 +55,11 @@ export class RoomService {
             for (let key in data) {
                 formData.append(key, data[key]);
             }
-            xhr.onreadystatechange = ()=>{
-                if(xhr.readyState ==4){
-                    if(xhr.status ==200){
-                        observer.next (xhr.response);
-                    }else{
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        observer.next(xhr.response);
+                    } else {
                         observer.error(xhr.response);
                     }
                 }

@@ -26,7 +26,7 @@ import { RoomService } from './services/room.service';
     FormsModule,
     HttpClientModule
   ],
-  providers:[RoomService]
+  providers: [RoomService]
 })
 export class RoomModule {
 
