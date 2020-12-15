@@ -1,7 +1,9 @@
 const express = require('express')();
+const app = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path')
 
 const config = require('./config/index');
 require('./config/dbConnection');
@@ -16,6 +18,8 @@ express.use(bodyParser.urlencoded({ extended: false }));
 express.use(bodyParser.json());
 express.use(morgan('dev'));
 express.use(cors());
+
+express.use('/files/images', app.static(path.join(__dirname, 'files/images')));
 
 
 express.use('/auth', authRoutes);
