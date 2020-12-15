@@ -21,13 +21,25 @@ export class MsgService {
     }
     showError(err: any) {
         debugger;
-        if (err.error.message) {
-            this.toastr.error(err.error.message);
-        } else if (err.message) {
+        if (err.error.message === undefined) {
+            if (err.message === undefined) {
+                this.toastr.error(err);
+                return;
+            }
             this.toastr.error(err.message);
         }
-        else {
-            this.toastr.error(err);
+        if (err.error.message !== undefined)
+            this.toastr.error(err.error.message);
+        /* if (err.error.message) {
+            console.log('err.error.message ma aayo');
+            this.toastr.error(err.error.message);
+        } else if (err.message) {
+            console.log('err.message ma aayo');
+            this.toastr.error(err.message);
         }
+        else if(err) {
+            console.log('err ma aayo');
+            this.toastr.error(err);
+        } */
     }
 }

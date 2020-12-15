@@ -9,15 +9,27 @@ export class UploadService {
             const xhr = new XMLHttpRequest();
             const formData = new FormData();
             for (var file in files) {
-                if (file !=='length' && file!=='item') {
+                if (files.length >3) {
+                    observer.error({error:{message:'Do not upload more than 3 photos'}})
+                }
+                if (file !== 'length' && file !== 'item') {
+                    console.log('files.length', files.length);
                     console.log('file is>>>', file);
                     console.log('files is>>>', files);
                     formData.append('img', files[file], files[file].name);
+                    /* if (file == '0' || file == '1' || file == '2') {
+                        console.log('file is>>>', file);
+                        console.log('files is>>>', files);
+                        formData.append('img', files[file], files[file].name);
+                    }
+ */
                 }
 
             }
 
             for (let key in data) {
+                console.log('key>>>', key);
+                console.log('data>>>', data);
                 formData.append(key, data[key]);
             }
             xhr.onreadystatechange = () => {
