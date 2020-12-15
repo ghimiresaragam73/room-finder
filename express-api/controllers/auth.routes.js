@@ -8,6 +8,7 @@ const userExtraModel = require('./../models/user.extra.model');
 
 const userHelp = require('./../helper/user.help');
 const sender = require('./../config/nodemailer.config');
+const validation = require('./../middleware/validation');
 
 function prepareEmail(details) {
     return {
@@ -22,8 +23,62 @@ function prepareEmail(details) {
     }
 }
 
-router.post('/register', (req, res, next) => {
+router.post('/register', validation, (req, res, next) => {
     var user = new userModel;
+    /* confirm password and password match */
+    // if (req.body.password !== req.body.confirmPassword) {
+    //     return next({ message: 'your password does not match' })
+    // }
+    // /* number validation */
+    // if (req.body.phone) {
+    //     var numb = /^\(?9\)?(\d{9})$/;
+    //     var isValidate = numb.test(req.body.phone);
+    //     if (!isValidate) {
+    //         return next({ message: 'Check Your Mobile Number Again' })
+    //     }
+
+    // }
+    // /* username checked */
+    // if (req.body.username) {
+    //     userModel.findOne({
+    //         username: req.body.username
+    //     }).exec((err, done) => {
+    //         if (err) {
+    //             return next(err)
+    //         } else {
+    //             if (done)
+    //                 return next({ message: 'Username is already used' })
+    //         }
+    //     })
+    // }
+
+    // /* email checked */
+    // if (req.body.email) {
+    //     userModel.findOne({
+    //         email: req.body.email
+    //     }).exec((err, done) => {
+    //         if (err) {
+    //             return next(err)
+    //         } else {
+    //             if (done)
+    //                 return next({ message: 'Email address is already used' })
+    //         }
+    //     })
+    // }
+    // /* phone checked */
+    // if (req.body.phone) {
+    //     userModel.findOne({
+    //         phone: req.body.phone
+    //     }).exec((err, done) => {
+    //         if (err) {
+    //             return next(err)
+    //         } else {
+    //             if (done)
+    //                 return next({ message: 'Mobile Number is already used' })
+    //         }
+    //     })
+    // }
+
     user = userHelp(req.body, user);
     /* https://medium.com/@tariqul.islam.rony/sending-email-through-express-js-using-node-and-nodemailer-with-custom-functionality-a999bb7cd13c */
     user.save((err, user) => {
@@ -35,8 +90,6 @@ router.post('/register', (req, res, next) => {
         userExtra.save((err, done) => {
             if (err) {
                 return next(err);
-            } else {
-                console.log('user extra in register>>>', done);
             }
         })
         res.json(user);
@@ -128,7 +181,7 @@ router.post('/forgotPassword', (req, res, next) => {
                     if (err) {
                         return next(err);
                     } if (extra) {
-                        extra.passwordResetExpiry = new Date().getTime() + 1000 * 60*60*24*1;
+                        extra.passwordResetExpiry = new Date().getTime() + 1000 * 60 * 60 * 24 * 1;
                     }
                     extra.save((err, saved) => {
                         if (err) {

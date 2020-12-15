@@ -20,20 +20,20 @@ var userSchema = new Schema({
         unique: true
     },
     phone: {
-        type: String,
+        type: Number,
         required: true,
-        unique: true
+        unique: true,
     },
     dob: Date,
     gender: {
         type: String,
-        enum: ['Male', 'Female', 'Others']
+        enum: ['male', 'female', 'others']
     },
     image: String,
     role: {
         type: String,
-        enum: ['Admin', 'Landlord', 'Renter'],
-        default: 'Renter'
+        enum: ['admin', 'landlord', 'renter'],
+        default: 'renter'
     }
 }, {
     timestamps: true
