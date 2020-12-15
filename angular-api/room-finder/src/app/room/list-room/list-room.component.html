@@ -26,7 +26,12 @@
 
             <td>{{room.carParking}}</td>
             <td>{{room.bikeParking}}</td>
-            <td>{{room.image}}</td>
+            <td *ngIf="room.image">
+                <div *ngFor="let img of room.image"><!-- {{room.image}} -->
+                    <img src="{{imageUrl}}{{img}}" alt="" width="200">
+                </div>
+            </td>
+            <td *ngIf="!room.image">N/A</td>
             <td>
                 <button routerLink="/room/edit/{{room._id}}" class="btn btn-primary">Edit</button>
                 <button (click)="removeRoom(room._id)" class="btn btn-danger">Delete</button>

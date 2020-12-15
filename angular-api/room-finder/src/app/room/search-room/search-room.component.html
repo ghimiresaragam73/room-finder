@@ -6,6 +6,12 @@
         <option *ngFor="let loc of locations" [value]='loc'>{{loc}}</option>
     </select>
 
+    <label for="minPrice">Minimum Price</label>
+    <input class="form-control" type="number" name="minPrice" [(ngModel)]="room.minPrice">
+
+    <label for="maxPrice">Maximum Price</label>
+    <input class="form-control" type="number" name="maxPrice" [(ngModel)]="room.maxPrice">
+
     <button class="btn btn-primary" [disabled]="searchForm.invalid" *ngIf="!submitting"
         (click)="search()">Search</button>
     <button class="btn btn-info" disabled *ngIf="submitting">Searching</button>

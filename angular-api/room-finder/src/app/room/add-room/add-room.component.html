@@ -14,7 +14,7 @@
     <br>Bike Parking <input type="checkbox" (change)="bikeParkingChanged()">
     <br>
     <label for="image">Choose Image</label>
-    <input class="form-control" type="file" name="image" (change)=fileChanged($event)>
+    <input class="form-control" type="file" name="image" (change)=fileChanged($event) multiple>
 
     <button class="btn btn-primary" [disabled]="roomForm.invalid" *ngIf="!submitting" (click)="submit()">Add</button>
     <button class="btn btn-info" disabled *ngIf="submitting">Adding</button>

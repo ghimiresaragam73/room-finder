@@ -8,9 +8,15 @@ export class UploadService {
         return new Observable((observer) => {
             const xhr = new XMLHttpRequest();
             const formData = new FormData();
-            if (files.length) {
-                formData.append('img', files[0], files[0].name);
+            for (var file in files) {
+                if (file !=='length' && file!=='item') {
+                    console.log('file is>>>', file);
+                    console.log('files is>>>', files);
+                    formData.append('img', files[file], files[file].name);
+                }
+
             }
+
             for (let key in data) {
                 formData.append(key, data[key]);
             }
