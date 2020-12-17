@@ -38,5 +38,15 @@ export class AuthService {
         return this.http.post(this.url + '/resetPassword/' + data.id, data, this.getOptions())
     }
 
+    emailVerifySend(data: any) {
+        return this.http.get(this.url + '/email/' + data.email, this.getOptions())
+    }
+
+    emailVerify(data:any) {
+        return this.http.get(this.url + '/verify/email/' + data.id+'?verify='+data.verify, this.getOptions())
+    }
+
+
+
 
 }

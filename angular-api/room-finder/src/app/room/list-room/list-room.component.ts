@@ -55,5 +55,12 @@ export class ListRoomComponent implements OnInit {
         )
     }
   }
+  isLoggedIn() {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

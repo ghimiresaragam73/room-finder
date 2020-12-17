@@ -24,22 +24,23 @@
     <div class="danger" [hidden]="password.valid || password.pristine">
         required field*
     </div>
-    <label for="confpassword">Confirm Password</label>
-    <input type="password" class="form-control && wide" [(ngModel)]="user.confpassword" name="confpassword" required
-        #confpassword="ngModel">
-    <div class="danger" [hidden]="confpassword.valid || confpassword.pristine">
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" class="form-control && wide" [(ngModel)]="user.confirmPassword" name="confirmPassword"
+        required #confirmPassword="ngModel">
+    <div class="danger" [hidden]="confirmPassword.valid || confirmPassword.pristine">
         required field*
     </div>
     <label for="phone">Phone Numer</label>
-    <input type="number" class="form-control && wide" [(ngModel)]="user.phone" name="phone" required #phone="ngModel">
+    <input type="text" class="form-control && wide" [(ngModel)]="user.phone" name="phone" required #phone="ngModel">
 
     <label for="gender">Gender</label><br>
-    <input type="radio" name="gender" value="male" [(ngModel)]="user.male" name="male"> Male<br>
-    <input type="radio" name="gender" value="female" [(ngModel)]="user.female" name="female"> Female<br>
-    <input type="radio" name="gender" value="other" [(ngModel)]="user.other" name="other"> Other<br><br>
+    <input type="radio" name="gender" value="male" [(ngModel)]="user.gender" name="male"> Male<br>
+    <input type="radio" name="gender" value="female" [(ngModel)]="user.gender" name="female"> Female<br>
+    <input type="radio" name="gender" value="other" [(ngModel)]="user.gender" name="other"> Other<br><br>
 
-    <button [disabled]="registerForm.invalid" class="btn btn-primary && registerButton && wide"
+    <button *ngIf="!submitting" [disabled]="registerForm.invalid" class="btn btn-primary && registerButton && wide"
         (click)="register()">Register</button><br><br>
+    <button disabled *ngIf="submitting" class="btn btn-info &&registerButton && wide">Registering</button>
 
     <p>Already Registered? <a href="">Login</a></p>
 </form>

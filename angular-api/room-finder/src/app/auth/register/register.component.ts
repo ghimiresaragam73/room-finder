@@ -29,6 +29,14 @@ export class RegisterComponent implements OnInit {
         data => {
           console.log('data in register>>>', data);
           this.msgService.showSuccess('Register Successful');
+          this.authService.emailVerifySend(data)
+            .subscribe(
+              data => {
+                this.msgService.showInfo('To verify your email please check you email.')
+              }, err => {
+                this.msgService.showError(err);
+              }
+            )
           this.router.navigate(['/auth/login']);
         },
         err => {
