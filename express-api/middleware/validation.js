@@ -14,6 +14,14 @@ module.exports = (req, res, next) => {
         }
 
     }
+
+    /* email validation */
+    if(req.body.email){
+        var email =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        var isValidate = email.test(req.body.email);
+        if(!isValidate)
+        return next({message:'Wrong Email Address, Try Again'})
+    }
     /* username checked */
     if (req.body.username) {
         userModel.findOne({

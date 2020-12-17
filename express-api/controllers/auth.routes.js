@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const express = require('express')();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('./../config/index');
@@ -9,6 +10,10 @@ const userExtraModel = require('./../models/user.extra.model');
 const userHelp = require('./../helper/user.help');
 const sender = require('./../config/nodemailer.config');
 const validation = require('./../middleware/validation');
+
+const verifyRoutes = require('./auth.verify.routes');
+
+express.use('/verify', verifyRoutes);
 
 function prepareEmail(details) {
     return {
@@ -23,62 +28,22 @@ function prepareEmail(details) {
     }
 }
 
+function verifyEmail(details) {
+    return {
+        from: 'Room Finder<noreply@abcd.com>',
+        to: details.email,
+        subject: 'Verify Email✔',
+        text: 'Verify Email✔',
+        html: `<p>Hi, <strong>${details.name}</strong></p>
+        <p>Verify your email to become our trusted member. Use link below to verify your email address</p>
+        <p><a href="${details.verifyLink}" target="_blank">Verify Email</a></p>
+        <p>If you did not suscribe our website, use the link below to unscribe it.</p>
+        <p><a href="${details.deleteLink}" target="_blank">Unsuscribe</a></p>`
+    }
+}
+
 router.post('/register', validation, (req, res, next) => {
     var user = new userModel;
-    /* confirm password and password match */
-    // if (req.body.password !== req.body.confirmPassword) {
-    //     return next({ message: 'your password does not match' })
-    // }
-    // /* number validation */
-    // if (req.body.phone) {
-    //     var numb = /^\(?9\)?(\d{9})$/;
-    //     var isValidate = numb.test(req.body.phone);
-    //     if (!isValidate) {
-    //         return next({ message: 'Check Your Mobile Number Again' })
-    //     }
-
-    // }
-    // /* username checked */
-    // if (req.body.username) {
-    //     userModel.findOne({
-    //         username: req.body.username
-    //     }).exec((err, done) => {
-    //         if (err) {
-    //             return next(err)
-    //         } else {
-    //             if (done)
-    //                 return next({ message: 'Username is already used' })
-    //         }
-    //     })
-    // }
-
-    // /* email checked */
-    // if (req.body.email) {
-    //     userModel.findOne({
-    //         email: req.body.email
-    //     }).exec((err, done) => {
-    //         if (err) {
-    //             return next(err)
-    //         } else {
-    //             if (done)
-    //                 return next({ message: 'Email address is already used' })
-    //         }
-    //     })
-    // }
-    // /* phone checked */
-    // if (req.body.phone) {
-    //     userModel.findOne({
-    //         phone: req.body.phone
-    //     }).exec((err, done) => {
-    //         if (err) {
-    //             return next(err)
-    //         } else {
-    //             if (done)
-    //                 return next({ message: 'Mobile Number is already used' })
-    //         }
-    //     })
-    // }
-
     user = userHelp(req.body, user);
     /* https://medium.com/@tariqul.islam.rony/sending-email-through-express-js-using-node-and-nodemailer-with-custom-functionality-a999bb7cd13c */
     user.save((err, user) => {
@@ -126,17 +91,8 @@ router.post('/') */
 
 
 router.post('/login', (req, res, next) => {
-    userModel.findOne({
-        $or: [
-            {
-                username: req.body.username
-            }, {
-                email: req.body.username
-            }, {
-                phone: req.body.username
-            }
-        ]
-    }).exec((err, user) => {
+    console.log('req.username', req.body.username);
+    userModel.findOne({ username: req.body.username }).exec((err, user) => {
         if (user) {
             console.log('user>>', user);
             var isMatched = bcrypt.compareSync(req.body.password, user.password);
@@ -170,7 +126,6 @@ router.post('/forgotPassword', (req, res, next) => {
         }
         if (user) {
             var resetLink = req.headers.origin + '/auth/reset-password/' + user._id;
-            var id = user._id;
             var mailBody = prepareEmail({
                 name: user.name,
                 email: user.email,
@@ -223,11 +178,16 @@ router.post('/resetPassword/:id', (req, res, next) => {
                         var now = Date.now();
                         if (resetTime > now) {
                             user.password = bcrypt.hashSync(req.body.password, config.saltRounds);
-                            user.passwordResetExpiry = null;
+                            extra.passwordResetExpiry = null;
                             user.save((err, done) => {
                                 if (err) {
                                     return next(err);
                                 }
+                                extra.save((err, done) => {
+                                    if (err) {
+                                        return next(err);
+                                    }
+                                })
                                 res.json(done);
                             })
                         } else {
@@ -245,4 +205,63 @@ router.post('/resetPassword/:id', (req, res, next) => {
         })
 })
 
+router.get('/email/:email', (req, res, next) => {
+    userModel.findOne({
+        email: req.params.email
+    }).exec((err, done) => {
+        if (err) {
+            return next(err);
+        }
+        if (done) {
+            var verifyLink = req.headers.origin + '/auth/verify/email/' + done._id + '?verify=true';
+            var deleteLink = req.headers.origin + '/user/:' + done._id + '?request=delete';
+
+            var mailBody = verifyEmail({
+                name: done.name,
+                email: done.email,
+                verifyLink: verifyLink,
+                deleteLink: deleteLink
+            })
+            sender.sendMail(mailBody, (err, done) => {
+                if (err) {
+                    return next(err);
+                }
+                res.json(done);
+            })
+        }
+    })
+})
+
+router.get('/verify/email/:id', (req, res, next) => {
+    userModel.findById(req.params.id)
+        .exec((err, user) => {
+            if (err) {
+                return next(err);
+            }
+            if (user) {
+                var verify = req.query.verify;
+                console.log('this.verify>>>>', req.query);
+                if (verify) {
+                    userExtraModel.findOne({
+                        user: user.user
+                    }).exec((err, extra) => {
+                        console.log('this.extraa>>>', this.extra)
+                        if (err) {
+                            return next(err);
+                        }
+                        extra.emailVerify = true;
+                        console.log('extra>>>', extra);
+                        extra.save((err, done) => {
+                            if (err) {
+                                return next(err);
+                            }
+                            console.log('extraaa>>>>', done);
+                            next();
+                        })
+                    })
+                }
+                next({ message: 'Wrong Link Opened' })
+            }
+        })
+})
 module.exports = router;
