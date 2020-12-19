@@ -1,33 +1,28 @@
-<form #loginForm="ngForm" class="form-group && container">
-    <h3>
-        Sign In Room Finder
-    </h3>
-    <br>
+<main>
+    <div id="container">
+        <form #loginForm="ngForm" class="form-group && container && color">
+            <h3>
+                Sign In Room Finder
+            </h3><br>
 
-    <!-- <style>
-      
-    .col-25, .col-75, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
-    }
-</style> -->
-    <div class="g-signin2 " data-onsuccess="onSignIn"></div>
-    <!-- {{guser | json}} -->
-    <label for="username">Username</label>
-    <input type="username" class="form-control && wide" id="username" [(ngModel)]="user.username" name="username" required
-        #username="ngModel">
-    <div class="danger" [hidden]="username.valid || username.pristine">
-        required field*
+            <!-- <div class="g-signin2 " data-onsuccess="onSignIn"></div> -->
+            <label for="username" class="color">Username</label>
+            <input type="text" id="username" [(ngModel)]="user.username" name="username" required #username="ngModel">
+            <div class="danger" [hidden]="username.valid || username.pristine">
+                required field*
+            </div>
+            <label for="loginpassword" class="color">Confirm Password</label>
+            <input type="password" id="password" [(ngModel)]="user.password" name="password" required
+                #password="ngModel">
+            <div class="danger" [hidden]="password.valid || password.pristine">
+                required field*
+            </div>
+            <button [disabled]="loginForm.invalid" class="Button && wide" (click)="login()">login</button>
+            <hr>
+            <p>Don't have an account?</p>
+            <p><a routerLink="/auth/register">Register Here</a></p>
+            <p><a routerLink="/auth/forgot-password">Forgot Password?</a></p>
+        </form>
+
     </div>
-    <label for="loginpassword">Password</label>
-    <input type="password" class="form-control && wide" id="password" [(ngModel)]="user.password" name="password"
-        required #password="ngModel">
-    <div class="danger" *ngIf="password.invalid && password.dirty">required field*</div>
-
-    <button [disabled]="loginForm.invalid" class="btn btn-primary &&  loginButton && wide"
-        (click)="login()">login</button>
-    <hr>
-    <p>Don't have an account?</p>
-<p><a routerLink="/auth/register">Register Here</a></p>
-<p><a routerLink="/auth/forgot-password">Forgot Password?</a></p>
-</form>
+</main>
