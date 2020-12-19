@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   submitting: boolean = false;
-  email: string;
+  email: '';
   constructor(
     public msgService: MsgService,
     public authService: AuthService,
