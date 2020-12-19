@@ -179,7 +179,7 @@ router.route('/:id')
                                 image[i] = req.files[i].filename;
                         }
                     }
-                    req.body.image = image;
+                    room.image = image;
                     room = roomHelp(req.body, room);
                     room.user = req.loggedInUser._id;
                     room.save((err, updated) => {
