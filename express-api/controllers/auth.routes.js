@@ -162,7 +162,7 @@ router.post('/forgotPassword', (req, res, next) => {
     })
 })
 
-router.post('/resetPassword/:id', (req, res, next) => {
+router.post('/resetPassword/:id', validation, (req, res, next) => {
     userModel.findById(req.params.id)
         .exec((err, user) => {
             if (err) {
@@ -204,7 +204,7 @@ router.post('/resetPassword/:id', (req, res, next) => {
 
         })
 })
-
+/* send email */
 router.get('/email/:email', (req, res, next) => {
     userModel.findOne({
         email: req.params.email
@@ -214,8 +214,7 @@ router.get('/email/:email', (req, res, next) => {
         }
         if (done) {
             var verifyLink = req.headers.origin + '/auth/verify/email/' + done._id + '?verify=true';
-            var deleteLink = req.headers.origin + '/user/:' + done._id + '?request=delete';
-
+            var deleteLink = req.headers.origin + '/auth/verify/email/' + done._id + '?verify=false';
             var mailBody = verifyEmail({
                 name: done.name,
                 email: done.email,
@@ -232,6 +231,7 @@ router.get('/email/:email', (req, res, next) => {
     })
 })
 
+/* Verify Email */
 router.get('/verify/email/:id', (req, res, next) => {
     userModel.findById(req.params.id)
         .exec((err, user) => {
@@ -245,9 +245,13 @@ router.get('/verify/email/:id', (req, res, next) => {
                     userExtraModel.findOne({
                         user: user.user
                     }).exec((err, extra) => {
-                        console.log('this.extraa>>>', this.extra)
                         if (err) {
                             return next(err);
+                        }
+                        if(extra.emailVerify==true){
+                            return next({
+                                message:'Already Verified'
+                            })
                         }
                         extra.emailVerify = true;
                         console.log('extra>>>', extra);
@@ -255,13 +259,24 @@ router.get('/verify/email/:id', (req, res, next) => {
                             if (err) {
                                 return next(err);
                             }
-                            console.log('extraaa>>>>', done);
-                            next();
+                            if (done) {
+                                res.json(done);
+                            }
                         })
                     })
                 }
-                next({ message: 'Wrong Link Opened' })
             }
         })
+    router.delete('/:id', (req, res, next) => {
+        userModel.findByIdAndDelete(req.params.id)
+            .exec((err, removed) => {
+                if (err) {
+                    console.log('err');
+                    return next(err);
+                }
+                console.log('removeddd.....', removed);
+                res.json(removed);
+            })
+    })
 })
 module.exports = router;

@@ -63,8 +63,10 @@ router.route('/:id')
         userModel.findByIdAndDelete(req.params.id)
             .exec((err, removed) => {
                 if (err) {
+                    console.log('err');
                     return next(err);
                 }
+                console.log('removeddd.....', removed);
                 res.json(removed);
             })
     })

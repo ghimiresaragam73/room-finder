@@ -6,7 +6,12 @@ module.exports = (req, user) => {
         user.name = req.name;
     if (req.username)
         user.username = req.username;
-    if (req.password)
+    if (req.oldPassword) {
+        var isMatched = bcrypt.compareSync(req.oldPassword, user.password);
+    } else {
+        var isMatched = true;
+    }
+    if (req.password && isMatched)
         user.password = bcrypt.hashSync(req.password, config.saltRounds);
     if (req.email)
         user.email = req.email;
