@@ -1,5 +1,5 @@
-<h3>Add Room</h3>
-<form #roomForm="ngForm" class="form-group" novalidate>
+<!-- <h3>Add Room</h3>
+<form #roomForm="ngForm" class="form-group && container" novalidate>
     <label for="numberOfRoom">Number of Room</label>
     <input class="form-control" type="number" name="numberOfRoom" placeholder="Number of Room"
         [(ngModel)]="room.numberOfRoom">
@@ -18,4 +18,49 @@
 
     <button class="btn btn-primary" [disabled]="roomForm.invalid" *ngIf="!submitting" (click)="submit()">Add</button>
     <button class="btn btn-info" disabled *ngIf="submitting">Adding</button>
-</form>
+</form> -->
+
+<form #addRoom="ngForm" class="form-group && container">
+    <h3>
+        Add Room
+    </h3>
+    <br>
+    <label for="address"> Address</label>
+    <input type="text" class="form-control && wide" id="address" [(ngModel)]="room.address" name="address" placeholder="Enter the exact location" required
+        #address="ngModel">
+    <div class="danger" [hidden]="address.valid || address.pristine">
+        required field*
+    </div>
+    <label for="price"> Price</label>
+    <input type="number" class="form-control && wide" id="price" [(ngModel)]="room.price" name="price"
+        placeholder="Price is in rupees" required #price="ngModel">
+    <div class="danger" [hidden]="price.valid || price.pristine">
+        required field*
+    </div>
+    <label for="numberOfRoom">Number Of Room</label>
+    <input type="number" class="form-control && wide" id="numberOfRoom" [(ngModel)]="room.numberOfRoom" name="numberOfRoom" placeholder="Enter the number of rooms" required
+        #numberOfRoom="ngModel">
+    <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">
+        required field*
+    </div>
+    Car Parking <input class="genwidth" type="checkbox" (change)="carParkingChanged()">
+    <br> Bike Parking <input class="genwidth" type="checkbox" (change)="bikeParkingChanged()">
+    <br>
+   <!--  <label for="car">Car Parking </label>
+    <input type="radio" id="car" class="genwidth" value="car" [(ngModel)]="room.car" name="car"><br>
+    <label for="bike">Bike Parking</label>
+    <input type="radio" id="bike" class="genwidth" value="bike" [(ngModel)]="room.bike" name="bike"><br> -->
+
+    <!-- <label for="image">Choose Image</label>
+    <input class="form-control" type="file" name="image" (change)=fileChanged($event) multiple> -->
+
+    <label for="image">Choose Image</label>
+    <input class="form-control" type="file" name="image" (change)=fileChanged($event) multiple>
+
+<!-- 
+    <label for="image">
+        Select Photo</label> <br>
+    <input type="file" id="myFile" [(ngModel)]="room.photo" name="img" multiple><br><br>
+ -->
+    <button [disabled]="addRoom.invalid" class="btn btn-primary &&  roomButton && wide"
+        (click)="submit()">Save Room</button>

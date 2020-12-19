@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
     if (localStorage.getItem('token')) {
       return true;
     } else {
-      this.router.navigate(['/room/list']);
+      this.router.navigate(['/home']);
     }
   }
 

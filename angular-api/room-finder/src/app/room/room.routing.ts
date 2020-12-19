@@ -10,7 +10,7 @@ const roomRoutes: Routes = [
         path: 'add',
         component: AddRoomComponent
     }, {
-        path: 'update/:id',
+        path: 'edit/:id',
         component: UpdateRoomComponent
     }, {
         path: 'list',

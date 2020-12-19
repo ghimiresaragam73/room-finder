@@ -1,4 +1,4 @@
-<form #registerForm="ngForm" class="form-group && container ">
+<!-- <form #registerForm="ngForm" class="form-group && container ">
     <h3>Join Room Finder</h3><br>
 
     <label for="name">Name</label>
@@ -43,4 +43,70 @@
     <button disabled *ngIf="submitting" class="btn btn-info &&registerButton && wide">Registering</button>
 
     <p>Already Registered? <a href="">Login</a></p>
+</form> -->
+
+<form #registerForm="ngForm" class="form-group && container ">
+    <h3>Join Room Finder</h3><br>
+
+        <!-- <span class="icon"></span> -->
+        <!-- <div  data-onsuccess="onSignIn" style="display: flex; align-items: center; justify-content:center;">
+            <h3 style="font-family: montserrat">Google Social Register</h3>
+            </div>
+            <div style="height: 10rem; display: flex; align-items: center; justify-content:center;">
+          
+          <button style="padding: 1rem;">
+          Register With Google
+          </button>   -->
+          <!-- </div> -->
+    
+
+    <label for="name">Name</label>
+    <input type="text" class="form-control && wide" [(ngModel)]="user.name" name="name" id="name" required
+        #name="ngModel">
+    <div class="danger" [hidden]="name.valid || name.pristine">
+        required field*
+    </div>
+    <label for="username">Username</label>
+    <input type="text" class="form-control && wide" [(ngModel)]="user.username" name="username" required
+        #username="ngModel">
+    <div class="danger" [hidden]="username.valid || username.pristine">
+        required field*
+    </div>
+    <label for="email">Email Address</label>
+    <input type="email" class="form-control && wide" [(ngModel)]="user.email" name="email" required #email="ngModel">
+    <div class="danger" [hidden]="email.valid || email.pristine">
+        required field*
+    </div>
+    <label for="password">Password</label>
+    <input type="password" class="form-control && wide" [(ngModel)]="user.password" name="password" required
+        #password="ngModel">
+    <div class="danger" [hidden]="password.valid || password.pristine">
+        required field*
+    </div>
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" class="form-control && wide" [(ngModel)]="user.confirmPassword" name="confirmPassword" required
+        #confirmPassword="ngModel">
+    <div class="danger" [hidden]="confirmPassword.valid || confirmPassword.pristine">
+        required field*
+    </div>
+    <label for="phone">Mobile Numer</label>
+    <input type="number" class="form-control && wide" [(ngModel)]="user.phone" name="phone" required #phone="ngModel">
+
+    <label for="gender">Gender</label><br>
+
+
+    <input type="radio" id="male" class="genwidth" value="male" [(ngModel)]="user.gender" name="male">
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" class="genwidth" value="female" [(ngModel)]="user.gender" name="female">
+    <label for="female">Female</label><br>
+    <input type="radio" id="other" class="genwidth" value="other" [(ngModel)]="user.gender" name="female">
+    <label for="other">Other</label><br>
+
+
+
+    <!-- <button [disabled]="registerForm.invalid" class="btn btn-primary && registerButton && wide" -->
+    <button [disabled]="registerForm.invalid" class="btn btn-primary && registerButton && wide"
+        (click)="register()">Register</button>
+
+    <p>Already Registered? <a routerLink="/login">Sign In</a></p>
 </form>

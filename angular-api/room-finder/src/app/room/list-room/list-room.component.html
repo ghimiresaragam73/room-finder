@@ -23,7 +23,6 @@
             <td>{{room.price}}</td>
             <td *ngIf="room.address">{{room.address}}</td>
             <td *ngIf="!room.address">N/A</td>
-
             <td>{{room.carParking}}</td>
             <td>{{room.bikeParking}}</td>
             <td *ngIf="room.image">
@@ -36,7 +35,9 @@
                 <button routerLink="/room/edit/{{room._id}}" class="btn btn-primary">Edit</button>
                 <button (click)="removeRoom(room._id)" class="btn btn-danger">Delete</button>
             </td>
+            
         </tr>
     </tbody>
 
 </table>
+<app-footer></app-footer>

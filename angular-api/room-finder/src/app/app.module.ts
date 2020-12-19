@@ -9,10 +9,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app.routing';
 import { UserModule } from './user/user.module';
 import { RoomModule } from './room/room.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserAnimationsModule,

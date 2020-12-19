@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UploadService } from './services/upload.service';
 import { LoaderComponent } from './loader/loader.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -13,7 +14,8 @@ import { LoaderComponent } from './loader/loader.component';
   declarations: [
     PageNotFoundComponent,
     NavBarComponent,
-    LoaderComponent
+    LoaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { LoaderComponent } from './loader/loader.component';
   ],
   exports: [
     NavBarComponent,
-    LoaderComponent
+    LoaderComponent,
+    FooterComponent
   ],
   providers: [
     MsgService,

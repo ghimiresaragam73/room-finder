@@ -7,6 +7,7 @@ import { UserRoutingModule } from './user.routing';
 import { SharedModule } from '../shared/shared.module';
 import { UserService } from './services/user.service';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { RemoveComponent } from './remove/remove.component';
 
 
 
@@ -14,7 +15,8 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
   declarations: [
     DashboardComponent,
     ProfileComponent,
-    PasswordChangeComponent],
+    PasswordChangeComponent,
+    RemoveComponent],
   imports: [
     CommonModule,
     FormsModule,

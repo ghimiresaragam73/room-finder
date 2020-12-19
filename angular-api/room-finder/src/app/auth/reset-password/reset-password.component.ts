@@ -30,7 +30,7 @@ export class ResetPasswordComponent implements OnInit {
     this.authService.resetPassword(this.data)
       .subscribe(
         data => {
-          this.msgService.showInfo("Password reset successful");
+          this.msgService.showSuccess("Password reset successful");
           this.router.navigate(['/auth/login']);
         },
         err => {

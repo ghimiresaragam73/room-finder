@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MsgService } from 'src/app/shared/services/msg.service';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
@@ -12,15 +12,23 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
   submitting: boolean = false;
   user;
+  url;
   constructor(
     public msgService: MsgService,
     public router: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    public activeRouter: ActivatedRoute
   ) {
     this.user = new User({});
   }
 
   ngOnInit(): void {
+    this.url = this.activeRouter.snapshot.url /* (
+      params => {
+        this.url = params
+      }
+    ) */
+    console.log('paramsss...', this.url);
   }
   register() {
     this.submitting = true;

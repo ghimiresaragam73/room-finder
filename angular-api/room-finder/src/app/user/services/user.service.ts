@@ -9,10 +9,12 @@ import { environment } from 'src/environments/environment';
 
 export class UserService {
     url: string;
+    token: string;
     constructor(
         public http: HttpClient
     ) {
         this.url = environment.baseUrl + '/user';
+        this.token = localStorage.getItem('token') || '';
     }
 
     getOptions() {
@@ -34,7 +36,7 @@ export class UserService {
     }
 
     remove(id: string) {
-        return this.http.delete(`${this.url}/${id}`, this.getOptions());
+        return this.http.delete(this.url + '/' + id, this.getOptions());
     }
     passwordChange(id: string, data: any) {
         return this.http.put(`${this.url}/${id}`, data, this.getOptions());

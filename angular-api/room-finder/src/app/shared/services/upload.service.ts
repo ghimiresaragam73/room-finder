@@ -9,13 +9,10 @@ export class UploadService {
             const xhr = new XMLHttpRequest();
             const formData = new FormData();
             for (var file in files) {
-                if (files.length >3) {
-                    observer.error({error:{message:'Do not upload more than 3 photos'}})
+                if (files.length > 3) {
+                    observer.error({ error: { message: 'Do not upload more than 3 photos' } })
                 }
                 if (file !== 'length' && file !== 'item') {
-                    console.log('files.length', files.length);
-                    console.log('file is>>>', file);
-                    console.log('files is>>>', files);
                     formData.append('img', files[file], files[file].name);
                     /* if (file == '0' || file == '1' || file == '2') {
                         console.log('file is>>>', file);
@@ -28,8 +25,6 @@ export class UploadService {
             }
 
             for (let key in data) {
-                console.log('key>>>', key);
-                console.log('data>>>', data);
                 formData.append(key, data[key]);
             }
             xhr.onreadystatechange = () => {
@@ -43,9 +38,9 @@ export class UploadService {
             }
             let url = `${URL}?token=${localStorage.getItem('token')}`;
             if (httpVerb == "PUT") {
-                url = `${URL}/${data._id}?token=${localStorage.getItem('token')}`
+                url = `${URL}/${data._id}?token=${localStorage.getItem('token')}`;
+                console.log('this.url here', url);
             }
-
             xhr.open(httpVerb, url, true);
             xhr.send(formData);
         })

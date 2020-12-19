@@ -42,8 +42,11 @@ export class AuthService {
         return this.http.get(this.url + '/email/' + data.email, this.getOptions())
     }
 
-    emailVerify(data:any) {
-        return this.http.get(this.url + '/verify/email/' + data.id+'?verify='+data.verify, this.getOptions())
+    emailVerify(id: string) {
+        return this.http.get(this.url + '/verify/email/' + id + '?verify=true', this.getOptions())
+    }
+    remove(id: string) {
+        return this.http.delete(this.url + '/' + id, this.getOptions());
     }
 
 
