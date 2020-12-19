@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomService } from './services/room.service';
+import { RoomDashbordComponent } from './room-dashbord/room-dashbord.component';
 
 
 
@@ -17,7 +18,8 @@ import { RoomService } from './services/room.service';
     AddRoomComponent,
     ListRoomComponent,
     SearchRoomComponent,
-    UpdateRoomComponent
+    UpdateRoomComponent,
+    RoomDashbordComponent
   ],
   imports: [
     CommonModule,

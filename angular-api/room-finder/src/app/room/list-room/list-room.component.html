@@ -1,4 +1,4 @@
-<h3>View Room</h3>
+<!-- <h3>View Room</h3>
 <section *ngIf="loading">
     <app-loader></app-loader>
 </section>
@@ -21,12 +21,11 @@
             <td>{{i+1}}</td>
             <td>{{room.numberOfRoom}}</td>
             <td>{{room.price}}</td>
-            <td *ngIf="room.address">{{room.address}}</td>
-            <td *ngIf="!room.address">N/A</td>
+            <td>{{room.address}}</td>
             <td>{{room.carParking}}</td>
             <td>{{room.bikeParking}}</td>
             <td *ngIf="room.image">
-                <div *ngFor="let img of room.image"><!-- {{room.image}} -->
+                <div *ngFor="let img of room.image">
                     <img src="{{imageUrl}}{{img}}" alt="" width="200">
                 </div>
             </td>
@@ -35,9 +34,52 @@
                 <button routerLink="/room/edit/{{room._id}}" class="btn btn-primary">Edit</button>
                 <button (click)="removeRoom(room._id)" class="btn btn-danger">Delete</button>
             </td>
-            
+
         </tr>
     </tbody>
 
-</table>
+</table> -->
+
+
+<section>
+    <div *ngIf="loading" class="small-container">
+        <app-loader></app-loader>
+    </div>
+</section>
+
+<div *ngIf="!loading" class="small-container" >
+    <div *ngFor="let room of rooms" class="row">
+        <div class="col-4" (click)="roomDashboard(room._id)">
+            <div *ngIf="room.image">
+                <!-- <div *ngFor="let img of room.image">
+                   <img src="{{imageUrl}}{{img}}" alt="" width="200">
+                </div> -->
+                <div>
+                    <img src="{{imageUrl}}{{room.image[0]}}" alt="" width="200">
+                </div>
+
+            </div>
+            <div>
+                {{room.numberOfRoom}}
+            </div>
+            <div class="">
+                {{room.price}}
+            </div>
+            <div *ngIf="room.address" class="">
+                {{room.address}}
+            </div>
+            <div class="">
+                {{room.carParking}}
+            </div>
+            <div class="">
+                {{room.bikeParking}}
+            </div>
+            <!-- <div>
+                <button routerLink="/room/edit/{{room._id}}" class="btn btn-primary">Edit</button>
+                <button (click)="removeRoom(room._id)" class="btn btn-danger">Delete</button>
+
+            </div> -->
+        </div>
+    </div>
+</div>
 <app-footer></app-footer>

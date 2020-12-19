@@ -8,7 +8,7 @@ import { MsgService } from '../services/msg.service';
   styleUrls: ['./nav-bar.component.css','./../../app.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  navBar:boolean= false;
   constructor(
     public msgService: MsgService,
     public router: Router
@@ -23,6 +23,14 @@ export class NavBarComponent implements OnInit {
       return false;
     }
   }
+
+  toogle(){
+    this.navBar = !this.navBar;
+  }
+  homeWent(){
+    this.router.navigate(["/user/home"])
+  }
+
   logOut() {
     this.msgService.showSuccess('Logout Success');
     localStorage.clear();

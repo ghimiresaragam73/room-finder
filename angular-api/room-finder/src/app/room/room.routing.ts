@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
 import { AddRoomComponent } from './add-room/add-room.component';
 import { ListRoomComponent } from './list-room/list-room.component';
+import { RoomDashbordComponent } from "./room-dashbord/room-dashbord.component";
 import { SearchRoomComponent } from './search-room/search-room.component';
 import { UpdateRoomComponent } from './update-room/update-room.component';
 
@@ -18,6 +19,10 @@ const roomRoutes: Routes = [
     }, {
         path: 'search',
         component: SearchRoomComponent
+    },
+    {
+        path: 'dashboard/:id',
+        component: RoomDashbordComponent
     }
 ]
 

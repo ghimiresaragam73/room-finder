@@ -51,7 +51,7 @@ export class UpdateRoomComponent implements OnInit {
     console.log('this.roomm', this.room);
     console.log('this.filestoupload', this.filesToUpload);
     let httpVerb = 'PUT'
-    this.uploadService.upload(this.room, this.filesToUpload, httpVerb, this.url)
+    this.roomService.upload(this.room, this.filesToUpload, httpVerb, this.url)
       .subscribe(
         data => {
           console.log('dataaaa k ayyou', data)

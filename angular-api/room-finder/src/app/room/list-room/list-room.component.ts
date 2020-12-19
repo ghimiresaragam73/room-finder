@@ -62,5 +62,8 @@ export class ListRoomComponent implements OnInit {
       return false;
     }
   }
+  roomDashboard(id){
+this.router.navigate(['/room/dashboard/'+id])
+  }
 
 }
