@@ -21,7 +21,7 @@
     <app-list-room [data]="searchResult"></app-list-room>
 </div> -->
 
-<main>
+<main *ngIf="!result">
     <div id="container">
         <form #searchForm="ngForm" class="form-group && container">
             <h3>
@@ -30,21 +30,29 @@
             <label for="address" class="color">Address</label>
             <input type="text" id="address" [(ngModel)]="room.address" name="address"
                 placeholder="Enter the exact address" #address="ngModel">
-            
-                <label for="maxPrice" class="color">Maxmium Price</label>
+
+            <label for="maxPrice" class="color">Maxmium Price</label>
             <input type="number" id="maxPrice" [(ngModel)]="room.maxPrice" name="maxPrice"
                 placeholder="Enter the maximum price of room" #maxPrice="ngModel">
 
             <label for="minPrice" class="color">Minimum Price</label>
             <input type="number" id="minPrice" [(ngModel)]="room.minPrice" name="minPrice"
-                placeholder="Enter the minimum price of room"  #minPrice="ngModel">
+                placeholder="Enter the minimum price of room" #minPrice="ngModel">
 
-            <button [disabled]="searchForm.invalid" class="resetButton && wide && color" (click)="search()">Search
+            <button [disabled]="searchForm.invalid" *ngIf="!submitting" class="resetButton && wide && color"
+                (click)="search()">Search
                 Room</button>
+            <button disabled *ngIf="submitting" class="resetButton && wode && color">Searching....</button>
         </form>
+
 
     </div>
 </main>
+<div *ngIf="result">
+    <div *ngIf="result"><h5><a (click)="searchAgain()">Search Again.</a></h5></div>
+    <app-list-room [data]="searchResult"></app-list-room>
+</div>
+
 
 
 

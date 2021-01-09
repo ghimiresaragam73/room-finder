@@ -1,3 +1,13 @@
+<!-- <div *ngIf="loading"><app-loader></app-loader></div>
+<div *ngIf="!loading">
+    {{room.address}}
+    {{room.price}}
+    {{room.numberOfRoom}}
+    {{room.carParking}}
+    {{room.bikeParking}}
+    {{room.image}}
+</div> -->
+<!-- 
 <div *ngIf="loading"><app-loader></app-loader></div>
 <div *ngIf="!loading">
     {{room.address}}
@@ -6,4 +16,58 @@
     {{room.carParking}}
     {{room.bikeParking}}
     {{room.image}}
-</div>
+</div> -->
+<div class="color">
+    
+    <div class="small-container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{{imageUrl}}{{room.image[0]}}" alt="" width="100%">
+                <div class="small-img-row">
+                    <div class="small-img-col">
+    <img src="{{imageUrl}}{{room.image[1]}}" alt="">
+                    </div>
+                    <div class="small-img-col">
+    <img src="./../../../assets/room_img/1.jpg" alt="">
+                        
+                    </div>
+                    <div class="small-img-col">
+    <img src="./../../../assets/room_img/3.jpg" alt="">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <h3>Room Description <i class="fa faident"></i></h3>
+                <br>
+                <p>Unstoppable Artists founder Dr. Monroe Mann knows the ins and outs of psychology, education, and writing--from screenplays, poems, and novels to songwriting, non-fiction, and memoirs! If you want to write a novel, write an essay, write a screenplay, or just learn </p>
+            <div class="paragraph">
+                <p>Rs.{{room.price}}</p>
+            </div>
+            <div class="paragraph">
+                <p>Location:{{room.address}}</p>
+            </div>
+            <div class="paragraph"> 
+                <p>No of Room:{{room.numberOfRoom}}</p>
+            </div>
+            <!-- <div class="paragraph"> 
+                <p> {{room.carParking}}
+                </p>
+            </div>
+            <div class="paragraph"> 
+                <p>
+    
+                    {{room.bikeParking}}
+                </p>
+            </div> -->
+            <div class="btnn">
+                <button class="i3" routerLink="">Book  </button>
+                <button class="i3" routerLink="">Add to Cart  </button>
+    
+            </div>
+            
+    
+         </div>
+     </div>
+     </div>
+    </div>

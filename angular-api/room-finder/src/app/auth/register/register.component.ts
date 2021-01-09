@@ -4,6 +4,8 @@ import { MsgService } from 'src/app/shared/services/msg.service';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,7 +19,7 @@ export class RegisterComponent implements OnInit {
     public msgService: MsgService,
     public router: Router,
     public authService: AuthService,
-    public activeRouter: ActivatedRoute
+    public activeRouter: ActivatedRoute,
   ) {
     this.user = new User({});
   }
@@ -34,9 +36,9 @@ export class RegisterComponent implements OnInit {
     this.submitting = true;
     this.authService.register(this.user)
       .subscribe(
-        data => {
-          console.log('data in register>>>', data);
+        (data:any) => {
           this.msgService.showSuccess('Register Successful');
+          
           this.authService.emailVerifySend(data)
             .subscribe(
               data => {
@@ -45,7 +47,7 @@ export class RegisterComponent implements OnInit {
                 this.msgService.showError(err);
               }
             )
-          this.router.navigate(['/auth/login']);
+            this.router.navigate(['/auth/login'])
         },
         err => {
           this.msgService.showError(err);

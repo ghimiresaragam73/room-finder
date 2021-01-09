@@ -1,14 +1,14 @@
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MsgService } from '../services/msg.service';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css','./../../app.component.css']
+  styleUrls: ['./nav-bar.component.css', './../../app.component.css']
 })
 export class NavBarComponent implements OnInit {
-  navBar:boolean= false;
+  navBar: boolean = false;
   constructor(
     public msgService: MsgService,
     public router: Router
@@ -24,11 +24,11 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-  toogle(){
+  toogle() {
     this.navBar = !this.navBar;
   }
-  homeWent(){
-    this.router.navigate(["/user/home"])
+  homeWent() {
+    this.router.navigate(['/home'])
   }
 
   logOut() {

@@ -16,7 +16,47 @@
         <a *ngIf="!isLoggedIn()" routerLink="/auth/login">Login</a>
     </li>
 </ul> -->
+<div *ngIf="!isLoggedIn()">
+    <header>
+        <div class="navbar">
+            <!-- <div class="box"> -->
+            <div class="logo" (click)="onClick()">
 
+                <h1>
+                    <a routerLink="/home"> RoomF<span class="dot"></span></a>
+                </h1>
+            </div>
+            <div class="header__search">
+                <input type="text" class="header__searchInput">
+                <button class="btn2"> <i class="fa fa-search"> </i>
+                </button>
+            </div>
+
+            <nav>
+                <ul>
+                    <!-- <li><a href="">Home</a></li> -->
+                    <li><a href="">Explore</a></li>
+                    <li><a href="" routerLink="/auth/login">Sign In</a></li>
+
+                </ul>
+
+                <div class="header__join">
+                    <button class="btn" routerLink="/auth/register">Join</button>
+
+                </div>
+            </nav>
+            <!-- <img src="./../../../assets/im age logo/cart.jpeg" width="25px" height="25px" > -->
+
+            <img src="./../../../assets/image logo/menu.png" class="menu">
+
+        </div>
+
+        <!-- </div> -->
+    </header>
+</div>
+
+
+<section *ngIf="isLoggedIn()">
 <div class="navbar" *ngIf="navBar">
     <div class="logo" (click)="homeWent()" >
 
@@ -26,9 +66,11 @@
     </div>
     <nav>
         <ul>
-            <li><a href="">add room</a></li>
-            <li><a href="">view room</a></li>
-            <li><a href="">profile</a></li>
+            <li><a routerLink="/room/add">Add room</a></li>
+            <li><a routerLink="/room/list">View room</a></li>
+            <li><a routerLink="/user/profile">profile</a></li>
+            <li><a routerLink="/room/search">Search Room</a></li>
+            <li><a routerLink="/auth/login" (click)="logOut()">Log Out</a></li>
 
 
 
@@ -80,3 +122,4 @@
     <img src="./../../assets/image logo/menu.png" class="menu" >
 
 </div> 
+</section>

@@ -55,4 +55,7 @@ export class SearchRoomComponent implements OnInit {
         }
       )
   }
+  searchAgain() {
+    this.result = false;
+  }
 }

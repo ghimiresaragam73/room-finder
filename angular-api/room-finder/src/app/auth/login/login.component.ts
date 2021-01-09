@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('remember', 'true');
           }
           /* Check for role condition (data.role ma  aauxa) */
-          this.router.navigate(['/user']);
+          this.router.navigate(['/room/list']);
         },
         err => {
           this.msgService.showError(err);

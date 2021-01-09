@@ -116,6 +116,10 @@
               "devServerTarget": "room-finder:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

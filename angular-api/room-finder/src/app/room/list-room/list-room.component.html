@@ -47,14 +47,14 @@
     </div>
 </section>
 
-<div *ngIf="!loading" class="small-container" >
+<!-- <div *ngIf="!loading" class="small-container" >
     <div *ngFor="let room of rooms" class="row">
         <div class="col-4" (click)="roomDashboard(room._id)">
-            <div *ngIf="room.image">
+            <div *ngIf="room.image"> -->
                 <!-- <div *ngFor="let img of room.image">
                    <img src="{{imageUrl}}{{img}}" alt="" width="200">
                 </div> -->
-                <div>
+              <!--   <div>
                     <img src="{{imageUrl}}{{room.image[0]}}" alt="" width="200">
                 </div>
 
@@ -73,7 +73,47 @@
             </div>
             <div class="">
                 {{room.bikeParking}}
+            </div> -->
+            <!-- <div>
+                <button routerLink="/room/edit/{{room._id}}" class="btn btn-primary">Edit</button>
+                <button (click)="removeRoom(room._id)" class="btn btn-danger">Delete</button>
+
+            </div> -->
+  <!--       </div>
+    </div>
+</div>
+<app-footer></app-footer> -->
+
+
+<div *ngIf="!loading" class="small-container" >
+    <div *ngFor="let room of rooms" class="row">
+        <div class="col-4" (click)="roomDashboard(room._id)">
+            <div *ngIf="room.image">
+                <!-- <div *ngFor="let img of room.image">
+                   <img src="{{imageUrl}}{{img}}" alt="" width="200">
+                </div> -->
+                <div>
+                    <img src="{{imageUrl}}{{room.image[0]}}" alt="" width="200">
+                </div>
+
             </div>
+            <div class=" contain">
+                <p>Room available: {{room.numberOfRoom}}</p>
+            </div>
+            <div class=" contain">
+               <p>Price: <span>Rs.</span>{{room.price}}</p> 
+            </div>
+            <div class=" contain">
+               <p>Address: {{room.address}}</p> 
+            </div>
+            <!-- <div *ngIf="room.address" class=""> -->
+            <!-- </div> -->
+            <!-- <div class="">
+                {{room.carParking}}
+            </div>
+            <div class="">
+                {{room.bikeParking}}
+            </div> -->
             <!-- <div>
                 <button routerLink="/room/edit/{{room._id}}" class="btn btn-primary">Edit</button>
                 <button (click)="removeRoom(room._id)" class="btn btn-danger">Delete</button>

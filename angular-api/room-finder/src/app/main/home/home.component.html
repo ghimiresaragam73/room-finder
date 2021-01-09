@@ -16,10 +16,10 @@
 </head>
 
 <body *ngIf="!loading">
-    <header>
-        <div class="navbar">
+  <!--   <header>
+        <div class="navbar"> -->
             <!-- <div class="box"> -->
-            <div class="logo" (click)="onClick()">
+            <!-- <div class="logo" (click)="onClick()">
 
                 <h1>
                     <a routerLink="/home"> RoomF<span class="dot"></span></a>
@@ -32,9 +32,9 @@
             </div>
 
             <nav>
-                <ul>
+                <ul> -->
                     <!-- <li><a href="">Home</a></li> -->
-                    <li><a href="">Explore</a></li>
+                  <!--   <li><a href="">Explore</a></li>
                     <li><a href="" routerLink="/auth/login">Sign In</a></li>
 
                 </ul>
@@ -43,15 +43,15 @@
                     <button class="btn" routerLink="/auth/register">Join</button>
 
                 </div>
-            </nav>
+            </nav> -->
             <!-- <img src="./../../../assets/im age logo/cart.jpeg" width="25px" height="25px" > -->
 
-            <img src="./../../../assets/image logo/menu.png" class="menu">
+        <!--     <img src="./../../../assets/image logo/menu.png" class="menu">
 
-        </div>
+        </div> -->
 
         <!-- </div> -->
-    </header>
+    <!-- </header> -->
 
 
     <section>
@@ -161,7 +161,7 @@
                         <p>NPR:{{rooms[0].price}}</p>
                     </div>
                     <div class="col-4">
-                        <img src="{{imgUrl}}{{rooms[1].image[1]}}" alt="">
+                        <img src="{{imgUrl}}{{rooms[1].image[0]}}" alt="">
                         <h4>{{rooms[1].address}}</h4>
                         <div class="rating">
                             <i class="fa fa-star"></i>
@@ -174,7 +174,7 @@
                         <p>NPR:{{rooms[1].price}}</p>
                     </div>
                     <div class="col-4">
-                        <img src="{{imgUrl}}{{rooms[2].image[2]}}" alt="">
+                        <img src="{{imgUrl}}{{rooms[2].image[0]}}" alt="">
                         <h4>{{rooms[2].address}}</h4>
                         <div class="rating">
                             <i class="fa fa-star"></i>
@@ -187,7 +187,7 @@
                         <p>NPR:{{rooms[2].price}}</p>
                     </div>
                     <div class="col-4">
-                        <img src="{{imgUrl}}{{rooms[3].image[3]}}" alt="">
+                        <img src="{{imgUrl}}{{rooms[3].image[0]}}" alt="">
                         <h4>{{rooms[3].address}}</h4>
                         <div class="rating">
                             <i class="fa fa-star"></i>

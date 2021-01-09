@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 import { LoginComponent } from './login/login.component';
+/* import { PhoneAuthenticateComponent } from "./phone-authenticate/phone-authenticate.component"; */
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { VerifyComponent } from "./verify/verify.component";
@@ -23,7 +24,10 @@ const authRoutes: Routes = [
     }, {
         path: 'verify/email/:id',
         component: VerifyComponent
-    }
+    }/* ,{
+        path: 'verify/phone/:phone',
+        component:PhoneAuthenticateComponent
+    } */
 ]
 
 @NgModule({

@@ -13,8 +13,6 @@ export class FooterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   this.url= this.activeRouter.snapshot.url;
-   console.log('urll aayo...',this.url)
   }
 
 }
