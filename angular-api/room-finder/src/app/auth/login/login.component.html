@@ -1,28 +1,30 @@
-<main>
-    <div id="container">
-        <form #loginForm="ngForm" class="form-group && container && color">
-            <h3>
-                Sign In Room Finder
-            </h3><br>
+<div id="container">
+    <form #loginForm="ngForm" class="form-group && center && contain " novalidate>
+        <h3>
+            Sign In Room Finder
+        </h3>
+        <br>
 
-            <!-- <div class="g-signin2 " data-onsuccess="onSignIn"></div> -->
-            <label for="username" class="color">Username</label>
-            <input type="text" id="username" [(ngModel)]="user.username" name="username" required #username="ngModel">
-            <div class="danger" [hidden]="username.valid || username.pristine">
-                required field*
-            </div>
-            <label for="loginpassword" class="color">Password</label>
-            <input type="password" id="password" [(ngModel)]="user.password" name="password" required
-                #password="ngModel">
-            <div class="danger" [hidden]="password.valid || password.pristine">
-                required field*
-            </div>
-            <button [disabled]="loginForm.invalid" class="Button && wide" (click)="login()">login</button>
-            <hr>
-            <p>Don't have an account?</p>
-            <p><a routerLink="/auth/register">Register Here</a></p>
-            <p><a routerLink="/auth/forgot-password">Forgot Password?</a></p>
-        </form>
+        <label for="username">Username:</label><br>
+        <input class="form-control && color" type="text" id="username" name="username" [(ngModel)]="user.username" required
+            #username="ngModel">
+        <div class="danger" [hidden]="username.valid || username.pristine">
+            required field*
+        </div>
+        <br>
 
-    </div>
-</main>
+        <label for="loginpassword">Password:</label>
+        <input class="form-control && color" type="password" id="password" name="password" [(ngModel)]="user.password"
+            required #password="ngModel">
+        <div class="danger" *ngIf="password.invalid && password.dirty">required field*</div>
+
+
+        <br><button [disabled]="loginForm.invalid" class="button" (click)="login()">Login</button><br>
+        <p>Don't have an account?</p>
+
+
+        <p><a class="link" routerLink="/auth/register">Register Here</a></p>
+        <p><a class="link" routerLink="/auth/forgot-password">Forgot Password?</a></p>
+    </form>
+
+</div>
