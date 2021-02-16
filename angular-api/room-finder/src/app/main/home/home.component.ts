@@ -11,6 +11,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css', './../../app.component.css']
 })
 export class HomeComponent implements OnInit {
+  premium;
+  urgent;
+  normal;
   rooms;
   loading: boolean = true;
   imgUrl: string;
@@ -23,11 +26,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.rooms) {
-      this.roomService.getByEight()
+    if (!this.premium) {
+      this.roomService.getByCategories()
         .subscribe(
           data => {
-            this.rooms = data;
+            this.normal = data[0]
+            this.premium = data[1]
+            this.urgent = data[2]
+            this.rooms = data[0].concat(data[2].concat(data[1]))
+            console.log('yaha>>>>>>', this.rooms);
+            /* console.log('data here', this.category); */
           }, err => {
             this.msgService.showError(err);
           }
@@ -40,15 +48,15 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/room/dashboard/' + id]);
 
   }
-/* Nav bar ma role check garney tarika */
-/* isRenter(){
-  var user = localStorage.getItem('user');
-  if(user.role==="renter"){
-    return true;
-  }else{
-    return false;
-  }
-} */
+  /* Nav bar ma role check garney tarika */
+  /* isRenter(){
+    var user = localStorage.getItem('user');
+    if(user.role==="renter"){
+      return true;
+    }else{
+      return false;
+    }
+  } */
 
   isLoggedIn() {
     if (localStorage.getItem('token')) {
