@@ -1,3 +1,4 @@
+import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoomService } from 'src/app/room/services/room.service';
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.rooms) {
-      this.roomService.get()
+      this.roomService.getByEight()
         .subscribe(
           data => {
             this.rooms = data;
@@ -34,7 +35,26 @@ export class HomeComponent implements OnInit {
       this.loading = false;
     }
   }
-  onClick() {
+  onClick(id) {
     console.log('button clicked');
+    this.router.navigate(['/room/dashboard/' + id]);
+
+  }
+/* Nav bar ma role check garney tarika */
+/* isRenter(){
+  var user = localStorage.getItem('user');
+  if(user.role==="renter"){
+    return true;
+  }else{
+    return false;
+  }
+} */
+
+  isLoggedIn() {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

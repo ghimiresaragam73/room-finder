@@ -9,6 +9,8 @@ module.exports = (req, room) => {
         room.bikeParking = req.bikeParking;
     if (req.address)
         room.address = req.address;
+    if (req.categories)
+        room.categories = req.categories;
 
     return room;
 }

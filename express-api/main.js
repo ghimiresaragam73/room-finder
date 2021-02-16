@@ -39,7 +39,15 @@ express.use((err, req, res, next) => {
     })
 })
 
-express.listen(config.port, (err, done) => {
+
+// express.listen(config.port, (err, done) => {
+//     if (err) {
+//         console.log('Connection Failed');
+//     } else {
+//         console.log('Connection listening at ', config.port);
+//     }
+// })
+ express.listen(config.port, (err, done) => {
     if (err) {
         console.log('Server Connection Failed');
     } else {

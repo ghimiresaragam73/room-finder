@@ -11,7 +11,7 @@
             <div class="danger" [hidden]="username.valid || username.pristine">
                 required field*
             </div>
-            <label for="loginpassword" class="color">Confirm Password</label>
+            <label for="loginpassword" class="color">Password</label>
             <input type="password" id="password" [(ngModel)]="user.password" name="password" required
                 #password="ngModel">
             <div class="danger" [hidden]="password.valid || password.pristine">

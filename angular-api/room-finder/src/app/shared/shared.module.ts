@@ -7,6 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UploadService } from './services/upload.service';
 import { LoaderComponent } from './loader/loader.component';
 import { FooterComponent } from './footer/footer.component';
+import { SliderComponent } from './slider/slider.component';
 
 
 
@@ -15,15 +16,17 @@ import { FooterComponent } from './footer/footer.component';
     PageNotFoundComponent,
     NavBarComponent,
     LoaderComponent,
-    FooterComponent
+    FooterComponent,
+    SliderComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     NavBarComponent,
     LoaderComponent,
+    // SliderComponent,
     FooterComponent
   ],
   providers: [

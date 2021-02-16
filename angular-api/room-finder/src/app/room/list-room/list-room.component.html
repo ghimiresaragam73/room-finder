@@ -42,7 +42,7 @@
 
 
 <section>
-    <div *ngIf="loading" class="small-container">
+    <div *ngIf="loading" class="small-container1">
         <app-loader></app-loader>
     </div>
 </section>
@@ -85,9 +85,9 @@
 <app-footer></app-footer> -->
 
 
-<div *ngIf="!loading" class="small-container" >
-    <div *ngFor="let room of rooms" class="row">
-        <div class="col-4" (click)="roomDashboard(room._id)">
+<div *ngIf="!loading" class="small-container1" >
+    <div *ngFor="let room of rooms" class="row1">
+        <div class="col-41" (click)="roomDashboard(room._id)">
             <div *ngIf="room.image">
                 <!-- <div *ngFor="let img of room.image">
                    <img src="{{imageUrl}}{{img}}" alt="" width="200">

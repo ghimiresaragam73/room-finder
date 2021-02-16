@@ -15,44 +15,7 @@
 
 </head>
 
-<body *ngIf="!loading">
-  <!--   <header>
-        <div class="navbar"> -->
-            <!-- <div class="box"> -->
-            <!-- <div class="logo" (click)="onClick()">
-
-                <h1>
-                    <a routerLink="/home"> RoomF<span class="dot"></span></a>
-                </h1>
-            </div>
-            <div class="header__search">
-                <input type="text" class="header__searchInput">
-                <button class="btn2"> <i class="fa fa-search"> </i>
-                </button>
-            </div>
-
-            <nav>
-                <ul> -->
-                    <!-- <li><a href="">Home</a></li> -->
-                  <!--   <li><a href="">Explore</a></li>
-                    <li><a href="" routerLink="/auth/login">Sign In</a></li>
-
-                </ul>
-
-                <div class="header__join">
-                    <button class="btn" routerLink="/auth/register">Join</button>
-
-                </div>
-            </nav> -->
-            <!-- <img src="./../../../assets/im age logo/cart.jpeg" width="25px" height="25px" > -->
-
-        <!--     <img src="./../../../assets/image logo/menu.png" class="menu">
-
-        </div> -->
-
-        <!-- </div> -->
-    <!-- </header> -->
-
+<section *ngIf="!loading">
 
     <section>
         <div class="box">
@@ -66,8 +29,10 @@
 
                         <p>Find the perfect room for your Living</p>
                         <div class="header_search">
-                            <input type="text" class="search__text">
-                            <button class="search__butn">search </button>
+                            <div class="input-container">
+                                <input type="text" class="input-field" />
+                                <button class="input-button">search</button>
+                            </div>
 
                         </div>
 
@@ -77,7 +42,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section *ngIf="!isLoggedIn()">
         <div class="box">
             <div class="color">
                 <div class="row">
@@ -97,7 +62,7 @@
 
         </div>
     </section>
-    <section>
+    <section *ngIf="!isLoggedIn()">
         <div class="box">
             <div class="color">
                 <div class="row">
@@ -118,91 +83,147 @@
 
         </div>
     </section>
-    <!-- categories -->
+
+    <!-- Premiun roomes -->
+
     <section>
         <div class="box">
-            <div class="categories">
-                <div class="small-container">
-                    <h2 class="title">Categories</h2>
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="./../../assets/cato/1.jpg" alt="">
+            <h2 class="title"><a routerLink="/room/list"> Premium Rooms</a></h2>
+            <div class="small-container1">
+
+                <div *ngFor="let room of rooms" class="row1">
+                    <div class="col-41" (click)="onClick(room._id)">
+                        <div *ngIf="room.image">
+                            <div>
+                                <img src="{{imgUrl}}{{room.image[0]}}" alt="">
+                            </div>
+
                         </div>
-                        <div class="col-3">
-                            <img src="./../../assets/cato/2.jpg" alt="">
+                        <div class=" contain">
+                            <p>Room available: {{room.numberOfRoom}}</p>
                         </div>
-                        <div class="col-3">
-                            <img src="./../../assets/cato/3.jpg" alt="">
+                        <div class=" contain">
+                            <p>Price: <span>Rs.</span>{{room.price}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
                         </div>
                     </div>
+
                 </div>
+
             </div>
+            <div class="input-B">
+                <button class="input-bt" routerLink="/room/list">View All Premium Rooms...</button>
+            </div>      
+        </div>
+    </section>
+    <!-- urgent roomes -->
+
+
+    <section>
+        <div class="box">
+            <h2 class="title"><a routerLink="/room/list"> Urgent Rooms</a></h2>
+            <div class="small-container1">
+
+                <div *ngFor="let room of rooms" class="row1">
+                    <div class="col-41" (click)="onClick(room._id)">
+                        <div *ngIf="room.image">
+                            <div>
+                                <img src="{{imgUrl}}{{room.image[0]}}" alt="">
+                            </div>
+
+                        </div>
+                        <div class=" contain">
+                            <p>Room available: {{room.numberOfRoom}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Price: <span>Rs.</span>{{room.price}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="input-B">
+                <button class="input-bt" routerLink="/room/list">View All Urgent Rooms...</button>
+            </div>      
         </div>
     </section>
 
-    <!-- featured roomes -->
+    <!-- newly listed roomes -->
 
     <section>
         <div class="box">
-            <div class="small-container">
-                <h2 class="title"><a routerLink="/room/list"> Featured Rooms</a></h2>
-                <div class="row">
-                    <div class="col-4">
-                        <img src="{{imgUrl}}{{rooms[0].image[0]}}" alt="">
-                        <h4>{{rooms[0].address}}</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
+            <h2 class="title"><a routerLink="/room/list"> Newly Listed Rooms</a></h2>
+            <div class="small-container1">
+
+                <div *ngFor="let room of rooms" class="row1">
+                    <div class="col-41" (click)="onClick(room._id)">
+                        <div *ngIf="room.image">
+                            <div>
+                                <img src="{{imgUrl}}{{room.image[0]}}" alt="">
+                            </div>
 
                         </div>
-                        <p>NPR:{{rooms[0].price}}</p>
+                        <div class=" contain">
+                            <p>Room available: {{room.numberOfRoom}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Price: <span>Rs.</span>{{room.price}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <img src="{{imgUrl}}{{rooms[1].image[0]}}" alt="">
-                        <h4>{{rooms[1].address}}</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
 
-                        </div>
-                        <p>NPR:{{rooms[1].price}}</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="{{imgUrl}}{{rooms[2].image[0]}}" alt="">
-                        <h4>{{rooms[2].address}}</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-
-                        </div>
-                        <p>NPR:{{rooms[2].price}}</p>
-                    </div>
-                    <div class="col-4">
-                        <img src="{{imgUrl}}{{rooms[3].image[0]}}" alt="">
-                        <h4>{{rooms[3].address}}</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p>NPR:{{rooms[3].price}}</p>
-                    </div>
                 </div>
-               <h5> <a routerLink="/room/list">View More Room...</a></h5>
+
             </div>
+            <div class="input-B">
+                <button class="input-bt" routerLink="/room/list">View All Newly Listed Rooms...</button>
+            </div>      
         </div>
-           </section>
+    </section>
+
+
+    <!-- recommended  roomes -->
+
+    <section>
+        <div class="box">
+            <h2 class="title"><a routerLink="/room/list"> Recommended Rooms</a></h2>
+            <div class="small-container1">
+
+                <div *ngFor="let room of rooms" class="row1">
+                    <div class="col-41" (click)="onClick(room._id)">
+                        <div *ngIf="room.image">
+                            <div>
+                                <img src="{{imgUrl}}{{room.image[0]}}" alt="">
+                            </div>
+
+                        </div>
+                        <div class=" contain">
+                            <p>Room available: {{room.numberOfRoom}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Price: <span>Rs.</span>{{room.price}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="input-B">
+                <button class="input-bt" routerLink="/room/list">View All Recommended Rooms...</button>
+            </div>      
+        </div>
+    </section>
 
     <!-- testimonial -->
     <section>
@@ -316,6 +337,8 @@
             </div>
         </div>
     </section>
+    <!-- <app-slider></app-slider> -->
     <app-footer></app-footer>
-</body>
+</section>
+
 </html>

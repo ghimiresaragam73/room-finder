@@ -81,6 +81,20 @@ router.route('/')
         })
     })
 
+    router.route('/eight')
+    .get((req, res, next) => {
+        roomModel.find({}).populate('user')
+            .exec((err, rooms) => {
+                if (err) {
+                    return next(err);
+                }
+                let data = rooms.slice(0,8);
+                res.json(data);
+            })
+    })
+
+
+
 router.route('/search')
     .get((req, res, next) => {
         var condition = {};
