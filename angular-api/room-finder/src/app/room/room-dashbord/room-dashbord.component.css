@@ -1,4 +1,4 @@
-.color{
+/* .color{
     background: radial-gradient(#fff, #d6f4ff);
 }
 .small-container{
@@ -14,26 +14,23 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 70px;
-}
+} */
 .col-2{
     flex-basis: 50%;
-    min-width: 500px;
-    background-size:cover;
+    margin-top: 125px;
+
+    min-width: 600px;
+    /* background-color: */
+    /* background-size:cover; */
+    width: 600px;
+    padding: 10px;
 
 }
-.col-2 img{
-    mask-image: linear-gradient(rgba(0,0,0,3),rgba(0, 0, 0, 1));
-width: 100%;
- 
-padding: 10px 0;
-}
+
 .col-2 h3{
 font-size: 30px;
-/* line-height: 40px; */
-/* margin: 25px 0; */
 font-family: 'Kaushan Script', cursive;
 font-weight: 600;
-/* align-items: center; */
 
 }
 p{
@@ -48,7 +45,6 @@ padding: 8px 30px;
 margin: 10px 0;
 border-radius: 30px;
 align-content: center;
-/* position: relative; */
 }
 .i3:hover{
 background-color:rgb(39, 202, 66); ;
@@ -59,11 +55,9 @@ background-color:rgb(39, 202, 66); ;
 
 }
 .btnn{
-    /* align-items: right; */
+
     display: flex;
-    /* margin: 10px; */
-    /* flex-wrap: wrap; */
-    /* justify-content: f; */
+
 }
 .small-img-row{
 display: flex;
@@ -73,4 +67,56 @@ justify-content:space-evenly ;
     flex-basis: 30%;
     cursor: pointer;
 
+} 
+#content-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#featured{
+max-width: 525px;
+max-height: 600px;
+object-fit: cover;
+cursor: pointer; 
+border: 2px solid black;   
+}
+.thumbnail{
+    object-fit: cover;
+    max-width: 180px;
+    max-height:100px ;
+    cursor: pointer;
+    opacity: 0.5;
+    margin: 5px;
+    border: 2px solid black;
+}
+.thumbnail:hover{
+    opacity: 1;
+}
+.active{
+    opacity: 1;
+}
+#slide-wrapper{
+    /* flex-basis: 50%; */
+    max-width: 500px;
+    display: flex;
+    min-height: 100px;
+    align-items: center;
+}
+#slider{
+    width: 440px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
+.arrow{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+.arrow:hover{
+    opacity: .5;
+    width: 35px;
+    height:35px;
 }
