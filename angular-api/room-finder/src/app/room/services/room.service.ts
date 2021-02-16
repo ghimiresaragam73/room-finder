@@ -34,6 +34,9 @@ export class RoomService {
     get() {
         return this.http.get(this.url, this.getOptions())
     }
+    getByEight(){
+        return this.http.get(`${this.url}/eight`,this.getOptions())
+    }
     getById(id: string) {
         return this.http.get(`${this.url}/${id}`, this.getOptions())
     }

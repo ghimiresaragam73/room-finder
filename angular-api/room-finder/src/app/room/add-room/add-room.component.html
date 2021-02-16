@@ -5,19 +5,32 @@
                 Add Room
             </h3>
             <br>
+
             <label for="address"> Address</label><br>
             <input type="text" class="color" id="address" [(ngModel)]="room.address" name="address"
                 placeholder="Enter the exact location" required #address="ngModel">
             <div class="danger" [hidden]="address.valid || address.pristine">
                 required field*
             </div>
-            <br><label for="price"> Price</label><br>
+            <br>
+
+            <label for="categories"> categories</label><br>
+            <input type="text" class="color" id="categories" [(ngModel)]="room.categories" name="categories"
+                placeholder="Enter the exact location" required #categories="ngModel">
+            <div class="danger" [hidden]="categories.valid || categories.pristine">
+                required field*
+            </div>
+            <br>
+            
+            <label for="price"> Price</label><br>
             <input type="number" class="color" id="price" [(ngModel)]="room.price" name="price"
                 placeholder="Price is in rupees" required #price="ngModel">
             <div class="danger" [hidden]="price.valid || price.pristine">
                 required field*
             </div>
-            <br><label for="numberOfRoom">Number Of Room</label><br>
+            <br>
+            
+            <label for="numberOfRoom">Number Of Room</label><br>
             <input type="number" class="color" id="numberOfRoom" [(ngModel)]="room.numberOfRoom" name="numberOfRoom"
                 placeholder="Enter the number of rooms" required #numberOfRoom="ngModel">
             <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">

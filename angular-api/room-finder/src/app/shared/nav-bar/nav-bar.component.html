@@ -19,11 +19,11 @@
 <div *ngIf="!isLoggedIn()">
     <header>
         <div class="navbar">
-            <!-- <div class="box"> -->
-            <div class="logo" (click)="onClick()">
+            <!-- <div class="box"> -->\
+            <div class="logo">
 
                 <h1>
-                    <a routerLink="/home"> RoomF<span class="dot"></span></a>
+                    <a routerLink="/home"> RoomF<span class="dot">.</span></a>
                 </h1>
             </div>
             <div class="header__search">
@@ -57,42 +57,45 @@
 
 
 <section *ngIf="isLoggedIn()">
-<div class="navbar" *ngIf="navBar">
-    <div class="logo" (click)="homeWent()" >
-
-        <h1>
-            RoomF<span class="dot">.</span> 
-        </h1>
-    </div>
-    <nav>
-        <ul>
-            <li><a routerLink="/room/add">Add room</a></li>
-            <li><a routerLink="/room/list">View room</a></li>
-            <li><a routerLink="/user/profile">profile</a></li>
-            <li><a routerLink="/room/search">Search Room</a></li>
-            <li><a routerLink="/auth/login" (click)="logOut()">Log Out</a></li>
-
-
-
-            
-        </ul>
+    <div class="navbar" *ngIf="navBar">
+        <div class="logo" (click)="homeWent()" >
     
-    </nav>
-    <div class="header__join">
-        <button class="btn"  (click)="toogle()">switch to  renter </button>
-   
-    </div>
+            <h1 >
+               <a routerLink='/home'>RoomF<span class="dot">.</span></a>  
+            </h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a routerLink="/room/add">Add room</a></li>
+                <li><a routerLink="/room/list">View room</a></li>
+                <li><a routerLink="/user/profile">profile</a></li>
+                <li><a routerLink="/room/search">Search Room</a></li>
+                <li><a routerLink="/auth/login" (click)="logOut()">Log Out</a></li>
+    
+    
+    
+                
+            </ul>
+        
+        </nav>
+        <div class="header__join">
+            <button class="btn"  (click)="toogle()">switch to  renter </button>
+       
+        </div>
+    
+        <img src="./../../assets/image logo/menu.png" class="menu" >
+    
+    </div> 
 
-    <img src="./../../assets/image logo/menu.png" class="menu" >
-
-</div> 
-
+    
 <!-- Toogling -->
+
+<!--  -->
 <div class="navbar" *ngIf="!navBar" (click)="homeWent()">
-    <div class="logo" >
+    <div class="logo" (click)="onClick()">
 
         <h1>
-            RoomF<span class="dot">.</span> 
+            <a routerLink=""> RoomF<span class="dot">.</span></a>
         </h1>
     </div>
     <div class="header__search">

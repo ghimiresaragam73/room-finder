@@ -1,6 +1,7 @@
 export class Room {
     price: string;
     image: [string];
+    categories:string;
     numberOfRoom: number;
     carParking: boolean;
     bikeParking: boolean;
@@ -16,5 +17,6 @@ export class Room {
         this.address = details.address || '';
         this.minPrice = details.minPrice;
         this.maxPrice = details.maxPrice;
+        this.categories=details.categories ||'';
     }
 }

@@ -27,7 +27,9 @@ export class ListRoomComponent implements OnInit {
       this.roomService.get()
         .subscribe(
           data => {
+            console.log('data>>>>',data);
             this.rooms = data;
+            console.log(data);
             this.loading = false;
           },
           err => {
@@ -62,8 +64,8 @@ export class ListRoomComponent implements OnInit {
       return false;
     }
   }
-  roomDashboard(id){
-this.router.navigate(['/room/dashboard/'+id])
+  roomDashboard(id) {
+    this.router.navigate(['/room/dashboard/' + id])
   }
 
 }

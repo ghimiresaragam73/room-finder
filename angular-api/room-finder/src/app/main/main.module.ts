@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

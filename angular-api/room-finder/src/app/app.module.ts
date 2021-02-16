@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app.routing';
 import { UserModule } from './user/user.module';
 import { RoomModule } from './room/room.module';
 import { MainModule } from './main/main.module';
-
 @NgModule({
   declarations: [
     AppComponent,
