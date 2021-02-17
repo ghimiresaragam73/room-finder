@@ -34,6 +34,14 @@ var userSchema = new Schema({
         type: String,
         enum: ['admin', 'landlord', 'renter'],
         default: 'renter'
+    },
+    cart: {
+        type: [String],
+        default: null
+    },
+    book: {
+        type: String,
+        default: null
     }
 }, {
     timestamps: true

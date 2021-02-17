@@ -89,8 +89,8 @@ router.route('/categories')
             let p = roomModel.find({ categories: categories });
             categoriesPromise.push(p);
         })
-        console.log(categoriesPromise)
         const data = await Promise.all([...categoriesPromise]);
+        console.log('data.............', data);
         res.send(data);
     })
 
