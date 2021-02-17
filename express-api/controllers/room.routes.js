@@ -81,14 +81,27 @@ router.route('/')
         })
     })
 
-    router.route('/eight')
+router.route('/categories')
+    .get(async (req, res, next) => {
+        const categories = await roomModel.find({}).distinct('categories');
+        const categoriesPromise = [];
+        categories.forEach((categories) => {
+            let p = roomModel.find({ categories: categories });
+            categoriesPromise.push(p);
+        })
+        console.log(categoriesPromise)
+        const data = await Promise.all([...categoriesPromise]);
+        res.send(data);
+    })
+
+router.route('/eight')
     .get((req, res, next) => {
         roomModel.find({}).populate('user')
             .exec((err, rooms) => {
                 if (err) {
                     return next(err);
                 }
-                let data = rooms.slice(0,8);
+                let data = rooms.slice(0, 8);
                 res.json(data);
             })
     })
