@@ -1,4 +1,66 @@
-<main>
+<div id="container">
+    <form #addRoom="ngForm" class="form-group && center && contain" novalidate>
+        <h3>
+            Add Room
+        </h3>
+        <br>
+
+        <label for="address">Address</label>
+        <input type="text" class="form-control && color" id="address" [(ngModel)]="room.address" name="address"
+            placeholder="Enter the exact location" required #address="ngModel">
+        <div class="danger" [hidden]="address.valid || address.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="category" >Category</label>
+        <select type="text" id="category" class="form-control && color" [(ngModel)]="room.category" name="category"
+             required #category="ngModel">
+             <option value="" disabled selected>Choose the Category as per require</option>
+            <option value="premium">Premium</option>
+            <option value="urgent">Urgent</option>
+            <option value="normal">Normal</option>
+        </select>
+        <div class="danger" [hidden]="category.valid || category.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="price">Price</label>
+        <input type="number" class="form-control && color" id="price" [(ngModel)]="room.price" name="price"
+            placeholder="Price is in rupees" required #price="ngModel">
+        <div class="danger" [hidden]="price.valid || price.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="noroom">Number Of Room</label>
+        <input type="number" class="form-control && color" id="noroom" [(ngModel)]="room.noroom" name="noroom"
+            placeholder="Enter the number of rooms" required #noroom="ngModel">
+        <div class="danger" [hidden]="noroom.valid || noroom.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="car">Car Parking </label>
+        <input type="radio" id="car" class="genwidth" value="car" [(ngModel)]="room.car" name="car"><br>
+        <br>
+
+        <label for="bike">Bike Parking</label>
+        <input type="radio" id="bike" class="genwidth" value="bike" [(ngModel)]="room.bike" name="bike"><br>
+        <br>
+
+        <label for="photo">
+            Select Photo(Maximum 3 photos)</label> <br>
+        <input type="file" id="myFile" [(ngModel)]="room.photo" name="img" multiple><br><br>
+
+        <button [disabled]="addRoom.invalid" class="btn btn-primary &&  button && color" (click)="submit()">Save
+            Room</button>
+    </form>
+</div>
+
+
+<!-- <main>
     <div id="container">
         <form #addRoom="ngForm" class="form-group && container && color">
             <h3>
@@ -46,80 +108,5 @@
             <button [disabled]="addRoom.invalid" class="Button && wide" (click)="submit()">Save Room</button>
         </form>
     </div>
-</main>
+</main> -->
 
-
-<!-- <form #addRoom="ngForm" class="form-group && container && color">
-            <h3>
-                Add Room
-            </h3><br>
-
-            <label for="address" class="color">Address</label><br>
-            <input type="text" id="address" [(ngModel)]="room.address" address="address"
-                placeholder="Enter the exact location" required #address="ngModel">
-            <div class="danger" [hidden]="address.valid || address.pristine">
-                required field*
-            </div>
-            <br><label for="price" class="color">Price</label><br>
-            <input type="number" id="price" [(ngModel)]="room.price" name="price" required #price="ngModel">
-            <div class="danger" [hidden]="price.valid || price.pristine">
-                required field*
-            </div>
-
-            <br><label for="numberOfRoom" class="color">Number Of Room</label><br>
-            <input type="number" id="numberOfRoom" [(ngModel)]="room.numberOfRoom" name="numberOfRoom" required
-                #numberOfRoom="ngModel">
-            <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">
-                required field*
-            </div>
-
-            <br> Car Parking <input class="color" type="checkbox" (change)="carParkingChanged()">
-            <br> Bike Parking <input class="color" type="checkbox" (change)="bikeParkingChanged()">
-            <br>
-
-
-            <button [disabled]="addRoom.invalid" class="Button && wide" (click)="register()">Register</button>
-            <hr>
-            <p>Already Registered? <a routerLink="/login">Sign In</a></p>
-        </form> -->
-
-
-
-
-
-
-
-<!-- 
-
-<form #addRoom="ngForm" class="form-group && container">
-    <h3>
-        Add Room
-    </h3>
-    <br>
-    <label for="address"> Address</label>
-    <input type="text" class="form-control && wide" id="address" [(ngModel)]="room.address" name="address" placeholder="Enter the exact location" required
-        #address="ngModel">
-    <div class="danger" [hidden]="address.valid || address.pristine">
-        required field*
-    </div>
-    <label for="price"> Price</label>
-    <input type="number" class="form-control && wide" id="price" [(ngModel)]="room.price" name="price"
-        placeholder="Price is in rupees" required #price="ngModel">
-    <div class="danger" [hidden]="price.valid || price.pristine">
-        required field*
-    </div>
-    <label for="numberOfRoom">Number Of Room</label>
-    <input type="number" class="form-control && wide" id="numberOfRoom" [(ngModel)]="room.numberOfRoom" name="numberOfRoom" placeholder="Enter the number of rooms" required
-        #numberOfRoom="ngModel">
-    <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">
-        required field*
-    </div>
-    Car Parking <input class="genwidth" type="checkbox" (change)="carParkingChanged()">
-    <br> Bike Parking <input class="genwidth" type="checkbox" (change)="bikeParkingChanged()">
-    <br>
-
-    <label for="image">Choose Image</label>
-    <input class="form-control" type="file" name="image" (change)=fileChanged($event) multiple>
-
-    <button [disabled]="addRoom.invalid" class="btn btn-primary &&  roomButton && wide"
-        (click)="submit()">Save Room</button> -->
