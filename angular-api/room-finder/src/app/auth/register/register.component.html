@@ -1,60 +1,69 @@
-<main>
-    <div id="container">
-        <form #registerForm="ngForm" class="form-group && container && color">
-            <h3>
-                Join Room Finder
-            </h3><br>
+<div id="container">
+    <form #registerForm="ngForm" class="form-group && center && contain ">
+        <h3>
+            Join Room Finder
+        </h3>
+        <br>
 
-            <label for="name" class="color">Name</label><br>
-            <input type="text" id="name" [(ngModel)]="user.name" name="name" required #name="ngModel">
-            <div class="danger" [hidden]="name.valid || name.pristine">
-                required field*
-            </div>
-            <br><label for="username" class="color">Username</label><br>
-            <input type="text" id="username" [(ngModel)]="user.username" name="username" required #username="ngModel">
-            <div class="danger" [hidden]="username.valid || username.pristine">
-                required field*
-            </div>
-            <br><label for="email" class="color">Email</label><br>
-            <input type="email" id="email" [(ngModel)]="user.email" name="email" required #email="ngModel">
-            <div class="danger" [hidden]="email.valid || email.pristine">
-                required field*
-            </div>
+        <label for="name">Name</label>
+        <input type="text" class="form-control && color" [(ngModel)]="user.name" name="name" id="name" required
+            #name="ngModel">
+        <div class="danger" [hidden]="name.valid || name.pristine">
+            required field*
+        </div>
+        <br>
 
-            <br><label for="password" class="color">Password</label><br>
-            <input type="password" id="password" [(ngModel)]="user.password" name="password" required
-                #password="ngModel">
-            <div class="danger" [hidden]="password.valid || password.pristine">
-                required field*
-            </div>
-            <br><label for="confirmPassword" class="color">Confirm Password</label><br>
-            <input type="password" id="confirmPassword" [(ngModel)]="user.confirmPassword" name="confirmPassword"
-                required #confirmPassword="ngModel">
-            <div class="danger" [hidden]="confirmPassword.valid || confirmPassword.pristine">
-                required field*
-            </div>
-            <br><label for="phone" class="color">Mobile Number</label><br>
-            <input type="number" id="phone" [(ngModel)]="user.phone" name="phone" required #phone="ngModel">
-            <div class="danger" [hidden]="phone.valid || phone.pristine">
-                required field*
-            </div>
+        <label for="username">Username</label>
+        <input type="text" class="form-control && color" [(ngModel)]="user.username" name="username" required
+            #username="ngModel">
+        <div class="danger" [hidden]="username.valid || username.pristine">
+            required field*
+        </div>
+        <br>
 
-            <br><label for="gender">Gender</label>
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control && color" [(ngModel)]="user.email" name="email" required
+            #email="ngModel">
+        <div class="danger" [hidden]="email.valid || email.pristine">
+            required field*
+        </div>
+        <br>
 
-            <br><label for="male">Male</label>
-            <input type="radio" id="male" class="color" value="male" [(ngModel)]="user.gender" name="male">
-            <br><label for="female">Female</label>
-            <input type="radio" id="female" class="color" value="female" [(ngModel)]="user.gender" name="female">
-            <br> <label for="other">Others</label>
-            <input type="radio" id="other" class="color" value="other" [(ngModel)]="user.gender" name="female">
+        <label for="password">Password</label>
+        <input type="password" class="form-control && color" [(ngModel)]="user.password" name="password" required
+            #password="ngModel">
+        <div class="danger" [hidden]="password.valid || password.pristine">
+            required field*
+        </div>
+        <br>
 
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="form-control && color" [(ngModel)]="user.confirmPassword" name="confirmPassword"
+            required #confirmPassword="ngModel">
+        <div class="danger" [hidden]="confirmPassword.valid || confirmPassword.pristine">
+            required field*
+        </div>
+        <br>
 
+        <label for="phone">Phone Number</label>
+        <input type="number" class="form-control && color" [(ngModel)]="user.phone" name="phone" required
+            #phone="ngModel">
+        <br>
 
-            <button [disabled]="registerForm.invalid" class="Button && wide" (click)="register()">Register</button>
-            <hr>
-            <p>Already Registered? <a routerLink="/login">Sign In</a></p>
-        </form>
+        <label for="gender">Gender</label>
+        <input type="radio" id="male" class="genwidth" value="male" [(ngModel)]="user.gender" name="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" class="genwidth" value="female" [(ngModel)]="user.gender" name="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" class="genwidth" value="other" [(ngModel)]="user.gender" name="female">
+        <label for="other">Other</label>
+        <br><br>
 
-    </div>
-</main>
+        <button [disabled]="registerForm.invalid" class="btn btn-primary && button && color"
+            (click)="register()">Register</button>
+        <br><br>
 
+        <p>Already Registered? <a class="link" routerLink="/login">Sign In</a></p>
+    </form>
+
+</div>

@@ -37,34 +37,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
-                <h3>Room Description <i class="fa faident"></i></h3>
-                <br>
-                <p>Unstoppable Artists founder Dr. Monroe Mann knows the ins and outs of psychology, education, and writing--from screenplays, poems, and novels to songwriting, non-fiction, and memoirs! If you want to write a novel, write an essay, write a screenplay, or just learn </p>
-            <div class="paragraph">
-                <p>Rs.{{room.price}}</p>
-            </div>
-            <div class="paragraph">
-                <p>Location:{{room.address}}</p>
-            </div>
-            <div class="paragraph"> 
-                <p>No of Room:{{room.numberOfRoom}}</p>
-            </div>
-            <div class="btnn">
-                <button class="i3" routerLink="">Book  </button>
-                <button class="i3" routerLink="">Add to Cart  </button>
-    
-            </div>
-            
-    
-         </div>
+           
      </div>
      </div>
-    </div> -->
+    </div>
+ -->
 
 
-
-    <!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <div *ngIf="loading">
     <app-loader></app-loader>
 </div>
@@ -72,7 +52,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./home.component.css">
+    <!-- <link rel="stylesheet" href="./home.component.css"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@200&display=swap"
         rel="stylesheet">
@@ -81,36 +61,84 @@
 </head>
 
 <body *ngIf="!loading">
+    <div id="content-wrapper">
 
-    <div class="room-detail">
-        <div class="container">
-            <div class="room-detail-left">
-                <div class="sp-loading">
-                    <img src="/src/assets/room_img/loading.gif">
-                    loading Images
-                </div>
-                <div class="sp-wrap">
-                    <a href="/src/assets/room_img/1.jpg" ><img src="/src/assets/room_img/1.jpg"></a>
-                    <a href="/src/assets/room_img/1.jpg" ><img src="/src/assets/room_img/1.jpg"></a>
-                    <a href="/src/assets/room_img/1.jpg" ><img src="/src/assets/room_img/1.jpg"></a>
+    <div class="col-2">
 
-                </div>
+        <img id=featured src="./../../../assets/room_img/1.jpg" alt="">
+
+        <div id='slide-wrapper'>
+            <div class="arrow">
+                <i class="fa fa-caret-square-o-left" style="font-size: 40px"></i>
+
             </div>
-            <div class="room-detail-right"></div>
-            <h3>Description</h3>
-            <div class="roomViewBoxDetail">
-                <h5><b>Price :</b> Rs.{{room.price}}</h5>
-                <h5><b>Location :</b>{{room.address}}</h5>
-                <h5><b>No of Room:</b>{{room.numberOfRoom}}</h5>
-                <a href="#" class="addToCart" ><i class="fas fa-heart"></i>Add To cart</a>
-                <a href="#" class="book" ><i class="fas fa-heart"></i>Book</a>
 
+            <div id=slider>
+
+                <img class="thumbnail active" src="./../../../assets/room_img/1.jpg" alt="">
+                <img class="thumbnail" src="./../../../assets/room_img/3.jpg" alt="">
+                <img class="thumbnail" src="./../../../assets/room_img/4.jpg" alt="">
+                <img class="thumbnail" src="./../../../assets/room_img/5.jpg" alt="">
+                <img class="thumbnail" src="./../../../assets/room_img/2.jpg" alt="">
+            </div>
+            <div class="arrow">
+
+                <i class="fa fa-caret-square-o-right" style="font-size: 40px"></i>
             </div>
 
         </div>
-
     </div>
+        <div class="col-2">
+            <h3>Room Description <i class="fa faident"></i></h3>
+            <br>
+            <p>Unstoppable Artists founder Dr. Monroe Mann knows the ins and outs of psychology, education, and writing--from screenplays, poems, and novels to songwriting, non-fiction, and memoirs! If you want to write a novel, write an essay, write a screenplay, or just learn </p>
+        <div class="paragraph">
+            <p>Rs.{{room.price}}</p>
+        </div>
+        <div class="paragraph">
+            <p>Location:{{room.address}}</p>
+        </div>
+        <div class="paragraph"> 
+            <p>No of Room:{{room.numberOfRoom}}</p>
+        </div>
+        <div class="btnn">
+            <button class="i3" routerLink="">Book  </button>
+            <button class="i3" routerLink="">Add to Cart  </button>
 
+        </div>
+        
+
+     </div>
+</div>
+
+
+    <script>
+        let thumbnails = document.getElementsByClassName('thumbnails')
+        let activeImages = document.getElementsByClassName('active')
+        for (var i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].addEventListener('mouseover', function () {
+                if ('activeImages > 0') {
+                    activeImages[0].classList.remove('active')
+                }
+                this.classList.add('active')
+                document.getElementById('featured').src = this.src
+            })
+
+
+        }
+
+        let buttonRignt = document.getElementById("slideRignt")
+        let buttonLeft = document.getElementById("slideLeft")
+
+        buttonRignt.addEventListener("click", function () {
+            document.getElementById('slider').scrollright -= 180
+        })
+        buttonLeft.addEventListener("click", function () {
+            document.getElementById('slider').scrollleft += 180
+        })
+
+    </script>
 
 </body>
-</html> -->
+
+</html>
