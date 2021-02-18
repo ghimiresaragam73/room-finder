@@ -12,7 +12,8 @@ const authenticate = require('./middleware/authenticate');
 const authRoutes = require('./controllers/auth.routes');
 const userRoutes = require('./controllers/user.routes');
 const roomRoutes = require('./controllers/room.routes');
-
+const cartRoutes = require('./controllers/cart.routes');
+const bookingRoutes = require('./controllers/booking.routes');
 
 express.use(bodyParser.urlencoded({ extended: false }));
 express.use(bodyParser.json());
@@ -24,7 +25,9 @@ express.use('/files/images', app.static(path.join(__dirname, 'files/images')));
 
 express.use('/auth', authRoutes);
 express.use('/user', authenticate, userRoutes);
-express.use('/room', roomRoutes)
+express.use('/room', roomRoutes);
+express.use('/cart', authenticate, cartRoutes);
+express.use('/book', authenticate, bookingRoutes);
 
 express.use((req, res, next) => {
     next({
@@ -47,7 +50,7 @@ express.use((err, req, res, next) => {
 //         console.log('Connection listening at ', config.port);
 //     }
 // })
- express.listen(config.port, (err, done) => {
+express.listen(config.port, (err, done) => {
     if (err) {
         console.log('Server Connection Failed');
     } else {

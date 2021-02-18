@@ -88,10 +88,10 @@
 
     <section>
         <div class="box">
-            <h2 class="title"><a routerLink="/room/list"> Premium Rooms</a></h2>
+            <h2 class="title"><a routerLink="/room/list" [queryParams]="{premium:true}"> Premium Rooms</a></h2>
             <div class="small-container1">
 
-                <div *ngFor="let room of rooms" class="row1">
+                <div *ngFor="let room of premium" class="row1">
                     <div class="col-41" (click)="onClick(room._id)">
                         <div *ngIf="room.image">
                             <div>
@@ -114,8 +114,9 @@
 
             </div>
             <div class="input-B">
-                <button class="input-bt" routerLink="/room/list">View All Premium Rooms...</button>
-            </div>      
+                <button class="input-bt" routerLink="/room/list" [queryParams]="{premium:true}">View All Premium
+                    Rooms...</button>
+            </div>
         </div>
     </section>
     <!-- urgent roomes -->
@@ -123,10 +124,10 @@
 
     <section>
         <div class="box">
-            <h2 class="title"><a routerLink="/room/list"> Urgent Rooms</a></h2>
+            <h2 class="title"><a routerLink="/room/list" [queryParams]="{urgent:true}"> Urgent Rooms</a></h2>
             <div class="small-container1">
 
-                <div *ngFor="let room of rooms" class="row1">
+                <div *ngFor="let room of urgent" class="row1">
                     <div class="col-41" (click)="onClick(room._id)">
                         <div *ngIf="room.image">
                             <div>
@@ -149,8 +150,9 @@
 
             </div>
             <div class="input-B">
-                <button class="input-bt" routerLink="/room/list">View All Urgent Rooms...</button>
-            </div>      
+                <button class="input-bt" routerLink="/room/list" [queryParams]="{urgent:true}">View All Urgent
+                    Rooms...</button>
+            </div>
         </div>
     </section>
 
@@ -158,10 +160,10 @@
 
     <section>
         <div class="box">
-            <h2 class="title"><a routerLink="/room/list"> Newly Listed Rooms</a></h2>
+            <h2 class="title"><a routerLink="/room/list" [queryParams]="{normal:true}"> Newly Listed Rooms</a></h2>
             <div class="small-container1">
 
-                <div *ngFor="let room of rooms" class="row1">
+                <div *ngFor="let room of normal" class="row1">
                     <div class="col-41" (click)="onClick(room._id)">
                         <div *ngIf="room.image">
                             <div>
@@ -185,8 +187,9 @@
 
             </div>
             <div class="input-B">
-                <button class="input-bt" routerLink="/room/list">View All Newly Listed Rooms...</button>
-            </div>      
+                <button class="input-bt" routerLink="/room/list" [queryParams]="{normal:true}">View All Newly Listed
+                    Rooms...</button>
+            </div>
         </div>
     </section>
 
@@ -222,7 +225,7 @@
             </div>
             <div class="input-B">
                 <button class="input-bt" routerLink="/room/list">View All Recommended Rooms...</button>
-            </div>      
+            </div>
         </div>
     </section>
 

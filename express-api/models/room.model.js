@@ -1,4 +1,3 @@
-const { string } = require('joi');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -9,9 +8,9 @@ var roomSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
-    categories:{
-    type:String,
-    enum:['premium','urgent','normal']
+    categories: {
+        type: String,
+        enum: ['premium', 'urgent', 'normal']
     },
     numberOfRoom: Number,
     carParking: {
@@ -23,7 +22,6 @@ var roomSchema = new Schema({
         default: false
     },
     address: String,
-
     description: String
 }, {
     timestamps: true
