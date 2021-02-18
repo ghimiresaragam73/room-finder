@@ -8,6 +8,7 @@ export class Room {
     address: string;
     minPrice: number;
     maxPrice: number;
+    description:string;
     constructor(details: any) {
         this.price = details.price || '';
         this.image = details.image;
@@ -18,5 +19,6 @@ export class Room {
         this.minPrice = details.minPrice;
         this.maxPrice = details.maxPrice;
         this.categories=details.categories ||'';
+        this.description=details.description || '';
     }
 }

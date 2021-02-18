@@ -13,6 +13,13 @@
                 required field*
             </div>
             <br>
+            <label for="description"> Description</label><br>
+            <input type="text" class="color" id="description" [(ngModel)]="room.description" name="description"
+                placeholder="Enter the Description" required #description="ngModel">
+            <div class="danger" [hidden]="description.valid || description.pristine">
+                required field*
+            </div>
+            <br>
 
             <label for="categories"> categories</label><br>
             <input type="text" class="color" id="categories" [(ngModel)]="room.categories" name="categories"

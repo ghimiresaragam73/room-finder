@@ -22,7 +22,9 @@ var roomSchema = new Schema({
         type: Boolean,
         default: false
     },
-    address: String
+    address: String,
+
+    description: String
 }, {
     timestamps: true
 })
