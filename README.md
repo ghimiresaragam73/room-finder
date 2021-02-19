@@ -18,4 +18,4 @@
 
 > install angular and set environment path
 
->npm start
+>ng serve
