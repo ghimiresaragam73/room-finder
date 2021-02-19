@@ -2,14 +2,14 @@
 
 ## To run backend api.
 
-### >cd express-api/
+ >cd express-api/
 
-### >npm start
+>npm start
 
 
 
 ## To open frontend
 
-### >cd angula-api/room-finder
+>cd angula-api/room-finder
 
-### >npm start
+>npm start
