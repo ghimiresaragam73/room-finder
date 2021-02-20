@@ -13,10 +13,10 @@
         </div>
         <br>
 
-        <label for="category" >Category</label>
+        <label for="category">Category</label>
         <select type="text" id="category" class="form-control && color" [(ngModel)]="room.category" name="category"
-             required #category="ngModel">
-             <option value="" disabled selected>Choose the Category as per require</option>
+            required #category="ngModel">
+            <option value="" disabled selected>Choose the Category as per require</option>
             <option value="premium">Premium</option>
             <option value="urgent">Urgent</option>
             <option value="normal">Normal</option>
@@ -42,71 +42,30 @@
         </div>
         <br>
 
+        <label for="description">Description About Room</label>
+        <textarea type="text" class="form-control && color" rows="6" cols="60" name="description"
+            placeholder="Enter the description about rooms(Such as water facility, electricity, wifi, soon..)" form="usrform" [(ngModel)]="room.description" required
+            #description="ngModel"></textarea>
+        <div class="danger" [hidden]="description.valid || description.pristine">
+            required field*
+        </div>
+        <br>
+
         <label for="car">Car Parking </label>
-        <input type="radio" id="car" class="genwidth" value="car" [(ngModel)]="room.car" name="car"><br>
+        <input type="checkbox" id="car" class="genwidth" value="car" [(ngModel)]="room.car" name="car"><br>
         <br>
 
         <label for="bike">Bike Parking</label>
-        <input type="radio" id="bike" class="genwidth" value="bike" [(ngModel)]="room.bike" name="bike"><br>
+        <input type="checkbox" id="bike" class="genwidth" value="bike" [(ngModel)]="room.bike" name="bike"><br>
         <br>
+
+
 
         <label for="photo">
             Select Photo(Maximum 3 photos)</label> <br>
         <input type="file" id="myFile" [(ngModel)]="room.photo" name="img" multiple><br><br>
 
-        <button [disabled]="addRoom.invalid" class="btn btn-primary &&  button && color" (click)="submit()">Save
+        <button [disabled]="addRoom.invalid" class="btn btn-primary &&  button " (click)="submit()">Save
             Room</button>
     </form>
 </div>
-
-
-<!-- <main>
-    <div id="container">
-        <form #addRoom="ngForm" class="form-group && container && color">
-            <h3>
-                Add Room
-            </h3>
-            <br>
-
-            <label for="address"> Address</label><br>
-            <input type="text" class="color" id="address" [(ngModel)]="room.address" name="address"
-                placeholder="Enter the exact location" required #address="ngModel">
-            <div class="danger" [hidden]="address.valid || address.pristine">
-                required field*
-            </div>
-            <br>
-
-            <label for="categories"> categories</label><br>
-            <input type="text" class="color" id="categories" [(ngModel)]="room.categories" name="categories"
-                placeholder="Enter the exact location" required #categories="ngModel">
-            <div class="danger" [hidden]="categories.valid || categories.pristine">
-                required field*
-            </div>
-            <br>
-            
-            <label for="price"> Price</label><br>
-            <input type="number" class="color" id="price" [(ngModel)]="room.price" name="price"
-                placeholder="Price is in rupees" required #price="ngModel">
-            <div class="danger" [hidden]="price.valid || price.pristine">
-                required field*
-            </div>
-            <br>
-            
-            <label for="numberOfRoom">Number Of Room</label><br>
-            <input type="number" class="color" id="numberOfRoom" [(ngModel)]="room.numberOfRoom" name="numberOfRoom"
-                placeholder="Enter the number of rooms" required #numberOfRoom="ngModel">
-            <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">
-                required field*
-            </div>
-            <br>Car Parking <input class="color" type="checkbox" (change)="carParkingChanged()">
-            <br> Bike Parking <input class="color" type="checkbox" (change)="bikeParkingChanged()">
-            <br>
-
-            <label for="image">Choose Image</label><br>
-            <input class="color" type="file" name="image" (change)=fileChanged($event) multiple>
-
-            <button [disabled]="addRoom.invalid" class="Button && wide" (click)="submit()">Save Room</button>
-        </form>
-    </div>
-</main> -->
-

@@ -95,6 +95,7 @@ router.route('/:id')
                         if (err) {
                             return next(err);
                         }
+                        console.log('this.save>>>',saved)
                         res.json(saved);
                     })
                 }
