@@ -8,7 +8,7 @@ export class Room {
     address: string;
     minPrice: number;
     maxPrice: number;
-    description: string;
+    description:string;
     constructor(details: any) {
         this.price = details.price || '';
         this.image = details.image;
