@@ -1,4 +1,82 @@
-<div *ngIf="loading">
+<div id="container">
+    <form #addRoom="ngForm" class="form-group && center && contain" novalidate>
+        <h3>
+            Update Room
+        </h3>
+        <br>
+
+        <label for="address">Address</label>
+        <input type="text" class="form-control && color" id="address" [(ngModel)]="room.address" name="address"
+            placeholder="Enter the exact location" required #address="ngModel">
+        <div class="danger" [hidden]="address.valid || address.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="category">Category</label>
+        <select type="text" id="category" class="form-control && color" [(ngModel)]="room.category" name="category"
+            required #category="ngModel">
+            <option value="" disabled selected>Choose the Category as per require</option>
+            <option value="premium">Premium</option>
+            <option value="urgent">Urgent</option>
+            <option value="normal">Normal</option>
+        </select>
+        <div class="danger" [hidden]="category.valid || category.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="price">Price</label>
+        <input type="number" class="form-control && color" id="price" [(ngModel)]="room.price" name="price"
+            placeholder="Price is in rupees" required #price="ngModel">
+        <div class="danger" [hidden]="price.valid || price.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="noroom">Number Of Room</label>
+        <input type="number" class="form-control && color" id="noroom" [(ngModel)]="room.noroom" name="noroom"
+            placeholder="Enter the number of rooms" required #noroom="ngModel">
+        <div class="danger" [hidden]="noroom.valid || noroom.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="description">Description About Room</label>
+        <textarea type="text" class="form-control && color" rows="6" cols="60" name="description"
+            placeholder="Enter the description about rooms(Such as water facility, electricity, wifi, soon..)"
+            form="usrform" [(ngModel)]="room.description" required #description="ngModel"></textarea>
+        <div class="danger" [hidden]="description.valid || description.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="carParking">Car Parking </label>
+        <input type="checkbox" id="carParking" class="genwidth" value="carParking" [(ngModel)]="room.carParking"
+            name="carParking"><br>
+        <br>
+
+        <label for="bikeParking">bikeParking Parking</label>
+        <input type="checkbox" id="bikeParking" class="genwidth" value="bikeParking" [(ngModel)]="room.bikeParking"
+            name="bikeParking"><br>
+        <br>
+
+
+
+        <label for="photo">
+            Select Photo(Maximum 3 photos)</label> <br>
+        <input type="file" id="myFile" [(ngModel)]="room.photo" name="img" multiple><br><br>
+
+        <button [disabled]="addRoom.invalid" class="btn btn-primary &&  button " (click)="submit()">
+            Update Room</button>
+    </form>
+</div>
+
+
+
+
+
+<!-- <div *ngIf="loading">
     <app-loader></app-loader>
 </div>
 
@@ -37,53 +115,4 @@
             <button [disabled]="addRoom.invalid" class="Button && wide" (click)="submit()">Save Room</button>
         </form>
     </div>
-</main>
-
-
-<!-- <div *ngIf="!loading">
-<form #addRoom="ngForm" class="form-group && container" >
-    <h3>
-        Update Room
-    </h3>
-    <br>
-    <label for="address"> Address</label>
-    <input type="text" class="form-control && wide" id="address" [(ngModel)]="room.address" name="address"
-        placeholder="Enter the exact location" required #address="ngModel">
-    <div class="danger" [hidden]="address.valid || address.pristine">
-        required field*
-    </div>
-    <label for="price"> Price</label>
-    <input type="number" class="form-control && wide" id="price" [(ngModel)]="room.price" name="price"
-        placeholder="Price is in rupees" required #price="ngModel">
-    <div class="danger" [hidden]="price.valid || price.pristine">
-        required field*
-    </div>
-    <label for="numberOfRoom">Number Of Room</label>
-    <input type="number" class="form-control && wide" id="numberOfRoom" [(ngModel)]="room.numberOfRoom"
-        name="numberOfRoom" placeholder="Enter the number of rooms" required #numberOfRoom="ngModel">
-    <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">
-        required field*
-    </div>
-    Car Parking <input class="genwidth" type="checkbox" (change)="carParkingChanged()">
-    <br> Bike Parking <input class="genwidth" type="checkbox" (change)="bikeParkingChanged()">
-    <br> -->
-    <!--  <label for="car">Car Parking </label>
-    <input type="radio" id="car" class="genwidth" value="car" [(ngModel)]="room.car" name="car"><br>
-    <label for="bike">Bike Parking</label>
-    <input type="radio" id="bike" class="genwidth" value="bike" [(ngModel)]="room.bike" name="bike"><br> -->
-
-    <!-- <label for="image">Choose Image</label>
-    <input class="form-control" type="file" name="image" (change)=fileChanged($event) multiple> -->
-
- <!--    <label for="image">Choose Image</label>
-    <input class="form-control" type="file" name="image" (change)=fileChanged($event) multiple> -->
-
-    <!-- 
-    <label for="image">
-        Select Photo</label> <br>
-    <input type="file" id="myFile" [(ngModel)]="room.photo" name="img" multiple><br><br>
- -->
-   <!--  <button [disabled]="addRoom.invalid" class="btn btn-primary &&  roomButton && wide" (click)="submit()">Save
-        Room</button>
-</form>
-</div> -->
+</main> -->
