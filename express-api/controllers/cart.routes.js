@@ -3,6 +3,16 @@ const router = require('express').Router();
 const roomModel = require('../models/room.model');
 const userModel = require('./../models/user.model');
 
+router.route('/')
+.get(async (req, res, next) => {
+    let carts = [];
+    req.loggedInUser.cart.forEach((cart) => {
+        let p = roomModel.find({ _id: cart });
+        carts.push(p);
+    })
+    const data = await Promise.all(carts);
+    res.json(data);
+})
 
 router.route('/:id')
     /* Add to cart */
@@ -21,16 +31,6 @@ router.route('/:id')
                     res.json(saved);
                 })
             })
-    })
-    /* Get all cart from user */
-    .get(async (req, res, next) => {
-        let carts = [];
-        req.loggedInUser.cart.forEach((cart) => {
-            let p = roomModel.find({ _id: cart });
-            carts.push(p);
-        })
-        const data = await Promise.all(carts);
-        res.json(data);
     })
     .put((req, res, next) => {
         userModel.findById(req.loggedInUser._id)

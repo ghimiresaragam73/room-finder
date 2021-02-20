@@ -13,6 +13,7 @@
         </div>
         <br>
 
+
         <label for="categories">categories</label>
         <select type="text" id="categories" class="form-control && color" [(ngModel)]="room.categories"
             name="categories" required #categories="ngModel">
@@ -38,6 +39,14 @@
         <input type="number" class="form-control && color" id="numberOfRoom" [(ngModel)]="room.numberOfRoom"
             name="numberOfRoom" placeholder="Enter the number of rooms" required #numberOfRoom="ngModel">
         <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">
+            required field*
+        </div>
+        <br>
+
+        <label for="description">Description</label>
+        <input type="text" class="form-control && color" id="description" [(ngModel)]="room.description" name="description"
+            placeholder="Enter the Description" required #description="ngModel">
+        <div class="danger" [hidden]="description.valid || description.pristine">
             required field*
         </div>
         <br>
@@ -68,7 +77,7 @@
             </h3>
             <br>
 
-            <label for="address"> Address</label><br>
+            <label for="description"> Address</label><br>
             <input type="text" class="color" id="address" [(ngModel)]="room.address" name="address"
                 placeholder="Enter the exact location" required #address="ngModel">
             <div class="danger" [hidden]="address.valid || address.pristine">

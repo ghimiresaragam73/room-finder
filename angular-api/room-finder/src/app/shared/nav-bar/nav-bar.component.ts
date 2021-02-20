@@ -35,4 +35,7 @@ export class NavBarComponent implements OnInit {
     this.msgService.showSuccess('Logout Success');
     localStorage.clear();
   }
+  // cart(){
+  //   this.router.navigate(['cart'])
+  // }
 }

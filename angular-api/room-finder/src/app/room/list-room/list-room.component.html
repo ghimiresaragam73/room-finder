@@ -9,26 +9,41 @@
 
 
 <div *ngIf="!loading" class="small-container1" >
-    <div *ngFor="let room of rooms" class="row1">
-        <div class="col-41" (click)="roomDashboard(room._id)">
-            <div *ngIf="room.image">
-
-               
-                <div>
-                    <img src="{{imageUrl}}{{room.image[0]}}" alt="" width="200">
+    <!-- <div *ngFor='let room of rooms | splice:(page1 * pageSize :page * pageSize' > -->
+             <div *ngFor="let room of rooms" class="row1">
+            <div class="col-41" (click)="roomDashboard(room._id)">
+                <div *ngIf="room.image">
+    
+    
+                    <div>
+                        <img src="{{imageUrl}}{{room.image[0]}}" alt="" width="200">
+                    </div>
                 </div>
+                <div class=" contain">
+                    <p>Address: {{room.address}}</p> 
+                 </div>
+                 <br>
+                <div class=" contain">
+                    <p>Room available: {{room.numberOfRoom}}</p>
+                </div>
+                <br>
+                <div class=" contain">
+                   <p>Price: <span>Rs.</span>{{room.price}}</p> 
+                </div>
+              
+               
             </div>
-            <div class=" contain">
-                <p>Room available: {{room.numberOfRoom}}</p>
-            </div>
-            <div class=" contain">
-               <p>Price: <span>Rs.</span>{{room.price}}</p> 
-            </div>
-            <div class=" contain">
-               <p>Address: {{room.address}}</p> 
-            </div>
-           
         </div>
-    </div>
+        <!-- <div>
+            <ngb-pagination
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="items.length"></ngb-pagination>
+
+        </div> -->
+    <!-- </div> -->
+   
 </div>
+  
+
 <app-footer></app-footer>
