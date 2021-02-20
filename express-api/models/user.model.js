@@ -29,7 +29,10 @@ var userSchema = new Schema({
         type: String,
         enum: ['male', 'female', 'others']
     },
-    image: String,
+    image: {
+        type: String,
+        default: undefined
+    },
     role: {
         type: String,
         enum: ['admin', 'landlord', 'renter'],

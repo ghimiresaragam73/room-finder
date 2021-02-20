@@ -13,7 +13,7 @@ export class Room {
         this.price = details.price || '';
         this.image = details.image;
         this.numberOfRoom = details.numberOfRoom || '';
-        this.carParking = details.carParkings;
+        this.carParking = details.carParking;
         this.bikeParking = details.bikeParking;
         this.address = details.address || '';
         this.minPrice = details.minPrice;

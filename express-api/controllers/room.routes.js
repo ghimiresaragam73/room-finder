@@ -58,6 +58,7 @@ router.route('/')
     .post(authenticate, upload.array('img', 3), (req, res, next) => {
         var newRoom = new roomModel({});
         newRoom = roomHelp(req.body, newRoom);
+        console.log('req.body', req.body);
         newRoom.user = req.loggedInUser._id;
         if (req.files) {
             console.log('req.files>>>>', req.files);

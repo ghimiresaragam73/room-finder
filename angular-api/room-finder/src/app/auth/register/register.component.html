@@ -50,6 +50,11 @@
             #phone="ngModel">
         <br>
 
+        <label for="dob">Date Of Birth</label>
+        <input type="date" class="form-control && color" [(ngModel)]="user.dob" name="dob" required
+            #dob="ngModel">
+        <br>
+
         <label for="gender">Gender</label>
         <input type="radio" id="male" class="genwidth" value="male" [(ngModel)]="user.gender" name="male">
         <label for="male">Male</label>
@@ -59,7 +64,7 @@
         <label for="other">Other</label>
         <br><br>
 
-        <button [disabled]="registerForm.invalid" class="btn btn-primary && button && color"
+        <button [disabled]="registerForm.invalid" class="btn btn-primary &&  button"
             (click)="register()">Register</button>
         <br><br>
 
