@@ -11,6 +11,8 @@ module.exports = (req, room) => {
         room.address = req.address;
     if (req.categories)
         room.categories = req.categories;
+    if (req.description)
+        room.description = req.description;
 
     return room;
 }

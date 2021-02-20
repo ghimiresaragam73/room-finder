@@ -13,15 +13,16 @@
         </div>
         <br>
 
-        <label for="category">Category</label>
-        <select type="text" id="category" class="form-control && color" [(ngModel)]="room.category" name="category"
-            required #category="ngModel">
-            <option value="" disabled selected>Choose the Category as per require</option>
+
+        <label for="categories">categories</label>
+        <select type="text" id="categories" class="form-control && color" [(ngModel)]="room.categories"
+            name="categories" required #categories="ngModel">
+            <option value="" disabled selected>Choose the categories as per require</option>
             <option value="premium">Premium</option>
             <option value="urgent">Urgent</option>
             <option value="normal">Normal</option>
         </select>
-        <div class="danger" [hidden]="category.valid || category.pristine">
+        <div class="danger" [hidden]="categories.valid || categories.pristine">
             required field*
         </div>
         <br>
@@ -34,10 +35,10 @@
         </div>
         <br>
 
-        <label for="noroom">Number Of Room</label>
-        <input type="number" class="form-control && color" id="noroom" [(ngModel)]="room.noroom" name="noroom"
-            placeholder="Enter the number of rooms" required #noroom="ngModel">
-        <div class="danger" [hidden]="noroom.valid || noroom.pristine">
+        <label for="numberOfRoom">Number Of Room</label>
+        <input type="number" class="form-control && color" id="numberOfRoom" [(ngModel)]="room.numberOfRoom"
+            name="numberOfRoom" placeholder="Enter the number of rooms" required #numberOfRoom="ngModel">
+        <div class="danger" [hidden]="numberOfRoom.valid || numberOfRoom.pristine">
             required field*
         </div>
         <br>
@@ -51,6 +52,7 @@
         </div>
         <br>
 
+
         <label for="car">Car Parking </label>
         <input type="checkbox" id="car" class="genwidth" value="car" [(ngModel)]="room.car" name="car"><br>
         <br>
@@ -61,11 +63,11 @@
 
 
 
-        <label for="photo">
-            Select Photo(Maximum 3 photos)</label> <br>
-        <input type="file" id="myFile" [(ngModel)]="room.photo" name="img" multiple><br><br>
+        <label for="image">
+            Select Photo(Maximum 3 images)</label> <br>
+        <input type="file" class="form-control" name="image" (change)=fileChanged($event) multiple>
+
 
         <button [disabled]="addRoom.invalid" class="btn btn-primary &&  button " (click)="submit()">Save
             Room</button>
     </form>
-</div>

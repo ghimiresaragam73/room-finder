@@ -38,5 +38,21 @@ export class RoomDashbordComponent implements OnInit {
       this.loading = false;
     }
   }
+  hoverImage(){
 
+    let thumbnails= document.getElementsByClassName('thumbnails')
+    let activeImages = document.getElementsByClassName('active')
+      for(var i=0; i< thumbnails.length;i++){
+        thumbnails[i].addEventListener('mouseover',function(){
+          if('activeImages > 0'){
+            activeImages[0].classList.remove('active')
+          }
+          this.classList.add('active')
+          document.getElementById('featured').id=this.id
+        })
+
+        
+      }
+  }
 }
+
