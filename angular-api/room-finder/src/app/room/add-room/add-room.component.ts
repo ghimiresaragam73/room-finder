@@ -36,8 +36,8 @@ export class AddRoomComponent implements OnInit {
 
   submit() {
     this.submitting = true;
-    this.room.carParking = this.parking.car;
-    this.room.bikeParking = this.parking.bike;
+ /*    this.room.carParking = this.parking.car;
+    this.room.bikeParking = this.parking.bike; */
     this.uploadService.upload(this.room, this.filesToUpload, "POST", this.url)
       .subscribe(
         data => {
