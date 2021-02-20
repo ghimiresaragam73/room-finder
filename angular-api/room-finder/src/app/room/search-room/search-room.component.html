@@ -1,4 +1,4 @@
-    <div id="container">
+    <div id="container" *ngIf="!result">
         <form #searchForm="ngForm" class="form-group && center && contain">
             <h3>
                 Search Room
@@ -15,7 +15,7 @@
             
             <label for="maxprice">Maxmium Price</label>
             <input type="number" class="form-control && color" id="maxprice" [(ngModel)]="room.maxprice" name="maxprice"
-                placeholder="Enter the maximum price of room" required #maxprice="ngModel">
+                placeholder="Enter the maximum price of room" #maxprice="ngModel">
             <div class="danger" [hidden]="maxprice.valid || maxprice.pristine">
                 required field*
             </div>
@@ -23,7 +23,7 @@
             
             <label for="minprice">Minimum Price</label>
             <input type="number" class="form-control && color" id="minprice" [(ngModel)]="room.minprice" name="minprice"
-                placeholder="Enter the minimum price of room" required #minprice="ngModel">
+                placeholder="Enter the minimum price of room" #minprice="ngModel">
             <div class="danger" [hidden]="minprice.valid || minprice.pristine">
                 required field*
             </div>

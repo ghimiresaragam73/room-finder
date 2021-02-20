@@ -57,6 +57,10 @@
         <div class="paragraph"> 
             <p>No of Room:{{room.numberOfRoom}}</p>
         </div>
+        <div>Parking
+            <div *ngIf="room.carParking">Car ko photo</div>
+            <div *ngIf="room.bikeParking">Bike ko photo</div>
+        </div>
         <div class="btnn">
             <button class="i3" routerLink="">Book  </button>
             <button class="i3" routerLink="">Add to Cart  </button>
