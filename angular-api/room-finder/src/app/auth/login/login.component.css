@@ -2,7 +2,7 @@
 .center {
   background: inherit;
   width: 250px;
-  height: 420px;
+  /* height: 420px; */
   position: absolute;
   left: 480px;
   top: 200px;
