@@ -8,12 +8,12 @@ export class Room {
     address: string;
     minPrice: number;
     maxPrice: number;
-    description: string;
+    description:string;
     constructor(details: any) {
         this.price = details.price || '';
         this.image = details.image;
         this.numberOfRoom = details.numberOfRoom || '';
-        this.carParking = details.carParkings;
+        this.carParking = details.carParking;
         this.bikeParking = details.bikeParking;
         this.address = details.address || '';
         this.minPrice = details.minPrice;

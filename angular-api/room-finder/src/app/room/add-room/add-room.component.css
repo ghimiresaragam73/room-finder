@@ -1,10 +1,10 @@
 .center {
   background: inherit;
   width: 400px;
-  height: 704px;
+  /* height: 895px; */
   position: absolute;
   left: 430px;
-  top: 150px;
+  /* top: 150px; */
   width: 550px;
 }
 .contain {

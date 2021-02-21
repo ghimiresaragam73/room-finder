@@ -41,11 +41,9 @@ router.route('/:id')
                     if (user.cart[i] == req.params.id)
                         user.cart.splice(i, 1);
                 }
-                console.log(user.cart);
                 user.save((err, saved) => {
                     if (err)
                         return next(err)
-                    console.log('yaha aayo')
                     res.send(saved);
                 });
             })
