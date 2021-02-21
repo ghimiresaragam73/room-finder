@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app.routing';
 import { UserModule } from './user/user.module';
 import { RoomModule } from './room/room.module';
 import { MainModule } from './main/main.module';
+import { CartModule } from './cart/cart.module';
+// import {AgmCoreModule} from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,11 @@ import { MainModule } from './main/main.module';
     SharedModule,
     AppRoutingModule,
     MainModule,
+    CartModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey:'GOOGLE API KEY',
+    //   libraries:['places']
+    // }),
     ToastrModule.forRoot()
   ],
   providers: [],

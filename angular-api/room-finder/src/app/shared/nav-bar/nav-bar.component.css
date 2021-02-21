@@ -24,3 +24,8 @@
  li a:hover:not(.active) {
     background-color: #111;
  } */
+
+
+ .cart{
+    margin-right: 20px;
+ }

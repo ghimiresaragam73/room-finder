@@ -28,14 +28,13 @@ export class UpdateRoomComponent implements OnInit {
     this.id = this.activeRouter.snapshot.params['id'];
     this.url = environment.baseUrl + '/room'
   }
-
   ngOnInit(): void {
     if (!this.room) {
       this.roomService.getById(this.id)
         .subscribe(
           data => {
             this.room = data;
-            console.log('room...', this.room);
+            // console.log('room...', this.room);
             this.loading = false;
           }, err => {
             this.msgService.showError(err);

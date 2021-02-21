@@ -1,0 +1,15 @@
+.about{
+    margin-top: 125px;
+    margin:125px 30px 30px;
+}
+.about img{
+    height: 50px;
+    width: 50px;
+    /* display: flex;*/
+    float: right;
+}
+.about h3{
+    
+    font: 15px/1.5 Arial, Helvetica , sans-serif;
+
+}

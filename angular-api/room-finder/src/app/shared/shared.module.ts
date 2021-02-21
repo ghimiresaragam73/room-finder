@@ -7,7 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UploadService } from './services/upload.service';
 import { LoaderComponent } from './loader/loader.component';
 import { FooterComponent } from './footer/footer.component';
-import { SliderComponent } from './slider/slider.component';
+import{ExploreComponent} from './explore/explore.component';
 
 
 
@@ -17,7 +17,7 @@ import { SliderComponent } from './slider/slider.component';
     NavBarComponent,
     LoaderComponent,
     FooterComponent,
-    SliderComponent
+    ExploreComponent
   ],
   imports: [
     CommonModule,
@@ -26,8 +26,7 @@ import { SliderComponent } from './slider/slider.component';
   exports: [
     NavBarComponent,
     LoaderComponent,
-    // SliderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   providers: [
     MsgService,

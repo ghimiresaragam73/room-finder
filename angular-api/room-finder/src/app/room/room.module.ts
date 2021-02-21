@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomService } from './services/room.service';
 import { RoomDashbordComponent } from './room-dashbord/room-dashbord.component';
+// import { MapComponent } from './map/map.component';
+// import{NgxPaginationModule} from 'ngx-pagination'
+
 
 
 
@@ -19,7 +22,8 @@ import { RoomDashbordComponent } from './room-dashbord/room-dashbord.component';
     ListRoomComponent,
     SearchRoomComponent,
     UpdateRoomComponent,
-    RoomDashbordComponent
+    RoomDashbordComponent,
+    // MapComponent
   ],
   imports: [
     CommonModule,
