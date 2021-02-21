@@ -37,7 +37,7 @@ export class UploadService {
                 }
             }
             let url = `${URL}?token=${localStorage.getItem('token')}`;
-            if (httpVerb == "PUT") {
+            if (httpVerb == "PUT"){
                 url = `${URL}/${data._id}?token=${localStorage.getItem('token')}`;
                 console.log('this.url here', url);
             }

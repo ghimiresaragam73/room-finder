@@ -11,74 +11,64 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user;
+  userImage;
   view: boolean = true;
-  url: string;
-  userUrl: string;
+  data;
+  user;
+  loading: boolean = true;
   filesToUpload = [];
+  url;
   check: boolean = false;
-data;
-  submitting: boolean = false;
-  loading:boolean=true;
-  password: string;
-  passwordChanged: boolean = false;
   constructor(
     public msgService: MsgService,
     public router: Router,
     public userService: UserService,
-    public uploadSerice: UploadService
+    public uploadService: UploadService
 
   ) {
-    this.data = JSON.parse(localStorage.getItem('user'));
-    if (this.data.image != undefined) {
-      this.check = true;
-    }
     this.url = environment.baseUrl + '/user';
-    this.userUrl = environment.userImageUrl;
+    this.userImage = environment.userImageUrl;
   }
 
   ngOnInit(): void {
-    if(!this.user){
+    if (!this.user) {
+      this.data = JSON.parse(localStorage.getItem('user'));
       this.userService.getById(this.data._id)
-      .subscribe(
-        data=>{
-          this.user = data;
-          this.loading = false
-        },
-        err=>{
-          this.msgService.showError(err);
-        }
-      )
-    }else{
-      this.user = this.data;
-      this.loading= false;
+        .subscribe(
+          (data: any) => {
+            this.user = data;
+            if (data.image != undefined)
+              this.check = true;
+            this.loading = false;
+          }
+        )
+      this.loading = false;
+    } else {
+      this.loading = false;
     }
   }
 
   edit() {
-    this.submitting = true;
-    this.uploadSerice.upload(this.user, this.filesToUpload, "PUT", this.url)
-      // this.userService.edit(this.user._id, this.user)
-
-      // this.uploadService.upload(this.user, this.filesToUpload, "POST", this.url)
-
+    this.uploadService.upload(this.user,this.filesToUpload,"PUT",this.url)
       .subscribe(
-        (data: any) => {
-          this.msgService.showSuccess("Edit Successful");
-          console.log('....>>>>>>>', data)
-          localStorage.removeItem('user');
-          localStorage.setItem('user', JSON.stringify(data))
-          this.router.navigate(['/user/profile']);
-        },
-        err => {
-          this.msgService.showError(err);
+        (data:any) => {
+          this.msgService.showSuccess('Edit Success');
+          console.log('data>>>>>>>>>>', data);
+          if(data.image!=undefined)
+          this.check=true
+          this.viewChanged();
+        }, err => {
+          this.msgService.showError('err aayo');
         }
       )
-    this.viewChanged();
-    this.submitting = false;
   }
 
   viewChanged() {
     this.view = !this.view;
+this.router.navigate(['/user/profile/'+this.user._id])
+  }
+
+  fileChanged(ev) {
+    this.filesToUpload = ev.target.files;
   }
 }
