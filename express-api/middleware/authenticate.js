@@ -18,21 +18,22 @@ module.exports = (req, res, next) => {
                 return next(err);
             }
             userModel.findById(done.id)
-            .exec((err,user)=>{
-                if(err){
-                    return next(err);
-                }
-                if(user){
-                    req.loggedInUser = user;
-                    return next();
-                }else{
-                    return next({
-                        message:'User with token is removed from system'
-                    })
-                }
-            })
+                .exec((err, user) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    if (user) {
+                        req.loggedInUser = user;
+                        return next();
+                    } else {
+                        return next({
+                            message: 'User with token is removed from system'
+                        })
+                    }
+                })
         })
     } else {
+        console.log(req.headers);
         return next({
             message: 'Token not provided'
         })
