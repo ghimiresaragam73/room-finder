@@ -16,32 +16,32 @@
 }
 
 .button {
-  background-color: red;
+  background-color: #0921f8;;
   color: white;
   width: 100px;
   height: 40px;
   border-radius: 30px;
-  border-color: 2px red;
+  border-color: 2px #0921f8;;
 }
 
 .danger {
-  color: blue;
+  color: red;
 }
 
 .color {
-  border-color: 2px red;
+  border-color: 2px #0921f8;;
   border-radius: 12px;
 }
 
 .link {
-  color: red;
+  color: #0921f8;;
   background-color: transparent;
   text-decoration: none;
 }
 
 .genwidth {
   width: 30px;
-  color: red;
+  color: #0921f8;;
 }
 
 * {

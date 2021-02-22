@@ -2,24 +2,6 @@
     <app-list-room [searchData]="searchedData"></app-list-room>
 </div>
 
-<!-- <ul>
-    <li>
-        <a *ngIf="isLoggedIn()" routerLink="/user/profile">Profile</a>
-    </li>
-    <li>
-        <a *ngIf="isLoggedIn()" routerLink="/room/add">Add Room</a>
-    </li>
-    <li>
-        <a routerLink="/room/list">View Room</a>
-    </li>
-    <li>
-        <a routerLink="/room/search">Search Room</a>
-    </li>
-    <li>
-        <a *ngIf="isLoggedIn()" (click)="logOut()" routerLink="/auth/login">Logout</a>
-        <a *ngIf="!isLoggedIn()" routerLink="/auth/login">Login</a>
-    </li>
-</ul> -->
 <html>
 <div *ngIf="!isLoggedIn()">
     <header>
@@ -28,32 +10,17 @@
             <div class="logo">
 
                 <h1>
-                    <a routerLink="/home"> RoomF<span class="dot">.</span></a>
+                    <a routerLink="/home"> <img src="./../../../assets/main-logo/Room Finder (1).png"  class="logo" alt=""> </a>
                 </h1>
             </div>
 
-            <!-- <div class="header_search">
-                <form action="/room/list">
-                    <input type="text" placeholder="Search" name="address" [(ngModel)]="address" class="header_searchInput">
-                    <button class="btn2" type="submit" class="input-button"> <i class="fa fa-search"></i></button>
-                </form>
-            </div> -->
-
             <form action="/room/list">
                 <div class="header__search">
-                    <input type="text" placeholder="Search" name="address">
+                    <input type="text" class="search__headerInput" placeholder="Search" name="address" >
                     <button class="btn2" > <i class="fa fa-search"> </i>
                     </button>
                 </div>
             </form>
-
-<!--             <div class="header__search">
-                <form action="/room/list">
-                    <input type="text" name="address" [(ngModel)]="address" class="header__searchInput">
-                    <button class="btn2 && fa fa-search"> <!-- <i class="fa fa-search"> </i> 
-                    </button>
-                </form>
-            </div> -->
 
             <nav>
 
@@ -73,9 +40,9 @@
 
             <img src="./../../../assets/image logo/menu.png" class="menu">
 
-        </div>
-
         <!-- </div> -->
+
+        </div>
     </header>
 </div>
 
@@ -85,7 +52,7 @@
         <div class="logo" (click)="homeWent()">
 
             <h1>
-                <a routerLink='/home'>RoomF<span class="dot">.</span></a>
+                <a routerLink="/home"> <img src="./../../../assets/main-logo/Room Finder (1).png"  class="logo" alt=""> </a>
             </h1>
         </div>
         <nav>
@@ -119,29 +86,19 @@
         <div class="logo" (click)="homeWent()">
 
             <h1>
-                <a routerLink="/home"> RoomF<span class="dot">.</span></a>
+                <a routerLink="/home"> <img src="./../../../assets/main-logo/Room Finder (1).png"  class="logo" alt=""> </a>
             </h1>
         </div>
         <form action="/room/list">
             <div class="header__search">
-                <input type="text" placeholder="Search" name="address">
-                <button class="btn2"> <i class="fa fa-search"> </i>
+                <input type="text" class="search__headerInput" placeholder="Search" name="address" >
+                <button class="btn2" > <i class="fa fa-search"> </i>
                 </button>
             </div>
-        </form>
- 
-
-        <!-- div>
-            <form action="/room/list">
-                <input type="text" placeholder="Search" name="address" [(ngModel)]="address">
-                <button type="submit" class="input-button">Search</button>
-            </form>
-        </div> -->
-        
-        
+        </form>      
         <nav>
             <ul>
-                <li><a href="">notification</a></li>
+                <!-- <li><a href="">notification</a></li> -->
                 <li><a href="">order</a></li>
 
 

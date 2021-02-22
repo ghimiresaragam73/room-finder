@@ -24,41 +24,45 @@ body {
     position: fixed;
     width: 100%;
     background-color: rgb(250, 249, 249);
-    border-bottom: 1px solid rgb(248, 9, 9);
+    border-bottom: 1px solid #0921f8;
 }
 
 .logo {
-    margin-top: 15px;
-    object-fit: contain;
-    margin-left: 20px;
-    font-weight: 800;
-}
-
-.logo h1 {
-    font-size: 30px
-}
-
-.dot {
-    color: rgb(39, 202, 66);
-    font-weight: 800;
-}
-
-.header__search {
-    display: flex;
-    flex: 1;
-    margin-right: 10px;
+    height: 90px;
+    width: 70px;
     margin-left: 10px;
+ }
+ 
+ .logo h1 {
+     font-size: 30px
+ }
+.dot {
+    color: #0921f8;
+    font-weight: 800;
 }
+
+.navbar form{
+    
+        display: flex;
+        flex:1;
+        margin-right: 10px;
+        margin-left: 300px;
+    
+    
+    
+} 
+
 
 .header__searchInput {
     width: 100%;
+    
 }
 
 .btn {
-    background-color: rgb(248, 9, 9);
+    background-color: #0921f8;
     color: black;
     border-radius: 30px;
-    position: relative;
+    /* position: relative; */
     border: 1px solid #a9a9a9;
 }
 
@@ -70,7 +74,7 @@ body {
 .btn2 {
     display: inline-block;
     width: 30px;
-    background-color:rgb(248, 9, 9);
+    background-color:#0921f8;
     color: black;
     /* padding: 8px 30px; */
     /* margin: 30px 0; */
@@ -89,9 +93,10 @@ nav {
 }
 
 nav ul {
-    display: inline-block;
+    display: inline-block;   
     list-style-type: none;
     margin-top: 10px;
+
 }
 
 nav ul li {
@@ -179,7 +184,7 @@ a:hover {
 }
 
 .input-button {
-    background-color: rgb(248, 9, 9);
+    background-color: #0921f8;
     text-align: center;
     margin: 50px auto 80px;
 }
@@ -198,7 +203,7 @@ a:hover {
 }
 
 .input-bt {
-    background-color: rgb(248, 9, 9);
+    background-color: #0921f8;
     align-items: center;
 }
 
@@ -283,7 +288,7 @@ p {
 
 .i3 {
     display: inline-block;
-    background-color: rgb(248, 9, 9);
+    background-color: #0921f8;
     color: black;
     padding: 8px 30px;
     margin: 10px 0;
@@ -362,7 +367,7 @@ p {
 
 .title::after {
     content: '';
-    background: rgb(248, 9, 9);
+    background: #0921f8;
     width: 80px;
     height: 5px;
     border-radius: 5px;
