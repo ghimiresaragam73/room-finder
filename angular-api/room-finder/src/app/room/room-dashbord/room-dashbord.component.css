@@ -37,7 +37,7 @@ margin-top: 10px;
 }
 .i3{
 display: inline-block;
-background-color:red;
+background-color:#0921f8;;
 color:black;
 padding: 8px 30px;
 margin: 10px 0;
@@ -144,29 +144,29 @@ border: 2px solid black;
   }
   
   .button {
-    background-color: red;
+    background-color: #0921f8;;
     color: white;
     width: 100px;
     height: 40px;
     border-radius: 30px;
-    border-color: 2px red;
+    border-color: 2px #0921f8;;
   }
   .button:hover
   .danger{
-    color: blue;
+    color: red;
   }
   .color {
-    border-color: 2px red;
+    border-color: 2px #0921f8;;
     border-radius: 12px;
   }
   .link {
-    color: red;
+    color: #0921f8;;
     background-color: transparent;
     text-decoration: none;
   }
   .genwidth{
     width: 30px;
-    color: red;
+    color: #0921f8;;
   }
   
   
@@ -176,7 +176,7 @@ border: 2px solid black;
   }
   .seller-detail{
       display: flex;
-    background-color: red ;
+    background-color: #0921f8; ;
   }
 .seller-detail__img{
     border-radius: 50%;

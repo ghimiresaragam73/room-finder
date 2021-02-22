@@ -3,13 +3,17 @@
     margin:125px 30px 30px;
 }
 .about img{
-    height: 50px;
-    width: 50px;
-    /* display: flex;*/
+    height: 100px;
+    width: 80px;
     float: right;
+    margin:20px 20px 20px;
+
 }
 .about h3{
     
     font: 15px/1.5 Arial, Helvetica , sans-serif;
 
+}
+.about p{
+    color: black;
 }
