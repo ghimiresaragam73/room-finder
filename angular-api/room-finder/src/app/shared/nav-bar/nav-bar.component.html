@@ -1,3 +1,7 @@
+<div *ngIf="searching">
+    <app-list-room [searchData]="searchedData"></app-list-room>
+</div>
+
 <!-- <ul>
     <li>
         <a *ngIf="isLoggedIn()" routerLink="/user/profile">Profile</a>
@@ -16,24 +20,43 @@
         <a *ngIf="!isLoggedIn()" routerLink="/auth/login">Login</a>
     </li>
 </ul> -->
-
+<html>
 <div *ngIf="!isLoggedIn()">
     <header>
         <div class="navbar">
-            <!-- <div class="box"> -->\
+            <!-- <div class="box"> -->
             <div class="logo">
 
                 <h1>
                     <a routerLink="/home"> RoomF<span class="dot">.</span></a>
                 </h1>
             </div>
-            <div class="header__search">
-                <input type="text" class="header__searchInput">
-                <button class="btn2"> <i class="fa fa-search"> </i>
-                </button>
-            </div>
+
+            <!-- <div class="header_search">
+                <form action="/room/list">
+                    <input type="text" placeholder="Search" name="address" [(ngModel)]="address" class="header_searchInput">
+                    <button class="btn2" type="submit" class="input-button"> <i class="fa fa-search"></i></button>
+                </form>
+            </div> -->
+
+            <form action="/room/list">
+                <div class="header__search">
+                    <input type="text" placeholder="Search" name="address">
+                    <button class="btn2" > <i class="fa fa-search"> </i>
+                    </button>
+                </div>
+            </form>
+
+<!--             <div class="header__search">
+                <form action="/room/list">
+                    <input type="text" name="address" [(ngModel)]="address" class="header__searchInput">
+                    <button class="btn2 && fa fa-search"> <!-- <i class="fa fa-search"> </i> 
+                    </button>
+                </form>
+            </div> -->
 
             <nav>
+
                 <ul>
                     <!-- <li><a href="">Home</a></li> -->
                     <li><a href="" routerLink='/explore'>Explore</a></li>
@@ -59,10 +82,10 @@
 
 <section *ngIf="isLoggedIn()">
     <div class="navbar" *ngIf="navBar">
-        <div class="logo" (click)="homeWent()" >
-    
-            <h1 >
-               <a routerLink='/home'>RoomF<span class="dot">.</span></a>  
+        <div class="logo" (click)="homeWent()">
+
+            <h1>
+                <a routerLink='/home'>RoomF<span class="dot">.</span></a>
             </h1>
         </div>
         <nav>
@@ -72,60 +95,105 @@
                 <li><a routerLink="/user/profile">profile</a></li>
                 <li><a routerLink="/room/search">Search Room</a></li>
                 <li><a routerLink="/auth/login" (click)="logOut()">Log Out</a></li>
-    
-    
-    
-                
+
+
+
+
             </ul>
-        
+
         </nav>
         <div class="header__join">
-            <button class="btn"  (click)="toogle()">switch to  renter </button>
-       
+            <button class="btn" (click)="toogle()">switch to renter </button>
+
         </div>
-    
-        <img src="./../../assets/image logo/menu.png" class="menu" >
-    
-    </div> 
 
-    
-<!-- Toogling -->
+        <img src="./../../assets/image logo/menu.png" class="menu">
 
-<!--  -->
-<div class="navbar" *ngIf="!navBar" (click)="homeWent()">
-    <div class="logo" (click)="onClick()">
-
-        <h1>
-            <a routerLink=""> RoomF<span class="dot">.</span></a>
-        </h1>
     </div>
-    <div class="header__search">
-        <input type="text" class="header__searchInput">
-        <button class="btn2" > <i class="fa fa-search" >  </i>
-        </button>
-    </div>
+
+
+    <!-- Toogling -->
+
+    <!--  -->
+    <div class="navbar" *ngIf="!navBar">
+        <div class="logo" (click)="homeWent()">
+
+            <h1>
+                <a routerLink="/home"> RoomF<span class="dot">.</span></a>
+            </h1>
+        </div>
+        <form action="/room/list">
+            <div class="header__search">
+                <input type="text" placeholder="Search" name="address">
+                <button class="btn2"> <i class="fa fa-search"> </i>
+                </button>
+            </div>
+        </form>
  
-    
-    <nav>
-        <ul>
-            <li><a href="">notification</a></li>
-            <li><a href="">order</a></li>
 
-            
-        </ul>
-    
-    </nav>
-    <div >
-        <a routerLink="/cart">
-     <img src="./../../assets/image logo/cart.jpeg"  class="cart" width="25px" height="25px"> 
-    
-    </a></div>
-    <div class="header__join">
-        <button class="btn" (click)="toogle()">switch to landlord</button>
-   
+        <!-- div>
+            <form action="/room/list">
+                <input type="text" placeholder="Search" name="address" [(ngModel)]="address">
+                <button type="submit" class="input-button">Search</button>
+            </form>
+        </div> -->
+        
+        
+        <nav>
+            <ul>
+                <li><a href="">notification</a></li>
+                <li><a href="">order</a></li>
+
+
+            </ul>
+
+        </nav>
+        <div>
+            <a routerLink="/cart">
+                <img src="./../../assets/image logo/cart.jpeg" class="cart" width="25px" height="25px">
+
+            </a>
+        </div>
+        <div class="header__join">
+            <button class="btn" (click)="toogle()">switch to landlord</button>
+
+        </div>
+
+        <img src="./../../assets/image logo/menu.png" class="menu">
+
     </div>
-
-    <img src="./../../assets/image logo/menu.png" class="menu" >
-
-</div> 
 </section>
+
+</html>
+
+<!-- <div *ngIf="searching">
+    <app-list-room [data]="searchedData"></app-list-room>
+</div>
+ -->
+
+<!-- Searching -->
+<!-- <section *ngIf="searching" class="small-container1" class="background">
+    <div *ngFor="let room of searchedData" class="row1">
+        <div class="col-41" (click)="roomDashboard(room._id)">
+            <div *ngIf="room.image">
+
+
+                <div>
+                    <img src="{{imgUrl}}{{room.image[0]}}" alt="" width="200">
+                </div>
+            </div>
+            <div class=" contain">
+                <p>Address: {{room.address}}</p> 
+             </div>
+             <br>
+            <div class=" contain">
+                <p>Room available: {{room.numberOfRoom}}</p>
+            </div>
+            <br>
+            <div class=" contain">
+               <p>Price: <span>Rs.</span>{{room.price}}</p> 
+            </div>
+       
+    </div>
+</div>
+</section> -->

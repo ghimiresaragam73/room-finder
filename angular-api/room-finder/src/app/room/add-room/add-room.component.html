@@ -54,11 +54,11 @@
         <br>
 
         <label for="car">Car Parking </label>
-        <input type="checkbox" id="car" class="genwidth" value="car" [(ngModel)]="room.car" name="car"><br>
+        <input type="checkbox" class="genwidth" (click)="carParkingChanged()" ><br>
         <br>
 
         <label for="bike">Bike Parking</label>
-        <input type="checkbox" id="bike" class="genwidth" value="bike" [(ngModel)]="room.bike" name="bike"><br>
+        <input type="checkbox" class="genwidth" (click)="bikeParkingChanged()"><br>
         <br>
 
 

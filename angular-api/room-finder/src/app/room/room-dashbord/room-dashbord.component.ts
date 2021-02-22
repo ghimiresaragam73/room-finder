@@ -34,13 +34,9 @@ export class RoomDashbordComponent implements OnInit {
     if (!this.room) {
       this.roomService.getById(this.id)
         .subscribe(
- testing
           (data: Room) => {
             this.j = data.image.length;
-
-     (data: any) => {
-
-            this.room = data;
+          this.room = data;
             this.loading = false;
           },
           err => {
@@ -61,21 +57,6 @@ export class RoomDashbordComponent implements OnInit {
       this.i = this.j - 1;
 
 
-  hoverImage() {
-
-    let thumbnails = document.getElementsByClassName('thumbnails')
-    let activeImages = document.getElementsByClassName('active')
-    for (var i = 0; i < thumbnails.length; i++) {
-      thumbnails[i].addEventListener('mouseover', function () {
-        if ('activeImages > 0') {
-          activeImages[0].classList.remove('active')
-        }
-        this.classList.add('active')
-        document.getElementById('featured').id = this.id
-      })
-
-
-    }
 
   }
   left() {
@@ -99,7 +80,5 @@ export class RoomDashbordComponent implements OnInit {
       )
   }
 
-  /* 
-   */
 }
 

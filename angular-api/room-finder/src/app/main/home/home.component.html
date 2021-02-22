@@ -2,7 +2,7 @@
 <div *ngIf="loading">
     <app-loader></app-loader>
 </div>
-<html>
+<html *ngIf="!searching && !blockAll">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,14 +28,15 @@
                         </h1>
 
                         <p>Find the perfect room for your Living</p>
-                        <div class="header_search">
-                            <div class="input-container">
-                                <input type="text" class="input-field" />
-                                <button class="input-button">search</button>
+                        <label for="address">
+                            <div class="header_search">
+                                <div class="input-container">
+                                    <input type="text" class="input-field" name="address" [(ngModel)]="address"
+                                        id="address">
+                                    <button class="input-button" (click)="search()">search</button>
+                                </div>
                             </div>
-
-                        </div>
-
+                        </label>
                     </div>
 
                 </div>
@@ -88,49 +89,42 @@
 
     <section>
         <div class="box">
-            <div class="color1">
+            <h2 class="title"><a routerLink="/room/list" [queryParams]="{premium:true}"> Premium Rooms</a></h2>
+            <div class="small-container1">
 
-                <h2 class="title"><a routerLink="/room/list" [queryParams]="{premium:true}"> Premium Rooms</a></h2>
-                <div class="small-container1">
+                <div *ngFor="let room of premium" class="row1">
+                    <div class="col-41" (click)="onClick(room._id)">
+                        <div *ngIf="room.image">
+                            <div>
+                                <img src="{{imgUrl}}{{room.image[0]}}" alt="">
+                            </div>
 
-                    <div *ngFor="let room of premium" class="row1">
-                        <div class="col-41" (click)="onClick(room._id)">
-                            <div *ngIf="room.image">
-                                <div>
-                                    <img src="{{imgUrl}}{{room.image[0]}}" alt="">
-                                </div>
-
-                            </div>
-                            <div class=" contain">
-                                <p>Address: {{room.address}}</p>
-                            </div>
-                            <br>
-                            <div class=" contain">
-                                <p>Room available: {{room.numberOfRoom}}</p>
-                            </div>
-                            <br>
-                            <div class=" contain">
-                                <p>Price: <span>Rs.</span>{{room.price}}</p>
-                            </div>
                         </div>
-
+                        <div class=" contain">
+                            <p>Room available: {{room.numberOfRoom}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Price: <span>Rs.</span>{{room.price}}</p>
+                        </div>
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
+                        </div>
                     </div>
 
                 </div>
-                <div class="input-B">
-                    <button class="input-bt" routerLink="/room/list" [queryParams]="{premium:true}">View All Premium
-                        Rooms...</button>
-                </div>
+
+            </div>
+            <div class="input-B">
+                <button class="input-bt" routerLink="/room/list" [queryParams]="{premium:true}">View All Premium
+                    Rooms...</button>
             </div>
         </div>
     </section>
     <!-- urgent roomes -->
 
 
-    <section>
+      <section>
         <div class="box">
-            <div class="color1">
-
             <h2 class="title"><a routerLink="/room/list" [queryParams]="{urgent:true}"> Urgent Rooms</a></h2>
             <div class="small-container1">
 
@@ -143,18 +137,14 @@
 
                         </div>
                         <div class=" contain">
-                            <p>Address: {{room.address}}</p>
-                        </div>
-                        <br>
-                        <div class=" contain">
                             <p>Room available: {{room.numberOfRoom}}</p>
                         </div>
-                        <br>
                         <div class=" contain">
                             <p>Price: <span>Rs.</span>{{room.price}}</p>
                         </div>
-
-
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
+                        </div>
                     </div>
 
                 </div>
@@ -165,15 +155,12 @@
                     Rooms...</button>
             </div>
         </div>
-        </div>
     </section>
 
     <!-- newly listed roomes -->
 
-    <section>
+     <section>
         <div class="box">
-            <div class="color1">
-
             <h2 class="title"><a routerLink="/room/list" [queryParams]="{normal:true}"> Newly Listed Rooms</a></h2>
             <div class="small-container1">
 
@@ -187,18 +174,14 @@
                         </div>
 
                         <div class=" contain">
-                            <p>Address: {{room.address}}</p>
                             <p>{{room.description}}</p>
                         </div>
-                        <br>
-                        <div class=" contain">
-                            <p>Room available: {{room.numberOfRoom}}</p>
-                        </div>
-                        <br>
                         <div class=" contain">
                             <p>Price: <span>Rs.</span>{{room.price}}</p>
                         </div>
-
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
+                        </div>
                     </div>
 
                 </div>
@@ -209,16 +192,13 @@
                     Rooms...</button>
             </div>
         </div>
-        </div>
     </section>
-
+ 
 
     <!-- recommended  roomes -->
 
-    <section>
+     <section>
         <div class="box">
-            <div class="color1">
-
             <h2 class="title"><a routerLink="/room/list"> Recommended Rooms</a></h2>
             <div class="small-container1">
 
@@ -231,17 +211,14 @@
 
                         </div>
                         <div class=" contain">
-                            <p>Address: {{room.address}}</p>
-                        </div>
-                        <br>
-                        <div class=" contain">
                             <p>Room available: {{room.numberOfRoom}}</p>
                         </div>
-                        <br>
                         <div class=" contain">
                             <p>Price: <span>Rs.</span>{{room.price}}</p>
                         </div>
-
+                        <div class=" contain">
+                            <p>Address: {{room.address}}</p>
+                        </div>
                     </div>
 
                 </div>
@@ -251,13 +228,11 @@
                 <button class="input-bt" routerLink="/room/list">View All Recommended Rooms...</button>
             </div>
         </div>
-        </div>  
     </section>
 
     <!-- testimonial -->
     <section>
         <div class="box">
-            
             <div class="testimonial">
                 <div class="small-container">
                     <h2 class="title">Our Developer</h2>
@@ -372,3 +347,38 @@
 </section>
 
 </html>
+
+<section *ngIf="searching && !blockAll" class="small-container1">
+    <div *ngFor="let room of searchedData" class="row1">
+        <div class="col-41" (click)="roomDashboard(room._id)">
+            <div *ngIf="room.image">
+
+
+                <div>
+                    <img src="{{imgUrl}}{{room.image[0]}}" alt="" width="200">
+                </div>
+            </div>
+            <div class=" contain">
+                <p>Address: {{room.address}}</p>
+            </div>
+            <br>
+            <div class=" contain">
+                <p>Room available: {{room.numberOfRoom}}</p>
+            </div>
+            <br>
+            <div class=" contain">
+                <p>Price: <span>Rs.</span>{{room.price}}</p>
+            </div>
+
+        </div>
+        <!-- <div>
+        <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="items.length"></ngb-pagination>
+
+    </div> -->
+        <!-- </div> -->
+
+    </div>
+</section>

@@ -17,7 +17,9 @@ export class ListRoomComponent implements OnInit {
   fetchAll: boolean = true;
   loading: boolean = true;
   imageUrl: string;
-  @Input() data;
+  fetchSearch: boolean = false;
+  searchedData;
+  @Input() data1;
   constructor(
     public msgService: MsgService,
     public roomService: RoomService,
@@ -27,20 +29,37 @@ export class ListRoomComponent implements OnInit {
     this.imageUrl = environment.roomImageUrl;
     activeRouter.queryParams.subscribe(
       params => {
+        // console.log('data i n list room', this.data);
         if (params['premium'])
           this.fetchPremium = true;
         if (params['urgent'])
           this.fetchUrgent = true;
         if (params['normal'])
           this.fetchNormal = true
-        if (this.fetchNormal || this.fetchPremium || this.fetchUrgent)
+        if (params['address']) {
+          this.fetchSearch = true
+          this.searchedData = params['address'];
+        }
+        if (this.fetchNormal || this.fetchPremium || this.fetchUrgent || this.fetchSearch)
           this.fetchAll = false
+
       }
     )
   }
 
   ngOnInit(): void {
-    if (!this.data) {
+    if (!this.data1) {
+      if (this.fetchSearch) {
+        console.log('this.address in search', this.searchedData)
+        this.roomService.search({ address: this.searchedData })
+          .subscribe(
+            data => {
+              this.rooms = data;
+            }, err => {
+              this.msgService.showError(err);
+            }
+          )
+      }
       if (this.fetchAll) {
         this.roomService.get()
           .subscribe(
@@ -58,30 +77,22 @@ export class ListRoomComponent implements OnInit {
         this.roomService.getByCategories()
           .subscribe(
             data => {
-              console.log('yaha')
-              if (this.fetchNormal) {
-                this.rooms = data[0];
-                console.log('yaha normal')
-              }
-
-              if (this.fetchPremium) {
-                this.rooms = data[1];
-                console.log('yaha premium')
-              }
-
-              if (this.fetchUrgent) {
+              if (this.fetchNormal)
                 this.rooms = data[2];
-                console.log('yaha urgent')
+                if (this.fetchPremium)
+                  this.rooms = data[0];
+                if (this.fetchUrgent) 
+                  this.rooms = data[1];
+                this.loading = false;
+              },
+              err => {
+                this.msgService.showError(err);
               }
-              this.loading = false;
-            },
-            err => {
-              this.msgService.showError(err);
-            }
           )
       }
     } else {
-      this.rooms = this.data;
+      this.rooms = this.data1;
+      console.log('this.data in ngOninit', this.data1)
       this.loading = false;
     }
   }

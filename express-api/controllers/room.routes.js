@@ -91,8 +91,17 @@ router.route('/categories')
             categoriesPromise.push(p);
         })
         const data = await Promise.all([...categoriesPromise]);
-        console.log('data.............', data);
-        res.send(data);
+        // console.log('data.............', data.length);
+        let rooms = [];
+        for (let i = 0; i < data.length; i++) {
+            if (data[i][0].categories == "premium")
+                rooms[0] = data[i];
+            if (data[i][0].categories == "urgent")
+                rooms[1] = data[i];
+            if (data[i][0].categories == "normal")
+                rooms[2] = data[i];
+        }
+        res.send(rooms);
     })
 
 router.route('/eight')
