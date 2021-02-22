@@ -9,10 +9,13 @@ import { MsgService } from '../services/msg.service';
 })
 export class NavBarComponent implements OnInit {
   navBar: boolean = false;
+  user;
+  id;
   constructor(
     public msgService: MsgService,
     public router: Router
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
   }

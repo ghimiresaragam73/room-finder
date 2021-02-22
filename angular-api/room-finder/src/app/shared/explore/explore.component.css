@@ -3,10 +3,11 @@
     margin:125px 30px 30px;
 }
 .about img{
-    height: 50px;
-    width: 50px;
-    /* display: flex;*/
-    float: right;
+    height: 100px;
+    width: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    float: left;
 }
 .about h3{
     
