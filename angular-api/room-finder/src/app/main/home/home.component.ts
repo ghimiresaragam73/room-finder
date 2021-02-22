@@ -39,7 +39,9 @@ export class HomeComponent implements OnInit {
             this.premium = data[0]
             this.urgent = data[1]
             console.log('data', data);
-            // this.rooms = data[0].concat(data[2].concat(data[1]))
+            this.rooms = data[0].concat(data[2].concat(data[1]))
+            let length = this.rooms.length
+            this.rooms = this.rooms.splice(4,length-8)
             console.log('yaha>>>>>>', this.rooms);
             /* console.log('data here', this.category); */
           }, err => {
