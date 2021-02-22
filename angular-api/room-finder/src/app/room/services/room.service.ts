@@ -47,7 +47,7 @@ export class RoomService {
         return this.http.delete(`${this.url}/${id}`, this.getOptions())
     }
 
-    search(condition: Room) {
+    search(condition: any) {
         return this.http.post(`${this.url}/search`, condition, this.getOptions())
     }
 

@@ -1,5 +1,5 @@
 import { identifierModuleUrl } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoomService } from 'src/app/room/services/room.service';
 import { MsgService } from 'src/app/shared/services/msg.service';
@@ -15,8 +15,13 @@ export class HomeComponent implements OnInit {
   urgent;
   normal;
   rooms;
+  address;
+  blockAll: boolean = false
   loading: boolean = true;
   imgUrl: string;
+  searching: boolean = false;
+  searchedData;
+  @Input() searchFromNav;
   constructor(
     public roomService: RoomService,
     public router: Router,
@@ -30,11 +35,11 @@ export class HomeComponent implements OnInit {
       this.roomService.getByCategories()
         .subscribe(
           data => {
-            this.normal = data[0]
-            this.premium = data[1]
-            this.urgent = data[2]
-            console.log('data',data);
-            this.rooms = data[0].concat(data[2].concat(data[1]))
+            this.normal = data[2]
+            this.premium = data[0]
+            this.urgent = data[1]
+            console.log('data', data);
+            // this.rooms = data[0].concat(data[2].concat(data[1]))
             console.log('yaha>>>>>>', this.rooms);
             /* console.log('data here', this.category); */
           }, err => {
@@ -59,11 +64,33 @@ export class HomeComponent implements OnInit {
     }
   } */
 
+  search() {
+    console.log('this.adress', this.address);
+    this.msgService.showInfo('Button Clicked');
+    let address = {
+      address: this.address
+    }
+    this.roomService.search(address)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.searching = !this.searching
+          this.searchedData = data;
+        }, err => {
+          this.msgService.showError(err);
+        }
+      )
+  }
+
   isLoggedIn() {
     if (localStorage.getItem('token')) {
       return true;
     } else {
       return false;
     }
+  }
+
+  roomDashboard(id) {
+    this.router.navigate(['/room/dashboard/' + id])
   }
 }

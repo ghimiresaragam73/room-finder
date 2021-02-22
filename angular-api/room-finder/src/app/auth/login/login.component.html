@@ -13,7 +13,7 @@
         </div>
         <br>
 
-        <label for="loginpassword">Password:</label>
+        <label for="password">Password:</label>
         <input class="form-control && color" type="password" id="password" name="password" [(ngModel)]="user.password"
             required #password="ngModel">
         <div class="danger" *ngIf="password.invalid && password.dirty">required field*</div>
