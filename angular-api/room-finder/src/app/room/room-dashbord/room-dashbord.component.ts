@@ -19,6 +19,9 @@ export class RoomDashbordComponent implements OnInit {
   imageUrl;
   i: number = 0;
   j: number;
+  isMapCheck: boolean = false;
+  lat;
+  lng;
   constructor(
     public msgService: MsgService,
     public router: Router,
@@ -34,9 +37,16 @@ export class RoomDashbordComponent implements OnInit {
     if (!this.room) {
       this.roomService.getById(this.id)
         .subscribe(
-          (data: Room) => {
+          (data: any) => {
             this.j = data.image.length;
-          this.room = data;
+            this.room = data;
+            console.log('roomsss', this.room);
+            if (this.room.map.isMap) {
+              console.log('this.room.map', this.room.map)
+              this.lat = this.room.map.lat;
+              this.lng = this.room.map.lng;
+              this.isMapCheck = true;
+            }
             this.loading = false;
           },
           err => {

@@ -22,7 +22,15 @@ var roomSchema = new Schema({
         default: false
     },
     address: String,
-    description: String
+    description: String,
+    map: {
+        isMap: {
+            type: Boolean,
+            default: true
+        },
+        lat: Number,
+        lng: Number
+    }
 }, {
     timestamps: true
 })

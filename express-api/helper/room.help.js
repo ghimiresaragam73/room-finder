@@ -13,6 +13,12 @@ module.exports = (req, room) => {
         room.categories = req.categories;
     if (req.description)
         room.description = req.description;
-
+    console.log('ismap', req.isMap + '   ' + req.lat + '     ' + req.lng);
+    if (req.isMap)
+        room.map.isMap = req.isMap;
+    if (req.lat)
+        room.map.lat = req.lat;
+    if (req.lng)
+        room.map.lng = req.lng;
     return room;
 }

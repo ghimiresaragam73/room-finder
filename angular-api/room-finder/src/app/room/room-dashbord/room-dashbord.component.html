@@ -1,3 +1,46 @@
+<!-- <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Map Api</h1>
+    <div id="map"></div>
+    <script>
+        function mapInit() {
+            var options = {
+                zoom: 14,
+                center: { lat: 27.7172, lng: 85.3240 }
+            }
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+            /* Add Marker */
+            var marker = new google.maps.Marker({
+                position: { lat: 27.7172, lng: 85.324 },
+                map: map
+            })
+        }
+    </script>
+    <script async differ
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1D7uemCFxNqfP0Z3ISpcGrxT3TdzK70k&callback=mapInit&libraries=&v=weekly"
+        >
+    </script>
+</body>
+
+</html>
+ -->
+
+
 <!DOCTYPE html>
 <div *ngIf="loading">
     <app-loader></app-loader>
@@ -6,12 +49,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="./home.component.css"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@200&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
 </head>
 
 <body *ngIf="!loading">
@@ -29,7 +70,6 @@
 
                     <div id='slider'>
 
-                        <!-- <img class="thumbnail active" src="{{imageUrl}}{{room.image[0]}}" alt=""> -->
                         <div *ngFor="let image of room.image">
                             <img class="thumbnail " src="{{imageUrl}}{{image}}">
                         </div>
@@ -60,38 +100,34 @@
 
                 </div>
 
+            </div>
         </div>
-    </div>
         <div class="col-2">
             <h3>Room Description <i class="fa faident"></i></h3>
             <br>
             {{room.discription}}
             <div class="paragraph">
-            <p>Rs.{{room.price}}</p>
-        </div>
-        <div class="paragraph">
-            <p>Location:{{room.address}}</p>
-        </div>
-        <div class="paragraph"> 
-            <p>No of Room:{{room.numberOfRoom}}</p>
-        </div>
-        <div>Parking
-            <div *ngIf="room.carParking">Car ko photo</div>
-            <div *ngIf="room.bikeParking">Bike ko photo</div>
-        </div>
-        <div class="btnn">
-            <button class="i3" routerLink="">Book  </button>
-            <button class="i3" routerLink="">Add to Cart  </button>
+                <p>Rs.{{room.price}}</p>
+            </div>
+            <div class="paragraph">
+                <p>Location:{{room.address}}</p>
+            </div>
+            <div class="paragraph">
+                <p>No of Room:{{room.numberOfRoom}}</p>
+            </div>
+            <div>Parking
+                <div *ngIf="room.carParking">Car ko photo</div>
+                <div *ngIf="room.bikeParking">Bike ko photo</div>
+            </div>
+            <div class="btnn">
+                <button class="i3" routerLink="">Book </button>
+                <button class="i3" routerLink="">Add to Cart </button>
 
             </div>
         </div>
     </section>
 
-    
-
-
-
-    <section>
+    <!-- <section>
         <div id="container">
             <form #contactForm="ngForm" class="form-group && center && contain ">
                 <h3>
@@ -149,12 +185,22 @@
             </form>
 
         </div>
-    </section>
-      
+    </section> -->
+
     <!-- <div class="col-2"> -->
 
 
 
+    <section *ngIf="isMapCheck">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+    </section>
+
+    <app-footer></app-footer>
 </body>
 
 </html>
+
+<br><br><br><br><br><br>
+<!-- <h1>Google Map API</h1> -->
