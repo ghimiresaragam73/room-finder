@@ -12,6 +12,7 @@ import { RoomService } from '../services/room.service';
   styleUrls: ['./room-dashbord.component.css']
 })
 export class RoomDashbordComponent implements OnInit {
+  
   room;
   data;
   id: string;
@@ -41,6 +42,7 @@ export class RoomDashbordComponent implements OnInit {
           },
           err => {
             this.msgService.showError(err)
+
           }
         )
       this.loading = false;
@@ -73,11 +75,32 @@ export class RoomDashbordComponent implements OnInit {
       .subscribe(
         data => {
           console.log('data', data);
+          this.msgService.showSuccess('Added');
+          
         },
         err => {
           this.msgService.showError(err)
         }
       )
+  }
+  edit(){
+    this.router.navigate(['/room/edit/'+this.room._id])
+  }
+  removeRoom(_id, index) {
+    let removeConfirm = confirm("Are you sure to delete?");
+    if (removeConfirm) {
+      this.roomService.remove(_id)
+        .subscribe(
+          data => {
+            this.msgService.showSuccess('Room Removed');
+            // this.room.splice(index, 1);
+            this.router.navigate(['/room/list'])
+          },
+          err => {
+            this.msgService.showError(err);
+          }
+        )
+    }
   }
 
 }

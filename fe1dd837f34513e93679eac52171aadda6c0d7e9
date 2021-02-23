@@ -1,0 +1,462 @@
+[33mcommit 5c48b492946bbbbbbb32e0c58d13ed56bf45d239[m[33m ([m[1;36mHEAD -> [m[1;32mcolor[m[33m, [m[1;31morigin/color[m[33m)[m
+Author: sushil dk <sushil99dk9@gmail.com>
+Date:   Mon Feb 22 18:53:36 2021 +0545
+
+    formate
+
+[33mcommit 343ea95918666b8a9076b3b8a93b6aa8f75ea8c6[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: fe18e3c 7989338
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Mon Feb 22 16:27:35 2021 +0545
+
+    Merge pull request #11 from ghimiresaragam73/search
+    
+    search room
+
+[33mcommit 79893387203ee3095689c8a830d1800d436e5fc5[m[33m ([m[1;31morigin/search[m[33m)[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Mon Feb 22 16:25:39 2021 +0545
+
+    search room
+
+[33mcommit fe18e3cc640b910693291de1ea9bd1fb6e169d65[m
+Merge: e7d5abf eb1c79c
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sun Feb 21 19:49:13 2021 +0545
+
+    Merge branch 'main' of http://github.com/ghimiresaragam73/room-finder into main
+
+[33mcommit e7d5abf26f82279e331ad57ce83714a81c8fc031[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sun Feb 21 19:48:37 2021 +0545
+
+    a
+
+[33mcommit eb1c79c5991af319da2d682b5653c6c212c00eae[m
+Merge: 765ddb4 6bab84f
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sun Feb 21 19:47:39 2021 +0545
+
+    Merge pull request #10 from ghimiresaragam73/testing
+    
+    cart
+
+[33mcommit 6bab84fa529fc6130a77d5c923c8c3b4b9a4d24b[m[33m ([m[1;31morigin/testing[m[33m)[m
+Merge: 77bd72f 765ddb4
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sun Feb 21 19:47:31 2021 +0545
+
+    Merge branch 'main' into testing
+
+[33mcommit 765ddb4f12d55e12d6978940a37a7c2b10ae1be2[m
+Merge: ae6c277 c824d37
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sun Feb 21 19:43:22 2021 +0545
+
+    Merge pull request #9 from ghimiresaragam73/Ad
+    
+    update room success
+
+[33mcommit 77bd72f03df548558b5ce686b76e36fcf2f2a55e[m
+Author: sushil dk <sushil99dk9@gmail.com>
+Date:   Sat Feb 20 15:00:31 2021 +0545
+
+    cart
+
+[33mcommit c824d37f82667a4fd30f835dd3462f218f682b57[m[33m ([m[1;31morigin/Ad[m[33m)[m
+Author: Amrit Devkota <amritdevkota763@gmail.com>
+Date:   Sat Feb 20 14:31:14 2021 +0545
+
+    update room success
+
+[33mcommit ae6c2772b44998a8d1ddd6c07a6aa27f1e2fd65c[m
+Merge: 522b632 72df814
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sat Feb 20 11:32:12 2021 +0545
+
+    Merge pull request #6 from ghimiresaragam73/sushil
+    
+    Sushil
+
+[33mcommit 72df814d5a852f15167169bc2078c62ad59e6499[m[33m ([m[1;31morigin/sushil[m[33m)[m
+Merge: 0eb91cc 522b632
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sat Feb 20 11:32:02 2021 +0545
+
+    Merge branch 'main' into sushil
+
+[33mcommit 522b63210c031d737f4d939205e5b0ae425a1cbd[m
+Merge: 7c94624 4f19764
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sat Feb 20 11:31:30 2021 +0545
+
+    Merge pull request #7 from ghimiresaragam73/amrit
+    
+    amrit updated code
+
+[33mcommit 4f197641c6c709ff36c57c5e8668dc8fededb9c1[m[33m ([m[1;31morigin/amrit[m[33m)[m
+Merge: 9048c09 7c94624
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sat Feb 20 11:31:06 2021 +0545
+
+    Merge branch 'main' into amrit
+
+[33mcommit 7c94624f6f71c0e3cbbf697f4b31874c57d04fb4[m
+Merge: 0dc145e 91d712c
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sat Feb 20 11:21:37 2021 +0545
+
+    Merge pull request #8 from ghimiresaragam73/saragam
+    
+    cart and room routes added
+
+[33mcommit 91d712c0f097efa44e1d90d5bdcb38615ad75167[m[33m ([m[1;31morigin/saragam[m[33m)[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Feb 20 11:20:45 2021 +0545
+
+    cart and room routes added
+
+[33mcommit 9048c09068b08339bd1c32ab28dd31b36af7c527[m
+Merge: 37bb9e1 0dc145e
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Sat Feb 20 11:19:15 2021 +0545
+
+    Merge branch 'main' into amrit
+
+[33mcommit 37bb9e15017b71f3954d5ff752beae61da7a4b93[m
+Author: Amrit Devkota <amritdevkota763@gmail.com>
+Date:   Sat Feb 20 11:13:48 2021 +0545
+
+    amrit updated code
+
+[33mcommit 0dc145e14ae5d0968f9f4907393553bef89eaf50[m
+Author: Ashish Neupane <aasesshenry@gmail.com>
+Date:   Fri Feb 19 20:04:49 2021 +0545
+
+    Update README.md
+
+[33mcommit e22b651925ac589e09dc53cc35020810d2dae48b[m
+Author: Ashish Neupane <aasesshenry@gmail.com>
+Date:   Fri Feb 19 19:53:47 2021 +0545
+
+    Update README.md
+
+[33mcommit 951beebbf845b715b122fa91cde31138ea524f1e[m
+Author: Ashish Neupane <aasesshenry@gmail.com>
+Date:   Fri Feb 19 19:53:10 2021 +0545
+
+    Update README.md
+
+[33mcommit 3d0cf89beebe4bb26ced811f3e3f27c877fbe4ed[m
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Fri Feb 19 18:43:15 2021 +0545
+
+    Update README.md
+
+[33mcommit 3214cedbc65b90b721af100accae2e103d0e2c95[m
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Fri Feb 19 18:42:02 2021 +0545
+
+    readme.md file updated
+
+[33mcommit 76357d0202fa517949652d6a277085a628855f60[m
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Fri Feb 19 18:41:15 2021 +0545
+
+    readme.md file updated
+
+[33mcommit 0eb91cc0ffa2e07b77c52cbe758e8b15441f5e2d[m
+Merge: c9d31d6 0a09731
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Thu Feb 18 07:34:09 2021 +0545
+
+    Merge branch 'main' into sushil
+
+[33mcommit c9d31d6c6ac14246b4dedb285599cc74c92b700c[m
+Author: sushil dk <sushil99dk9@gmail.com>
+Date:   Thu Feb 18 07:28:42 2021 +0545
+
+    descripton
+
+[33mcommit 6e8528c2a54eb863f8751dde293fc9c7d97caf7f[m
+Author: sushil dk <sushil99dk9@gmail.com>
+Date:   Thu Feb 18 07:27:32 2021 +0545
+
+    description
+
+[33mcommit 0a09731b9ed62b0639e6128286330d86dc5b652c[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Wed Feb 17 21:33:48 2021 +0545
+
+    book and add to cart backend finish
+
+[33mcommit 59e070dae4c50d81e339228b0c3ce507091e86d4[m
+Merge: 8e92fbb 7fd073d
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Wed Feb 17 16:15:07 2021 +0545
+
+    Merge pull request #5 from ghimiresaragam73/saragam
+    
+    Saragam
+
+[33mcommit 7fd073d330955b1f89774d6f584663916922dec5[m
+Merge: 0097299 8e92fbb
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Wed Feb 17 15:49:28 2021 +0545
+
+    Merge branch 'main' into saragam
+
+[33mcommit 009729931ee8fa9eda214d9f5803d1e4e80e98be[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Wed Feb 17 15:44:43 2021 +0545
+
+    error while merging
+
+[33mcommit 696d01d88a49d030ecfb676fb0ccb9058cb9e3ea[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Wed Feb 17 11:27:56 2021 +0545
+
+    package-lock jason file added
+
+[33mcommit 8e92fbb403309b658b25819ec7ac48419dd9292f[m
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Wed Feb 17 11:25:33 2021 +0545
+
+    Delete firebase.json
+    
+    delete
+
+[33mcommit 0ac8d9c2d637b196de8e96b131bff8c1ae153013[m
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Wed Feb 17 11:25:07 2021 +0545
+
+    Delete .firebaserc
+    
+    delete
+
+[33mcommit ebd7dc331f568ede0b471be7523a022ffc853691[m
+Merge: 124e38f 39c5a53
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Wed Feb 17 11:24:00 2021 +0545
+
+    Merge pull request #3 from ghimiresaragam73/amrit
+    
+    All form module
+
+[33mcommit 124e38f702ad82fac9589c9b0a038c696bdbfed4[m
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Wed Feb 17 11:23:24 2021 +0545
+
+    Update .gitignore
+    
+    exclude image
+
+[33mcommit c0a7955beac8b110194adcf37175f9e3bad729ff[m
+Merge: 5f12c99 39a7bc5
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Tue Feb 16 22:40:56 2021 +0545
+
+    Merge pull request #2 from ghimiresaragam73/sushil
+    
+    room dashbord completed
+
+[33mcommit 39c5a53ba56d8af9968c4c585cff18f547891435[m
+Author: Amrit Devkota <amritdevkota763@gmail.com>
+Date:   Tue Feb 16 22:38:43 2021 +0545
+
+    All form module
+
+[33mcommit b93af1b0aee1190e41a731ed2c988bd9da76c3f2[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Tue Feb 16 22:34:29 2021 +0545
+
+    fetch rooms by categories and added room description
+
+[33mcommit 39a7bc539e6f67ee89e375704c4e0be82c691daf[m
+Author: sushil dk <sushil99dk9@gmail.com>
+Date:   Tue Feb 16 22:31:51 2021 +0545
+
+    room dashbord
+
+[33mcommit 5f12c99007c90adda01d2b07834246aa4d0c9d05[m
+Merge: 02570e9 efceda2
+Author: Saragam Ghimire <46258548+ghimiresaragam73@users.noreply.github.com>
+Date:   Tue Feb 16 17:53:08 2021 +0545
+
+    Merge pull request #1 from ghimiresaragam73/sushil
+    
+    Sushil error correction
+
+[33mcommit efceda2206c0ac6a4d9560d89a8ed85ef5e798e3[m
+Author: sushil dk <sushil99dk9@gmail.com>
+Date:   Tue Feb 16 17:48:08 2021 +0545
+
+    final f
+
+[33mcommit 4483a62c2d0e66cc364d307e90d50f2d0d1a6181[m
+Author: sushil dk <sushil99dk9@gmail.com>
+Date:   Tue Feb 16 17:45:30 2021 +0545
+
+    final
+
+[33mcommit 02570e91176e4d9768486e63518381a7bbe9c030[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Jan 9 19:37:49 2021 +0545
+
+    thaha xaina k garey aja laptop update garna ko lagi push gardai xu
+
+[33mcommit fe1dd837f34513e93679eac52171aadda6c0d7e9[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Jan 9 19:36:05 2021 +0545
+
+    thaha xaina k garey aja laptop update garna ko lagi push gardai xu
+
+[33mcommit 8457bc6f1aa76902d8967efc223027a7a5134f5d[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Dec 19 16:57:19 2020 +0545
+
+    updated
+
+[33mcommit cdc6afa649f24dd1ea555c011762836c7f670b4b[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Dec 19 16:56:45 2020 +0545
+
+    updated
+
+[33mcommit 40980a4678bce737940aba51ff7d796de3922419[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Dec 19 13:55:22 2020 +0545
+
+    merge of all
+
+[33mcommit 87e660584ac3a0907469a0cdc0c4ab838f50a3bc[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Dec 19 13:53:58 2020 +0545
+
+    merge of all
+
+[33mcommit bbd290e1a7c149e64258cb39ed0be167ca636809[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Thu Dec 17 08:26:56 2020 +0545
+
+    user validation
+
+[33mcommit dabe13c5731e22d39a9c9235ca31e07bbdad2f58[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Thu Dec 17 08:26:13 2020 +0545
+
+    user validation
+
+[33mcommit 186e076c1797e5ae6c813d59c1887f0927142af2[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Tue Dec 15 22:54:07 2020 +0545
+
+    validation for register
+
+[33mcommit 556e8be5c59876e7e0530beaa92d9a5571439cdc[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Tue Dec 15 20:49:37 2020 +0545
+
+    search room using price range, add room with multiple images and display them success
+
+[33mcommit 9b7eb78b1b01f245fc4196203befeac52a6a739a[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Tue Dec 15 20:48:28 2020 +0545
+
+    more than 3 photos error completed
+
+[33mcommit ccf4617a948f37776b1758e76002c7d7974a3ad0[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Tue Dec 15 19:58:16 2020 +0545
+
+    search using price range, and add photo and display 3 photos success and files in github
+
+[33mcommit ac6efbf0fd2ed95997489c9c44d0aa79347977ae[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Tue Dec 15 19:55:55 2020 +0545
+
+    search room using price range, add room with multiple images and display them success
+
+[33mcommit be7f274acad3dfdb92f1c39242c2b0a70d4ecbec[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Tue Dec 15 19:50:38 2020 +0545
+
+    search using price range, and add photo and display 3 photos success
+
+[33mcommit 548daa1054c5b4fe7abbcd81dad2fb980364211c[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sun Dec 13 19:35:58 2020 +0545
+
+    search room using address
+
+[33mcommit 5818a859188565c7b3be967d05749ec55188cb04[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Thu Dec 10 19:28:05 2020 +0545
+
+    Add room with image
+
+[33mcommit 9245558b4dd7e0bc9a51a471df550603766621f6[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Thu Dec 10 19:27:17 2020 +0545
+
+    Room Add with 1 image and list room without image
+
+[33mcommit 64fa51b92ad3cdb8ebd8ae747c99adc8f28662c9[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Wed Dec 9 16:29:03 2020 +0545
+
+    view profile and edit profile
+
+[33mcommit 7ec0f707f7d127d6cd9dcb4a67cb7cc0362aca88[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Fri Dec 4 19:47:00 2020 +0545
+
+    user dashboard and user profile
+
+[33mcommit ecbbd69216c0fbe1d055fdec6bb162245d2a7f8f[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Fri Dec 4 18:07:32 2020 +0545
+
+    resetPassword and forgotPassword completed
+
+[33mcommit 9689e3caa23246dcbfeb07a8560f3d59e734de99[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Fri Dec 4 18:02:20 2020 +0545
+
+    forgot-password and reset-password finished
+
+[33mcommit b43f332056fa6d8f118f9c662f46c36921537326[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Thu Dec 3 11:16:12 2020 +0545
+
+    forgot password and reset password by email done
+
+[33mcommit 4fcff35cb9ee8fa29eea21ad71c2e8fb151b40f7[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Fri Nov 20 12:00:16 2020 +0545
+
+    some changes for frontend
+
+[33mcommit efb313d6e7293e6c1f896fdf52cce62f4ff2c16c[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Fri Nov 20 11:59:19 2020 +0545
+
+    login and register page
+
+[33mcommit 74955f22a53ed84f6141c60b8e0ddd530ba511f8[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Thu Nov 19 20:43:47 2020 +0545
+
+    room image upload success
+
+[33mcommit b49d0cc26400185631c2e8a07172e267e13b3d8d[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Nov 14 12:21:10 2020 +0545
+
+    Initial Commit
+
+[33mcommit f069d40002dcf28aef78087e895cf7d4a886c269[m
+Author: Saragam Ghimire <ghimire.saragam73@gmail.com>
+Date:   Sat Nov 14 11:31:30 2020 +0545
+
+    first commit

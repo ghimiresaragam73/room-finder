@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.user) {
       this.data = JSON.parse(localStorage.getItem('user'));
       this.userService.getById(this.data._id)
         .subscribe(
@@ -42,10 +41,6 @@ export class ProfileComponent implements OnInit {
             this.loading = false;
           }
         )
-      this.loading = false;
-    } else {
-      this.loading = false;
-    }
   }
 
   edit() {
@@ -65,7 +60,6 @@ export class ProfileComponent implements OnInit {
 
   viewChanged() {
     this.view = !this.view;
-this.router.navigate(['/user/profile/'+this.user._id])
   }
 
   fileChanged(ev) {
