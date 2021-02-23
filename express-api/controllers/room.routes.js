@@ -217,6 +217,7 @@ router.route('/:id')
                         }
                     }
                     room.image = image;
+                    console.log('room reqbody>>>', req.body);
                     room = roomHelp(req.body, room);
                     room.user = req.loggedInUser._id;
                     room.save((err, updated) => {

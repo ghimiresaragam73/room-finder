@@ -1,3 +1,46 @@
+<!-- <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Map Api</h1>
+    <div id="map"></div>
+    <script>
+        function mapInit() {
+            var options = {
+                zoom: 14,
+                center: { lat: 27.7172, lng: 85.3240 }
+            }
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+            /* Add Marker */
+            var marker = new google.maps.Marker({
+                position: { lat: 27.7172, lng: 85.324 },
+                map: map
+            })
+        }
+    </script>
+    <script async differ
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1D7uemCFxNqfP0Z3ISpcGrxT3TdzK70k&callback=mapInit&libraries=&v=weekly"
+        >
+    </script>
+</body>
+
+</html>
+ -->
+
+
 <!DOCTYPE html>
 <div *ngIf="loading">
     <app-loader></app-loader>
@@ -6,12 +49,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="./home.component.css"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@200&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
 </head>
 
 <body *ngIf="!loading">
@@ -29,7 +70,6 @@
 
                     <div id='slider'>
 
-                        <!-- <img class="thumbnail active" src="{{imageUrl}}{{room.image[0]}}" alt=""> -->
                         <div *ngFor="let image of room.image">
                             <img class="thumbnail " src="{{imageUrl}}{{image}}">
                         </div>
@@ -59,85 +99,48 @@
                     <button class="i3"  (click)="addToCart()">Add to Cart </button>
 
 
-                </div>
-                <div>
-                    <button class="i3"  (click)="edit()">edit</button>
-                    <button (click)="removeRoom(room._id,i)" class="btn btn-danger">Delete</button>
-                </div>
 
             </div>
         </div>
-        <!-- <div id="container">
-            <form #contactForm="ngForm" class="form-group && center && contain ">
-                <h3>
-                    seller information
-                </h3>
-                <br>
+        <div class="col-2">
+            <h3>Room Description <i class="fa faident"></i></h3>
+            <br>
+            {{room.discription}}
+            <div class="paragraph">
+                <p>Rs.{{room.price}}</p>
+            </div>
+            <div class="paragraph">
+                <p>Location:{{room.address}}</p>
+            </div>
+            <div class="paragraph">
+                <p>No of Room:{{room.numberOfRoom}}</p>
+            </div>
+            <div>Parking
+                <div *ngIf="room.carParking">Car ko photo</div>
+                <div *ngIf="room.bikeParking">Bike ko photo</div>
+            </div>
+            <div class="btnn">
+                <button class="i3" routerLink="">Book </button>
+                <button class="i3" routerLink="">Add to Cart </button>
 
-                <div class="seller-detail">
-                    <div>
+            </div>
+        </div>
+    </section>
 
-                        <img src="./../../../assets/cato/1.jpg" class="seller-detail__img" alt='' />
-
-                    </div>
-                    <div class="seller-detail__information">
-                        <div class="name">Deepika Rawal</div>
-                        <div class="email">mahatmiraj@gmail.com</div>
-                        <div class="number">9860819881</div>
-                    </div>
-                </div>
-                <br>
-                <label for="username">Username</label>
-                <input type="text" class="form-control && color" [(ngModel)]="user.username" name="username" required
-                    #username="ngModel">
-                <div class="danger" [hidden]="username.valid || username.pristine">
-                    required field*
-                </div>
-                <br>
-
-                <label for="email">Email Address</label>
-                <input type="email" class="form-control && color" [(ngModel)]="user.email" name="email" required
-                    #email="ngModel">
-                <div class="danger" [hidden]="email.valid || email.pristine">
-                    required field*
-                </div>
-                <br>
-
-
-                <label for="phone">Phone Number</label>
-                <input type="number" class="form-control && color" [(ngModel)]="user.phone" name="phone" required
-                    #phone="ngModel">
-                <br>
-
-                <label for="gender">Gender</label>
-                <input type="radio" id="male" class="genwidth" value="male" [(ngModel)]="user.gender" name="male">
-                <label for="male">Male</label>
-                <input type="radio" id="female" class="genwidth" value="female" [(ngModel)]="user.gender" name="female">
-                <label for="female">Female</label>
-                <input type="radio" id="other" class="genwidth" value="other" [(ngModel)]="user.gender" name="female">
-                <label for="other">Other</label>
-                <br><br>
-
-                <button [disabled]="contactForm.invalid" class="btn btn-primary && button && color">book</button>
-                <br><br>
-
-            </form>
-
+    
         </div> -->
 
     </section>
 
 
 
+    <section *ngIf="isMapCheck">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+    </section>
 
-
-    <!-- <section>
-      
-    </section> -->
-
-
-
-
+    <app-footer></app-footer>
 </body>
 
 </html>

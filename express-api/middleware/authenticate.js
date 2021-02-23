@@ -17,6 +17,7 @@ module.exports = (req, res, next) => {
             if (err) {
                 return next(err);
             }
+            console.log(done.id);
             userModel.findById(done.id)
                 .exec((err, user) => {
                     if (err) {

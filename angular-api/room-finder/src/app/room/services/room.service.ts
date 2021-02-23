@@ -25,10 +25,10 @@ export class RoomService {
         }
     }
 
-    add(data: Room) {
+    add(data: any) {
         return this.http.post(this.url, data, this.getOptions())
     }
-    edit(id: string, data: Room) {
+    edit(id: string, data: any) {
         return this.http.put(`${this.url}/${id}`, data, this.getOptions())
     }
     get() {

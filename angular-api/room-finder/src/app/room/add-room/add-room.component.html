@@ -1,5 +1,6 @@
-<div id="container">
+<div id="container" *ngIf="!mapChecking">
     <form #addRoom="ngForm" class="form-group && center && contain" novalidate>
+        <br><br><br><br><br><br>
         <h3>
             Add Room
         </h3>
@@ -12,7 +13,6 @@
             required field*
         </div>
         <br>
-
 
         <label for="categories">categories</label>
         <select type="text" id="categories" class="form-control && color" [(ngModel)]="room.categories"
@@ -46,15 +46,15 @@
 
         <label for="description">Description About Room</label>
         <textarea type="text" class="form-control && color" rows="6" cols="60" name="description"
-            placeholder="Enter the description about rooms(Such as water facility, electricity, wifi, soon..)" form="usrform" [(ngModel)]="room.description" required
-            #description="ngModel"></textarea>
+            placeholder="Enter the description about rooms(Such as water facility, electricity, wifi, soon..)"
+            form="usrform" [(ngModel)]="room.description" required #description="ngModel"></textarea>
         <div class="danger" [hidden]="description.valid || description.pristine">
             required field*
         </div>
         <br>
 
         <label for="car">Car Parking </label>
-        <input type="checkbox" class="genwidth" (click)="carParkingChanged()" ><br>
+        <input type="checkbox" class="genwidth" (click)="carParkingChanged()"><br>
         <br>
 
         <label for="bike">Bike Parking</label>
@@ -67,10 +67,20 @@
             Select Photo(Maximum 3 images)</label> <br>
         <input type="file" class="form-control" name="image" (change)=fileChanged($event) multiple>
 
-
         <button [disabled]="addRoom.invalid" class="btn btn-primary &&  button " (click)="submit()">Save
             Room</button>
     </form>
 </div>
 
+<br><br><br><br><br><br><br>
 
+<section *ngIf="mapChecking">
+   <!--  Do you want to add location in Map?
+    <input type="checkbox" (click)="addMap()"> -->
+    <div>
+        <agm-map [latitude]="27.6695" [longitude]="85.3408" [zoom]="13" (mapClick)="mapClicked($event)">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+    </div>
+    <button class="btn btn-primary" (click)="mapSubmit()">Save</button>
+</section>
