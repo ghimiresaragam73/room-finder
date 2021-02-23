@@ -648,7 +648,7 @@ ul {
 .col-41 {
     padding: 10px;
     background-color: white;
-    min-width: 250px;
+    width: 250px;
     margin-bottom: 50px;
     text-align: center;
     padding: 20px 10px;

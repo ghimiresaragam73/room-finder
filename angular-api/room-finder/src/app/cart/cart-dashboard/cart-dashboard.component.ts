@@ -27,21 +27,23 @@ export class CartDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.rooms) {
-      this.cartService.getAllCart()
-        .subscribe(
-          data => {
-            console.log(data);
-            this.rooms = data[0];
-            this.loading = false;
-          },
-          err => {
-            this.msgService.showError(err);
-            this.loading = false
-          }
-        )
+    // for (let i = 1; i <= 1000; i++) {
+      if (!this.rooms) {
+        this.cartService.getAllCart()
+          .subscribe(
+            data => {
+              console.log(data);
+              this.rooms = data[0];
+              this.loading = false;
+            },
+            err => {
+              this.msgService.showError(err);
+              this.loading = false
+            }
+          )
 
-    }
+      }
+    // }
   }
 
 }

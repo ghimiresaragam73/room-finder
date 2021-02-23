@@ -46,7 +46,7 @@
                 <br>
                 <p>{{room.description}} </p>
                 <div class="paragraph">
-                    <p>Rs.{{room.price}}</p>
+                    <p>Price:Rs.{{room.price}}</p>
                 </div>
                 <div class="paragraph">
                     <p>Location:{{room.address}}</p>
@@ -56,43 +56,18 @@
                 </div>
                 <div class="btnn">
                     <button class="i3" routerLink="">Book </button>
-                    <button class="i3" (click)="addToCart()">Add to Cart </button>
+                    <button class="i3"  (click)="addToCart()">Add to Cart </button>
+
 
                 </div>
-
-        </div>
-    </div>
-        <div class="col-2">
-            <h3>Room Description <i class="fa faident"></i></h3>
-            <br>
-            {{room.discription}}
-            <div class="paragraph">
-            <p>Rs.{{room.price}}</p>
-        </div>
-        <div class="paragraph">
-            <p>Location:{{room.address}}</p>
-        </div>
-        <div class="paragraph"> 
-            <p>No of Room:{{room.numberOfRoom}}</p>
-        </div>
-        <div>Parking
-            <div *ngIf="room.carParking">Car ko photo</div>
-            <div *ngIf="room.bikeParking">Bike ko photo</div>
-        </div>
-        <div class="btnn">
-            <button class="i3" routerLink="">Book  </button>
-            <button class="i3" routerLink="">Add to Cart  </button>
+                <div>
+                    <button class="i3"  (click)="edit()">edit</button>
+                    <button (click)="removeRoom(room._id,i)" class="btn btn-danger">Delete</button>
+                </div>
 
             </div>
         </div>
-    </section>
-
-    
-
-
-
-    <section>
-        <div id="container">
+        <!-- <div id="container">
             <form #contactForm="ngForm" class="form-group && center && contain ">
                 <h3>
                     seller information
@@ -148,10 +123,18 @@
 
             </form>
 
-        </div>
+        </div> -->
+
     </section>
+
+
+
+
+
+    <!-- <section>
       
-    <!-- <div class="col-2"> -->
+    </section> -->
+
 
 
 

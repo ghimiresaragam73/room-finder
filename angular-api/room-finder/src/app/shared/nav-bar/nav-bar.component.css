@@ -26,9 +26,19 @@
  } */
 
 
+ 
  .cart{
-    margin-right: 20px;
- }
+   margin-right: 20px;
+   width: 35px;
+   height: 35px;
+   cursor: pointer;
+   transition: .3s;
+}
+.cart:hover{
+   opacity: .5;
+   width: 31px;
+   height:31px;
+}
  .background{
     background-color: white;
     
