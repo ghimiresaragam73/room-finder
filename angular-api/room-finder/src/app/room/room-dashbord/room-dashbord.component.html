@@ -86,7 +86,7 @@
                 <br>
                 <p>{{room.description}} </p>
                 <div class="paragraph">
-                    <p>Rs.{{room.price}}</p>
+                    <p>Price:Rs.{{room.price}}</p>
                 </div>
                 <div class="paragraph">
                     <p>Location:{{room.address}}</p>
@@ -96,9 +96,9 @@
                 </div>
                 <div class="btnn">
                     <button class="i3" routerLink="">Book </button>
-                    <button class="i3" (click)="addToCart()">Add to Cart </button>
+                    <button class="i3"  (click)="addToCart()">Add to Cart </button>
 
-                </div>
+
 
             </div>
         </div>
@@ -127,67 +127,10 @@
         </div>
     </section>
 
-    <!-- <section>
-        <div id="container">
-            <form #contactForm="ngForm" class="form-group && center && contain ">
-                <h3>
-                    seller information
-                </h3>
-                <br>
+    
+        </div> -->
 
-                <div class="seller-detail">
-                    <div>
-
-                        <img src="./../../../assets/cato/1.jpg" class="seller-detail__img" alt='' />
-
-                    </div>
-                    <div class="seller-detail__information">
-                        <div class="name">Deepika Rawal</div>
-                        <div class="email">mahatmiraj@gmail.com</div>
-                        <div class="number">9860819881</div>
-                    </div>
-                </div>
-                <br>
-                <label for="username">Username</label>
-                <input type="text" class="form-control && color" [(ngModel)]="user.username" name="username" required
-                    #username="ngModel">
-                <div class="danger" [hidden]="username.valid || username.pristine">
-                    required field*
-                </div>
-                <br>
-
-                <label for="email">Email Address</label>
-                <input type="email" class="form-control && color" [(ngModel)]="user.email" name="email" required
-                    #email="ngModel">
-                <div class="danger" [hidden]="email.valid || email.pristine">
-                    required field*
-                </div>
-                <br>
-
-
-                <label for="phone">Phone Number</label>
-                <input type="number" class="form-control && color" [(ngModel)]="user.phone" name="phone" required
-                    #phone="ngModel">
-                <br>
-
-                <label for="gender">Gender</label>
-                <input type="radio" id="male" class="genwidth" value="male" [(ngModel)]="user.gender" name="male">
-                <label for="male">Male</label>
-                <input type="radio" id="female" class="genwidth" value="female" [(ngModel)]="user.gender" name="female">
-                <label for="female">Female</label>
-                <input type="radio" id="other" class="genwidth" value="other" [(ngModel)]="user.gender" name="female">
-                <label for="other">Other</label>
-                <br><br>
-
-                <button [disabled]="contactForm.invalid" class="btn btn-primary && button && color">book</button>
-                <br><br>
-
-            </form>
-
-        </div>
-    </section> -->
-
-    <!-- <div class="col-2"> -->
+    </section>
 
 
 
@@ -201,6 +144,3 @@
 </body>
 
 </html>
-
-<br><br><br><br><br><br>
-<!-- <h1>Google Map API</h1> -->

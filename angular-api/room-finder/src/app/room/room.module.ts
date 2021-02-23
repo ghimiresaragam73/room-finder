@@ -10,8 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomService } from './services/room.service';
 import { RoomDashbordComponent } from './room-dashbord/room-dashbord.component';
-// import { MapComponent } from './map/map.component';
-// import{NgxPaginationModule} from 'ngx-pagination'
+import{NgxPaginationModule} from 'ngx-pagination'
 
 import {AgmCoreModule} from '@agm/core'
 
@@ -25,7 +24,6 @@ import {AgmCoreModule} from '@agm/core'
     SearchRoomComponent,
     UpdateRoomComponent,
     RoomDashbordComponent,
-    // MapComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +33,8 @@ import {AgmCoreModule} from '@agm/core'
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey:'AIzaSyB1D7uemCFxNqfP0Z3ISpcGrxT3TdzK70k',
-    })
+    },
+    NgxPaginationModule
   ],
   providers: [RoomService]
 })

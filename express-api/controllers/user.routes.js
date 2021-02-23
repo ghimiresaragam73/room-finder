@@ -3,6 +3,7 @@ const userModel = require('./../models/user.model');
 var userHelp = require('./../helper/user.help');
 const multer = require('multer');
 const fs = require('fs');
+const authentication = require('./../middleware/authenticate')
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -70,7 +71,7 @@ router.route('/:id')
                 res.json(removed);
             })
     })
-    .put(upload.single('img'), (req, res, next) => {
+    .put(authentication, upload.single('img'), (req, res, next) => {
         console.log('req.file', req.file);
         if (req.fileError) {
             imageDelete(req.file.filename);
@@ -87,6 +88,9 @@ router.route('/:id')
                     var oldImage = user.image;
                     console.log('old image>>>'.oldImage);
                     var updatedUser = userHelp(req.body, user);
+                    console.log('updated user',updatedUser);
+                    if (updatedUser)
+                       return next("Password doesn't match")
                     if (req.file) {
                         updatedUser.image = req.file.filename;
                         imageDelete(oldImage);
@@ -95,7 +99,7 @@ router.route('/:id')
                         if (err) {
                             return next(err);
                         }
-                        console.log('this.save>>>',saved)
+                        console.log('this.save>>>', saved)
                         res.json(saved);
                     })
                 }

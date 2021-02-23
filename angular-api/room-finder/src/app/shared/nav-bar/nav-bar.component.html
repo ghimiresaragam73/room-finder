@@ -57,11 +57,10 @@
         </div>
         <nav>
             <ul>
+                <li><a routerLink="/user/profile">Profile</a></li>
                 <li><a routerLink="/room/add">Add room</a></li>
-                <li><a routerLink="/room/list">View room</a></li>
-                <li><a routerLink="/user/profile">profile</a></li>
-                <li><a routerLink="/room/search">Search Room</a></li>
-                <li><a routerLink="/auth/login" (click)="logOut()">Log Out</a></li>
+                <!-- <li><a routerLink="/room/search">Search Room</a></li> -->
+                <!-- <li><a routerLink="/auth/login" (click)="logOut()">Log Out</a></li> -->
 
 
 
@@ -69,8 +68,10 @@
             </ul>
 
         </nav>
+    
         <div class="header__join">
-            <button class="btn" (click)="toogle()">switch to renter </button>
+            <button class="btn" routerLink="/auth/login" (click)="logOut()">Log Out</button>
+            <button class="btn" routerLink="/home" (click)="toogle()">switch to renter </button>
 
         </div>
 
@@ -98,8 +99,9 @@
         </form>      
         <nav>
             <ul>
-                <!-- <li><a href="">notification</a></li> -->
                 <li><a href="">order</a></li>
+                <li><a routerLink="/room/list">View room</a></li>
+
 
 
             </ul>
@@ -107,12 +109,12 @@
         </nav>
         <div>
             <a routerLink="/cart">
-                <img src="./../../assets/image logo/cart.jpeg" class="cart" width="25px" height="25px">
+                <img src="./../../../assets/image logo/cart.png" class="cart" >
 
             </a>
         </div>
         <div class="header__join">
-            <button class="btn" (click)="toogle()">switch to landlord</button>
+            <button class="btn" routerLink='/user/profile' (click)="toogle()">switch to landlord</button>
 
         </div>
 

@@ -20,7 +20,7 @@ export class PasswordChangeComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.datas = {
       oldPassword: '',
-      newPassword: ''
+      password: ''
     }
   }
 
